@@ -28,6 +28,7 @@ int main(){
             std::cout << "Case Final!\n";
             break;
         default:
+            std::cout << "Case default!\n";
             break;
     }
     return 0;
