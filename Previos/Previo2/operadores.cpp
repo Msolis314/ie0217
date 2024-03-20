@@ -82,20 +82,20 @@ int main(){
 
     switch (oper){
         case '+':
-            std::cout << num1 << " + " << num2 << " = " << num1 + num2;
+            std::cout << num1 << " + " << num2 << " = " << num1 + num2 << std::endl;
             break;
         case '-':
-            std::cout << num1 << " - " << num2 << " = " << num1 - num2;
+            std::cout << num1 << " - " << num2 << " = " << num1 - num2 << std::endl;
             break;
         case '*':
-            std::cout << num1 << " * " << num2 << " = " << num1 * num2;
+            std::cout << num1 << " * " << num2 << " = " << num1 * num2 << std::endl;
             break;
         case '/':
-            std::cout << num1 << " / " << num2 << " = " << num1 / num2;
+            std::cout << num1 << " / " << num2 << " = " << num1 / num2 << std::endl;
             break;
         default:
             // operator is doesn't match any case constant (+, -, *, /)
-            std::cout << "Error! The operator is not correct";
+            std::cout << "Error! The operator is not correct\n";
             break;
 
     }
@@ -103,7 +103,7 @@ int main(){
     //Anidaciones de if 
 
     int num;
-    std::cout << "Enter an integer: ";
+    std::cout << "Enter an integer: \n";
     std::cin >> num;
 
     // outer if condition
@@ -132,6 +132,7 @@ int main(){
     for (int i = 0 ; i <=5; ++i) {
         cout << i << " ";
     }
+    cout << endl;
 
     int num_array[] = {1,2,3,4,5,6,7,8,9,10};
 
@@ -146,6 +147,7 @@ int main(){
         cout << i << " ";
         ++i;
     }
+    cout << endl;
 
     i = 1;
     //do...while loop from 1 to 5

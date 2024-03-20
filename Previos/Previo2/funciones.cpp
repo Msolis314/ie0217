@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+
 // function declaration
 void greet(){
     cout << "Hello World\n";
@@ -21,10 +22,12 @@ int add(int a, int b){
 int add2(int, int);
 
 //same name different arguments
+
+/*
 int test() {}
 int test(int a) {}
 float test(float a) {}
-int test(int a, int b) {}
+int test(int a, int b) {} */
 
 //function with float type parameter
 float absolute(float var){

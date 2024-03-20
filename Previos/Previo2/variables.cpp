@@ -19,20 +19,20 @@ int main(){
 
     cout << g << endl;
 
-    cout << c;
+    cout << c << endl;
 
     //Entradas del usuario 
     int x; //declaring a variable
     cout << "Type a number:"; // Type a number and hit enter
     cin >> x; // Get user input from the keyboard
-    cout << "Your number is: " << x; // Display the value
+    cout << "Your number is: " << x << endl; // Display the value
 
     //Declaracion string
 
     string str = "Hello";
 
     //declare and initialize an array
-    int x[6]= {19, 10, 8, 17, 9, 15};
+    int x_2[6]= {19, 10, 8, 17, 9, 15};
 
     int test[2][3]= {{2,4,5},{9,0,19}};
     return 0;
