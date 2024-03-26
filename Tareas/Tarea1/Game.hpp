@@ -7,13 +7,10 @@ struct Game
     string wordToGuess;
     string emptyWord;
     string filledWord;
-    int tries;
+    int tries =0;
     int maxTries;
 };
 
-void guess(Game *game);
-bool checkWin(Game *game);
-void spacedWord(Game *game);
 
 #endif // GAME_HPP
 
