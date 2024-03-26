@@ -1,3 +1,4 @@
+#include <ctime>
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -27,7 +28,7 @@ void guess(Game *game) {
     string filledWord = game->filledWord;
 
     if (game->tries >= game->maxTries) {
-        cout << "Numero de intentos excedido\n";
+
         return;
     }
 
@@ -75,6 +76,7 @@ bool checkWin(Game *game) {
         //game->tries++;
         return false; // No ha ganado
     }else {
+        cout << "La palabra era: " << word << "\n"; // Si no se gana, se muestra la palabra y se imprime "Game Over"
         cout << "Game Over\n";
         return true; // No ha ganado
     }
@@ -82,6 +84,7 @@ bool checkWin(Game *game) {
 }
 
 string getWord(string wordsDict[],int lenght) {
+    srand(time(NULL));
     int randomIndex = rand() % lenght;
     return wordsDict[randomIndex];
 }
@@ -98,7 +101,11 @@ void beginGame(Game *game,string wordsDict[],int maxTries,int lenght) {
 
     while (checkWin(game) != true) {
         guess(game);
-        cout << game->filledWord << endl;
+        if (game->tries <= game->maxTries){
+            cout << "Intentos restantes: " << game->maxTries - game->tries << endl;
+            cout << game->filledWord << endl;
+        }
+        
     }
 
 }
