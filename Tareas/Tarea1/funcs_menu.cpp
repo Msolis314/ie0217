@@ -4,14 +4,18 @@
 #include "menu.hpp"
 using namespace std;
 
+//Muestra las palabra incluidas en el arreglo dentro del struct
 void showWords(Menu *menu){
     cout << endl;
     cout << "Palabras\n";
+    cout << "--------\n";
     for (int i = 0; i < menu ->numWords; i++) {
         cout << menu->palabrasrandom[i] << endl;
+        cout << "~~~~~~~~\n";
     }
 }
 
+//Elige la dificultad del juego
 void choseDifficulty(Menu *menu,Game *game){
 
     do {
@@ -42,11 +46,14 @@ void choseDifficulty(Menu *menu,Game *game){
     
 }
 
+//Agrega una palabra al arreglo dentro del struct
 void addWord(Menu *menu){
     string newWord;
     cout << endl;
     cout << "Digite la nueva palabra: ";
     cin >> newWord;
+    //Si el arreglo esta lleno, no se pueden agregar mas palabras
+    //Esto xq debe crearse con un tamaño fijo
     if (menu->numWords == MAX_WORDS) {
         cout << "No se pueden agregar mas palabras\n";
         return;

@@ -3,8 +3,11 @@
 #include <string>
 #include <cstdlib>
 #include "Game.hpp"
+#include "menu.hpp"
 #include "funciones.hpp"
 using namespace std;
+
+
 
 /// Esta funcion se encarga de crear una palabra con guiones bajos
 /// Debe ser llamada al inicio del juego
@@ -51,12 +54,13 @@ void guess(Game *game) {
     if (filledWord == emptyWord) {
         cout << "Letra incorrecta\n";
         game->tries++; // Se aumenta el numero de intentos
+        dibujarAhorcado(game);
     } else {
         cout << "Letra correcta\n";
     }
 
     game->filledWord = filledWord;
-    //game->emptyWord = filledWord; // Se actualiza la palabra con las letras adivinadas
+    
 
 }
 
@@ -68,7 +72,7 @@ bool checkWin(Game *game) {
 
     if (word == filledWord) {
         cout << endl;
-        cout << "Felicidades, ha ganado\n";
+        dibujarPersonaFeliz();
         return true; // Gano
     } else if (game->tries == game->maxTries && word != filledWord) { // Si llega al numero maximo de intentos
         cout << "Numero de intentos excedido\n";

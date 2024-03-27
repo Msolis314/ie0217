@@ -37,4 +37,12 @@ void beginGame(Game *game,string wordsDict[],int maxTries,int lenghtWordArray);
 /// @return string Palabra aleatoria
 std::string getWord(std::string wordsDict[],int lenghtWordArray);
 
+/// @brief Funcion para dibujar el ahorcado
+///
+/// @param game Puntero a la estructura Game
+void dibujarAhorcado(Game *game);
+
+/// @brief Funcion para dibujar una persona feliz cuando se gana el juego
+void dibujarPersonaFeliz();
+
 #endif // FUNCIONES_H
