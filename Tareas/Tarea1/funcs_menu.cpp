@@ -5,6 +5,8 @@
 using namespace std;
 
 void showWords(Menu *menu){
+    cout << endl;
+    cout << "Palabras\n";
     for (int i = 0; i < menu ->numWords; i++) {
         cout << menu->palabrasrandom[i] << endl;
     }
@@ -13,6 +15,7 @@ void showWords(Menu *menu){
 void choseDifficulty(Menu *menu,Game *game){
 
     do {
+        cout << endl;
         cout << "Elija una dificultad\n";
         cout << "1. Facil\n";
         cout << "2. Intermedio\n";
@@ -41,8 +44,13 @@ void choseDifficulty(Menu *menu,Game *game){
 
 void addWord(Menu *menu){
     string newWord;
+    cout << endl;
     cout << "Digite la nueva palabra: ";
     cin >> newWord;
+    if (menu->numWords == MAX_WORDS) {
+        cout << "No se pueden agregar mas palabras\n";
+        return;
+    }
     menu->palabrasrandom[menu->numWords] = newWord;
     menu->numWords++;
 }

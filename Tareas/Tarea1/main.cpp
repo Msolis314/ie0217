@@ -19,6 +19,7 @@ int main(){
     
     int choice;
     do {
+        cout << endl;
         cout << "Menu\n";
         cout << "1. Elegir dificultad\n";
         cout << "2. Jugar\n";
