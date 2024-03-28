@@ -76,4 +76,10 @@ void dibujarAhorcado(Game *game);
 /// @brief Funcion para dibujar una persona feliz cuando se gana el juego
 void dibujarPersonaFeliz();
 
+/// @brief revisa si la nueva letra ya estaba en la lista de letras adivinadas
+/// @param c letra a revisar
+/// @param game puntero a la estructura Game
+/// @return True si la letra ya estaba en la lista de letras adivinadas, False si no
+bool checkChar(char c, Game *game);
+
 #endif // FUNCIONES_H

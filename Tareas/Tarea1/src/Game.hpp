@@ -44,7 +44,7 @@ using namespace std;
 struct Game
 {
     string wordToGuess;
-    string emptyWord;
+    string guessLetters = "";
     string filledWord;
     int tries =0;
     int maxTries = DIFICULTAD_INICIAL;

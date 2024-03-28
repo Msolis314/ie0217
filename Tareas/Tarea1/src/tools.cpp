@@ -49,11 +49,20 @@ void spacedWord(Game *game) {
         spacedWord.append("_");
     }
 
-    game->emptyWord = spacedWord;
+    //game->emptyWord = spacedWord;
     game->filledWord = spacedWord;
 
 }
 
+bool checkChar(char c, Game *game) {
+    string guessLetters = game->guessLetters;
+    for (int i = 0; i < guessLetters.length(); i++) {
+        if (c == guessLetters[i]) {
+            return true;
+        }
+    }
+    return false;
+}
 /// @note Esta funcion se encarga de pedir una letra y compararla con la palabra a adivinar
 /// @note Si la letra es correcta, se actualiza la palabra con las letras adivinadas
 void guess(Game *game) {
@@ -77,6 +86,11 @@ void guess(Game *game) {
         }
         
     }
+    /// @note Si la letra ya fue ingresada, se imprime un mensaje y se retorna
+    if (checkChar(guessLetter,game)){
+        cout << "Letra ya ingresada\n";
+        return;
+    }
 
     /// @note Si la nueva palabra es igual a la anterior, la letra adivinada fue incorrecta
     if (filledWord == emptyWord) {
@@ -85,6 +99,7 @@ void guess(Game *game) {
         dibujarAhorcado(game);
     } else {
         cout << "Letra correcta\n";
+        game->guessLetters += guessLetter;
     }
 
     game->filledWord = filledWord;
