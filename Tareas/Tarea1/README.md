@@ -1,7 +1,15 @@
 # README
 
 ## Compilación
-
+Para la compilación se utilizó un Makefile. Todos los archivos fuente se encuentran en src.\
+Para compilar ejecutar el siguiente comando en una terminal de bash:
+```bash
+make
+```
+Esto generara el ejecutable ahorcado. Para desplegar el programa hacer uso de:
+```bash
+./ahorcado
+```
 ## Preguntas teóricas
 1. ¿Cual es la principal diferencia entre C y C++?
 	La diferencia principal radica en que C++ incorpora el paradigma de la programación orientada a objetos, además de mantener el paradigma procedimental de C. Algunas de las ventajas de la POO incluyen la seguridad del código, la abstracción, el mantenimiento y la reutilización del mismo.
