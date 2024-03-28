@@ -1,0 +1,56 @@
+/// @file menu.hpp
+/// @brief Contiene las declaraciones de las funciones para mostrar las palabras, elegir la dificultad y agregar una palabra al arreglo
+
+
+/*!
+MIT License
+
+Copyright (c) 2024 Msolis314
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+#ifndef MENU_HPP
+#define MENU_HPP
+#include <string>
+#include "Game.hpp"
+
+using namespace std;
+
+/// @brief Enum para el menu
+enum dificultades{
+    FACIL = 7,
+    INTERMEDIO = 5,
+    DIFICIL = 3
+};
+
+/// @brief Funcion para mostrar las palabras del arreglo
+/// @param menu 
+void showWords(Menu *menu);
+
+/// @brief Funcion para elegir la dificultad del juego
+/// @param menu puntero a la estructura Menu
+/// @param game puntero a la estructura Game
+void choseDifficulty(Menu *menu,Game *game);
+
+/// @brief Funcion para agregar una palabra al arreglo
+/// @param menu puntero a la estructura Menu
+void addWord(Menu *menu);
+
+#endif // MENU_HPP
