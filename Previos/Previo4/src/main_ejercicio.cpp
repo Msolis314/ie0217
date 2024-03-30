@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include "ejercicio.hpp"
 
 int main(){
