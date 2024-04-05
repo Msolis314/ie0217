@@ -1,6 +1,6 @@
 #ifndef TOOLS_HPP
 #define TOOLS_HPP
-
+#include <string>
 
 
 int randomInt(int min, int max);
@@ -8,8 +8,19 @@ int randomInt(int min, int max);
 enum typeCountry {
     DESARROLLO,
     PRIMER_MUNDO,
-    MAX_COUNTRIES = 1000    
+    MAX_COUNTRIES = 295   
 };
+
+enum Continent{
+    AFRICA,
+    AMERICA,
+    ASIA,
+    EUROPE,
+    OCEANIA
+};
+
+
+
 
 bool checkPrime(int n);
 
