@@ -1,8 +1,10 @@
 #ifndef PAIS_HPP
 #define PAIS_HPP
 #include <string>
+#include "Tools.hpp"
 
 
+extern int id_list[MAX_COUNTRIES];
 /// @brief Clase abstracta que representa un país.
 class Pais{
     protected:
@@ -27,7 +29,7 @@ class Pais{
         bool hasAirport();
 
         int getHabitantes();
-        virtual void setG5() = 0;
+        bool setG5();
         double generateHabitantes() const;
         void print();
 };

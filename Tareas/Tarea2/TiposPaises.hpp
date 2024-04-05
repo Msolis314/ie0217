@@ -15,11 +15,11 @@ class PrimerMundo : public Pais{
         /// @brief Calcular la poblacion trabajadora.
         /// @return Numero de habitantes trabajadores.
         int calculateWorkingPopulation() const;
+
+        bool hasInvestigationCenter;
     public:
         PrimerMundo(std::string nombre);
 
-        /// @brief Establecer si el país tiene la tecnología 5G.
-        void setG5();
 
         /// @brief Generar un id primo unico para el país.
         /// @return Id del país.
@@ -32,6 +32,8 @@ class PrimerMundo : public Pais{
         /// @brief Devolver la poblacion trabajadora.
         void getWorkingPopulation();
 
+        bool setG5();
+
         /// @brief Imprimir los datos del país.
         void print();
 
@@ -40,7 +42,6 @@ class PrimerMundo : public Pais{
 class Desarrollo : public Pais{
     public:
         Desarrollo(std::string nombre);
-        void setG5();
         int generateId() const;
         void print();
 };

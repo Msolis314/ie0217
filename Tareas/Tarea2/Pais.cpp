@@ -2,6 +2,8 @@
 #include <string>
 #include "Pais.hpp"
 #include "Tools.hpp"
+
+
 enum PIB{
     LOWEST_PIB = 240,
     GLOBAL_AVERAGE_PIB = 12000,
@@ -9,7 +11,7 @@ enum PIB{
 };
 
 enum Population{
-    LOWEST_POPULATION = 518,//El Vaticano
+    LOWEST_POPULATION = 518000,
     HIGHEST_POPULATION = 1428627663 //India
 };
 
@@ -19,6 +21,7 @@ Pais::Pais(int typeCountry, std::string nombre){
     this->PIB = calculatePIB(typeCountry);
     this->habitantes = generateHabitantes();
     this->airport = hasAirport();
+   
 }
 double Pais::calculatePIB(int typeCountry) const{
     if (typeCountry == DESARROLLO){
@@ -55,5 +58,7 @@ bool Pais::hasAirport(){
         return false;
     }
 }
+
+
 
 
