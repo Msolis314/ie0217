@@ -48,6 +48,7 @@ double Pais::calculatePIB(int typeCountry) const{
         // Se genera un numero aleatorio entre el promedio global y el PIB mas alto
         return randomInt(GLOBAL_AVERAGE_PIB, HIGHEST_PIB);
     }
+    return 0;
 }
 
 /// @note La cantidad de habitantes de un pais se genera aleatoriamente

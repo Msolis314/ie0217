@@ -31,6 +31,7 @@ bool PrimerMundo::setG5(){
     } else {
         G5 = false;
     }
+    return G5;
 }
 
 void PrimerMundo::getWorkingPopulation(){

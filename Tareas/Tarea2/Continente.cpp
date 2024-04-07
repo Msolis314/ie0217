@@ -169,6 +169,10 @@ void Continente::printCountries(){
 }
 
 void Continente::deleteCountry(){
+    if (numPaisesPrimerMundo == 0 && numPaisesDesarrollo == 0){
+        std::cout << "No hay paises en el continente" << std::endl;
+        return;
+    }
     printCountries();
     std::cout << "Ingrese el nombre del pais que desea eliminar: ";
     std::string nombre;

@@ -14,10 +14,11 @@ class Planeta{
         /// @brief Numero de continentes.
         int numContinentes;
         std::string nombre;
-        Continente* continentes[MAX_CONTINENTS];
     public:
         /// @brief Constructor de la clase Planeta, inicializa el nombre del planeta.
         Planeta(std::string nombre);
+
+        Continente* continentes[MAX_CONTINENTS];
 
         /// @brief Establecer el numero de continentes.
         /// @note Se establece el numero de continentes en el constructor.
@@ -29,7 +30,7 @@ class Planeta{
 
         /// @brief Acceder a  un puntero al arreglo de  continentes.
         /// @return Puntero al arreglo de objetos continentes.
-        Continente* getContinentes();
+        Continente *getContinentes();
 
         /// @brief Establecer los continentes.
         ///
@@ -41,6 +42,8 @@ class Planeta{
         /// Se muestran los nombres de los continentes almacenados en el arreglo de continentes.
         void displayContinents();
 
+        std::string* getArrayNames();
+
         /// @brief Determinar si el avion puede pasar por un continente.
         ///
         /// Se determina si el avion puede pasar por un continente si este tiene mas de un pais con aeropuerto.
@@ -51,9 +54,17 @@ class Planeta{
         /// Se muestra la informacion de los continentes almacenados en el arreglo de continentes.
         void print();
 
+        void agregarPais();
+
+        void eliminarPais();
+
+        void compararPaises();
+
         /// @brief Destructor de la clase Planeta.
         ///
         /// Se eliminan los objetos continente.
         ~Planeta();
 };
+
+
 #endif // PLANETA_HPP

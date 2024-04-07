@@ -2,7 +2,7 @@
 #include <string>
 #include "TiposPaises.hpp"
 #include "Tools.hpp"
-#include "menu.hpp"
+
 #include "Continente.hpp"
 #include "Planeta.hpp"
 
@@ -37,13 +37,13 @@ int main(){
                 planeta.print();
                 break;
             case COMPARAR_PAISES:
-                compararPaises(planeta);
+                planeta.compararPaises();
                 break;
             case AGREGAR_PAIS:
-                agregarPais(planeta);
+                planeta.agregarPais();
                 break;
             case ELIMINAR_PAIS:
-                eliminarPais(planeta);
+                planeta.eliminarPais();
                 break;
             case SALIR:
                 return 0;

@@ -78,11 +78,83 @@ int Planeta::getNumContinentes(){
     return numContinentes;
 }
 
+std::string* Planeta::getArrayNames(){
+    std::string* nombres = new std::string[numContinentes];
+    for (int i = 0; i < numContinentes; i++){
+        nombres[i] = continentes[i]->getNombre();
+    }
+    return nombres;
+}
+
 Continente* Planeta::getContinentes(){
-    return* continentes;
+    return *continentes;
 }
 Planeta::~Planeta(){
     for (int i = 0; i < numContinentes; i++){
         delete continentes[i];
     }
 }   
+
+
+void Planeta:: agregarPais(){
+    displayContinents();
+    std::cout << "Ingrese el continente al que desea agregar el pais: ";
+    std::string continente;
+    std::cin >> continente;
+    bool continenteEncontrado = false;
+    int numContinentes = getNumContinentes();
+    std::string *continentes_names = getArrayNames();
+    std::cout << "Continentes: " << getNumContinentes() << std::endl;
+    for (int i = 0; i < numContinentes; ++i){
+        std::cout << *(continentes_names +1 ) << std::endl;
+        if (*(continentes_names + i) == continente){
+            std::cout << "Nombre del pais: ";
+            std::string nombre;
+            std::cin >> nombre;
+            std::cout << "Tipo de pais: 1: Primer mundo, 0: Desarrollo" << std::endl;
+            int tipo;
+            std::cin >> tipo;
+            continentes[i]->addCountry(tipo, nombre);
+            continenteEncontrado = true;
+            break;
+        }
+        std::cout << "Continente no encontrado" << std::endl;
+        continue;
+    }
+    if (!continenteEncontrado){
+        std::cout << "Continente no encontrado" << std::endl;
+    }
+}
+
+void Planeta:: eliminarPais(){
+    displayContinents();
+    std::cout << "Ingrese el continente al que desea eliminar el pais: ";
+    std::string continente;
+    std::cin >> continente;
+    for (int i = 0; i < getNumContinentes(); i++){
+        if (continentes[i] -> getNombre() == continente){
+            continentes[i] -> deleteCountry();
+            return;
+        }
+    }
+}
+
+void Planeta:: compararPaises(){
+    displayContinents();
+    std::cout << "Ingrese el continente al que desea comparar los paises: ";
+    std::string continente;
+    std::cin >> continente;
+    for (int i = 0; i < getNumContinentes(); i++){
+        if (continentes[i] -> getNombre() == continente){
+            continentes[i] ->printCountries();
+            std::cout << "Ingrese el nombre del primer pais: ";
+            std::string pais1;
+            std::cin >> pais1;
+            std::cout << "Ingrese el nombre del segundo pais: ";
+            std::string pais2;
+            std::cin >> pais2;
+            continentes[i]->compareCountries(pais1, pais2);
+            return;
+        }
+    }
+}
