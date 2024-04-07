@@ -39,10 +39,19 @@ class PrimerMundo : public Pais{
 
 };
 
+
+/// @brief Clase que representa un país en desarrollo.
+///
+/// @details Esta clase hereda de la clase Pais y representa un país en desarrollo.
 class Desarrollo : public Pais{
     public:
         Desarrollo(std::string nombre);
+
+        /// @brief Los ids de los paises en desarrollo son numeros pares.
+        /// @return id del pais.
         int generateId() const;
+
+        /// @brief Imprimir los datos del país.
         void print();
 };
 

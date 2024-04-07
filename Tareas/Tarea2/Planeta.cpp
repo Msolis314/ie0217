@@ -6,7 +6,13 @@
 #include "Planeta.hpp"
 
 Planeta::Planeta(std::string nombre){
+    std::cout << " /\\_/\\   " << std::endl;
+    std::cout << "( o.o )  " << std::endl;
+    std::cout << " > ^ <   " << std::endl;
+    std::cout << std::endl;
+    std::cout << "Creando planeta " << nombre << std::endl;
     this->nombre = nombre;
+    std::cout << "Si ingresa un continente existente, se agregaran paises de primer mundo y en desarrollo automaticamente" << std::endl;
     setNumContinentes();
     setContinentes();
 }
@@ -21,12 +27,13 @@ void Planeta::setContinentes(){
 
     for (int i = 0; i < numContinentes; i++){
         std::string nombre ;
-        std::cout << "Ingrese el nombre del continente " << i << ": ";
+        std::cout << "Ingrese el nombre del continente " << i + 1 << ": ";
         std::cin >> nombre;
         continentes[i] = new Continente(nombre);
     }
 }
 
+/// @note Un avion puede pasar por un continente si este tiene mas de un pais con aeropuerto.
 void Planeta::avion(){
     if (numContinentes == 0){
         std::cout << "No hay continentes" << std::endl;
@@ -48,6 +55,7 @@ void Planeta:: print(){
     std::cout << "Informacion de los continentes: " << std::endl;
     for (int i = 0; i < numContinentes; i++){
         continentes[i]->printGeneralInfo();
+        std::cout << std::endl;
     }
 
     //avion();
@@ -60,6 +68,19 @@ void Planeta:: print(){
 
 }
 
+void Planeta::displayContinents(){
+    for (int i = 0; i < numContinentes; i++){
+        std::cout << continentes[i]->getNombre() << std::endl;
+    }
+}
+
+int Planeta::getNumContinentes(){
+    return numContinentes;
+}
+
+Continente* Planeta::getContinentes(){
+    return* continentes;
+}
 Planeta::~Planeta(){
     for (int i = 0; i < numContinentes; i++){
         delete continentes[i];

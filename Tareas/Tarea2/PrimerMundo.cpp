@@ -47,11 +47,18 @@ int PrimerMundo::generateId() const{
     }
 }
 void PrimerMundo :: print(){
+    std::cout << std::endl;
     std::cout << "Nombre: " << nombre << std::endl;
     std::cout << "ID: " << id << std::endl;
     std::cout << "PIB: " << PIB << std::endl;
     std::cout << "Habitantes: " << habitantes << std::endl;
     std::cout << "Poblacion trabajadora: " << workingPopulation << std::endl;
+    std::cout << "Aeropuerto: ";
+    if (airport){
+        std::cout << "Si" << std::endl;
+    } else {
+        std::cout << "No" << std::endl;
+    }
     std::cout << "Centros de investigacion: ";
     if (hasInvestigationCenter){
         std::cout << "Si" << std::endl;
