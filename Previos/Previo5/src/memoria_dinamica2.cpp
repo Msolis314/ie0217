@@ -65,6 +65,6 @@ int main(){
         cout << new_ptr[i] << endl;
     }
     free(new_ptr);
-    free(ptr3);
+    //free(ptr3);
     return 0;
 }
