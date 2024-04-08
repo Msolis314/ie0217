@@ -54,10 +54,19 @@ class Planeta{
         /// Se muestra la informacion de los continentes almacenados en el arreglo de continentes.
         void print();
 
+        /// @brief Agregar un pais a un continente de la eleccion del usuario.
+        ///
+        /// Se solicita al usuario el nombre del continente y se agrega un pais a este.
         void agregarPais();
 
+        /// @brief Eliminar un pais de un continente de la eleccion del usuario.
+        ///
+        /// Se solicita al usuario el nombre del continente y se elimina un pais de este.
         void eliminarPais();
 
+        /// @brief Comparar dos paises por medio de la sobrecarga del operador ==.
+        ///
+        /// Se solicita al usuario el nombre de los paises y se comparan.
         void compararPaises();
 
         /// @brief Destructor de la clase Planeta.

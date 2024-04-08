@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['eliminarpais_0',['eliminarPais',['../menu_8cpp.html#a1384d4cd673be5e13ae06df7678499c8',1,'eliminarPais(Planeta &amp;planeta):&#160;menu.cpp'],['../menu_8hpp.html#a1384d4cd673be5e13ae06df7678499c8',1,'eliminarPais(Planeta &amp;planeta):&#160;menu.cpp']]]
+  ['eliminarpais_0',['eliminarPais',['../class_planeta.html#a91d3d45e9bf8c01ce7e27b9b521f763c',1,'Planeta']]]
 ];

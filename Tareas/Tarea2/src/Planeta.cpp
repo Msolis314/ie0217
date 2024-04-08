@@ -5,7 +5,9 @@
 #include "Continente.hpp"
 #include "Planeta.hpp"
 
+
 Planeta::Planeta(std::string nombre){
+    std::cout << std::endl;
     std::cout << " /\\_/\\   " << std::endl;
     std::cout << "( o.o )  " << std::endl;
     std::cout << " > ^ <   " << std::endl;
@@ -17,7 +19,7 @@ Planeta::Planeta(std::string nombre){
     setContinentes();
 }
 void Planeta::setNumContinentes(){
-    std::cout << "Ingrese el numero de continentes: ";
+    std::cout << "\nIngrese el numero de continentes: ";
     std::cin >> numContinentes;
     if (numContinentes > MAX_CONTINENTS){
         numContinentes = MAX_CONTINENTS;
@@ -27,7 +29,7 @@ void Planeta::setContinentes(){
 
     for (int i = 0; i < numContinentes; i++){
         std::string nombre ;
-        std::cout << "Ingrese el nombre del continente " << i + 1 << ": ";
+        std::cout << "\nIngrese el nombre del continente " << i + 1 << ": ";
         std::cin >> nombre;
         continentes[i] = new Continente(nombre);
     }
@@ -47,20 +49,20 @@ void Planeta::avion(){
 }
 
 void Planeta:: print(){
-    std::cout << "Planeta posee " << numContinentes << " continentes: ";
+    std::cout << "Nombre del planeta: " << nombre << std::endl;
+    std::cout << "\nPlaneta posee " << numContinentes << " continentes: ";
     for (int i = 0; i < numContinentes; i++){
-        std::cout  << continentes[i]->getNombre() << " ";
+        std::cout  << continentes[i]->getNombre() << " , ";
     }
     std::cout << std::endl;
-    std::cout << "Informacion de los continentes: " << std::endl;
+    std::cout << "\nInformacion de los continentes: " << std::endl;
     for (int i = 0; i < numContinentes; i++){
         continentes[i]->printGeneralInfo();
-        std::cout << std::endl;
     }
 
-    //avion();
+    avion();
 
-    std::cout << "Informacion de los paises: " << std::endl;
+    std::cout << "\nInformacion de los paises: " << std::endl;
     for (int i = 0; i < numContinentes; i++){
         continentes[i]->print();
     }
@@ -97,16 +99,21 @@ Planeta::~Planeta(){
 
 
 void Planeta:: agregarPais(){
+    //Primero se muestran los continentes
     displayContinents();
     std::cout << "Ingrese el continente al que desea agregar el pais: ";
     std::string continente;
     std::cin >> continente;
+
     bool continenteEncontrado = false;
+
     int numContinentes = getNumContinentes();
+
     std::string *continentes_names = getArrayNames();
-    std::cout << "Continentes: " << getNumContinentes() << std::endl;
+    //Se busca el continente
     for (int i = 0; i < numContinentes; ++i){
         std::cout << *(continentes_names +1 ) << std::endl;
+        //Si se encuentra el continente se agrega el pais
         if (*(continentes_names + i) == continente){
             std::cout << "Nombre del pais: ";
             std::string nombre;
@@ -114,13 +121,15 @@ void Planeta:: agregarPais(){
             std::cout << "Tipo de pais: 1: Primer mundo, 0: Desarrollo" << std::endl;
             int tipo;
             std::cin >> tipo;
+
+            //Metodo de la clase Continente para agregar un pais
             continentes[i]->addCountry(tipo, nombre);
             continenteEncontrado = true;
             break;
         }
-        std::cout << "Continente no encontrado" << std::endl;
         continue;
     }
+    //Si no se encuentra el continente se muestra un mensaje
     if (!continenteEncontrado){
         std::cout << "Continente no encontrado" << std::endl;
     }
@@ -140,10 +149,13 @@ void Planeta:: eliminarPais(){
 }
 
 void Planeta:: compararPaises(){
+    //Primero se muestran los continentes
     displayContinents();
     std::cout << "Ingrese el continente al que desea comparar los paises: ";
     std::string continente;
     std::cin >> continente;
+
+    //Se busca el continente
     for (int i = 0; i < getNumContinentes(); i++){
         if (continentes[i] -> getNombre() == continente){
             continentes[i] ->printCountries();
@@ -153,6 +165,8 @@ void Planeta:: compararPaises(){
             std::cout << "Ingrese el nombre del segundo pais: ";
             std::string pais2;
             std::cin >> pais2;
+            
+            //Metodo de la clase Continente para comparar paises
             continentes[i]->compareCountries(pais1, pais2);
             return;
         }

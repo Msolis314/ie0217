@@ -126,7 +126,7 @@ void Continente::printGeneralInfo(){
 /// @note Se muestra el nombre del continente y la cantidad de paises del primer mundo y en desarrollo.
 void Continente::print(){
     if (numPaisesPrimerMundo == 0 && numPaisesDesarrollo == 0){
-        std::cout << "No hay paises en el continente"<< nombre << std::endl;
+        std::cout << "No hay paises en el continente: "<< nombre << std::endl;
         return;
     }
     std::cout << "Nombre del continente: " << nombre << std::endl;

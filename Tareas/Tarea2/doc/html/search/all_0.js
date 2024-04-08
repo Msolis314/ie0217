@@ -5,7 +5,7 @@ var searchData=
   ['africadesarrollo_2',['africaDesarrollo',['../structdefault_countries.html#a0705a6074e9d47f3c169df97c6027ad6',1,'defaultCountries']]],
   ['africaprimermundo_3',['africaPrimerMundo',['../structdefault_countries.html#af2ffbf30941fefe134daaf14f7769e27',1,'defaultCountries']]],
   ['agregar_5fpais_4',['AGREGAR_PAIS',['../main_8cpp.html#a476f4db8d15ca2648699ffd0624cbad8af61af222d97fa0664a5b8085149facde',1,'main.cpp']]],
-  ['agregarpais_5',['agregarPais',['../menu_8cpp.html#a99ff5ea1586159dd47bf11e91bad5cf3',1,'agregarPais(Planeta &amp;planeta):&#160;menu.cpp'],['../menu_8hpp.html#a99ff5ea1586159dd47bf11e91bad5cf3',1,'agregarPais(Planeta &amp;planeta):&#160;menu.cpp']]],
+  ['agregarpais_5',['agregarPais',['../class_planeta.html#ad155d6320dbedc773d0a4a62822d0121',1,'Planeta']]],
   ['airport_6',['airport',['../class_pais.html#ae3654d1cf1fc25586abb45b641ff48f6',1,'Pais']]],
   ['america_7',['AMERICA',['../_tools_8hpp.html#a7f4e1a17a3de4eb833362fc9e27118a7a82b8e0ade97dd35be6fa6aef0fde525a',1,'Tools.hpp']]],
   ['americadesarrollo_8',['americaDesarrollo',['../structdefault_countries.html#a6ec60f7aa85bb197a234b4f05f0107c2',1,'defaultCountries']]],

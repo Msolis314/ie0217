@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['typecountry_0',['typeCountry',['../class_pais.html#a3e41f9ef11073e8aad361ffc4fdb68e6',1,'Pais']]]
+  ['pib_0',['PIB',['../class_pais.html#a01e918da59b3788821db735851d0daae',1,'Pais']]]
 ];
