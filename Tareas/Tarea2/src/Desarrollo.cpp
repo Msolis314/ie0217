@@ -53,6 +53,12 @@ void Desarrollo::print(){
     std::cout << "Nombre: " << nombre << std::endl;
     std::cout << "PIB: " << PIB << std::endl;
     std::cout << "Habitantes: " << habitantes << std::endl;
+    std::cout << "Aeropuerto: ";
+    if (airport){
+        std::cout << "Si" << std::endl;
+    } else {
+        std::cout << "No" << std::endl;
+    }
     std::cout << "5G: ";
     if (G5){
         std::cout << "Si" << std::endl;

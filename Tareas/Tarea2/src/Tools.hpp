@@ -64,7 +64,7 @@ struct defaultCountries {
 enum typeCountry {
     DESARROLLO,
     PRIMER_MUNDO,
-    MAX_COUNTRIES = 100   
+    MAX_COUNTRIES = 200  
 };
 
 

@@ -83,7 +83,7 @@ void Planeta::avion(){
 
 void Planeta:: print(){
     //Impresion de la informacion del planeta
-    std::cout << "Nombre del planeta: " << nombre << std::endl;
+    std::cout << "\nNombre del planeta: " << nombre << std::endl;
     std::cout << "\nPlaneta posee " << numContinentes << " continentes: ";
     for (int i = 0; i < numContinentes; i++){
         std::cout  << continentes[i]->getNombre() << " , ";
@@ -91,14 +91,17 @@ void Planeta:: print(){
     std::cout << std::endl;
     std::cout << "\nInformacion de los continentes: " << std::endl;
     for (int i = 0; i < numContinentes; i++){
+        std::cout << std::endl;
         continentes[i]->printGeneralInfo();
     }
     //Se determina si el avion puede pasar por un continente
+    std::cout << "\nDeterminando si el avion puede pasar por un continente" << std::endl;
     avion();
 
     //Impresion de la informacion de los paises por continente
     std::cout << "\nInformacion de los paises: " << std::endl;
     for (int i = 0; i < numContinentes; i++){
+        std::cout << std::endl;
         continentes[i]->print();
     }
 
@@ -144,7 +147,6 @@ void Planeta:: agregarPais(){
     std::string *continentes_names = getArrayNames();
     //Se busca el continente
     for (int i = 0; i < numContinentes; ++i){
-        std::cout << *(continentes_names +1 ) << std::endl;
         //Si se encuentra el continente se agrega el pais
         if (*(continentes_names + i) == continente){
             std::cout << "Nombre del pais: ";
