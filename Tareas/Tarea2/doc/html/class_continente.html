@@ -129,6 +129,11 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Clase que representa un continente. </p>
+<p>MIT License</p>
+<p>Copyright (c) 2024 Msolis314</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 <p>Esta clase se encuentra compuesta por un nombre, un entero que indica la cantidad de paises del primer mundo, un entero que indica la cantidad de paises en desarrollo, un arreglo de paises del primer mundo y un arreglo de paises en desarrollo. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a13bfdaa185b049a5e31a2058fd231931" name="a13bfdaa185b049a5e31a2058fd231931"></a>
@@ -149,10 +154,15 @@ Public Member Functions</h2></td></tr>
 <p>Constructor de la clase <a class="el" href="class_continente.html" title="Clase que representa un continente.">Continente</a>, inicializa el nombre del continente. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nombre</td><td>nombre del continente </td></tr>
+    <tr><td class="paramname">nombre</td><td>nombre del continente</td></tr>
   </table>
   </dd>
 </dl>
+<p>MIT License</p>
+<p>Copyright (c) 2024 Msolis314</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p><dl class="section note"><dt>Note</dt><dd>Si el continente existe, se agregan paises de primer mundo y en desarrollo automaticamente. </dd></dl>
 
 </div>
 </div>
@@ -172,7 +182,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destructor de la clase <a class="el" href="class_continente.html" title="Clase que representa un continente.">Continente</a>. </p>
-<p>Elimina los objetos paises del primer mundo y en desarrollo. </p>
+<p>Elimina los objetos paises del primer mundo y en desarrollo.</p>
+<dl class="section note"><dt>Note</dt><dd>Para evitar memory leaks, se eliminan los objetos paises del heap. </dd></dl>
 
 </div>
 </div>
@@ -253,6 +264,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Contar la cantidad de paises con aeropuerto. </p>
+<dl class="section note"><dt>Note</dt><dd>Un avion puede pasar por un continente si este tiene mas de un pais con aeropuerto. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>cantidad de paises con aeropuerto </dd></dl>
 
 </div>
 </div>

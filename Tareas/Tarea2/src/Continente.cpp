@@ -1,3 +1,31 @@
+/// @file Contiene las definiciones de los métodos de la clase Continente.
+/// @brief Clase que representa un continente y contiene los métodos para agregar, eliminar y comparar paises.
+/// @note es una clase compuesta por objetos de la clase Pais.
+
+/*!
+MIT License
+
+Copyright (c) 2024 Msolis314
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
 #include <iostream>
 #include <string>
 #include "Tools.hpp"
@@ -5,7 +33,7 @@
 #include "TiposPaises.hpp"
 #include "Continente.hpp"
 
-
+/// @note Si el continente existe, se agregan paises de primer mundo y en desarrollo automaticamente.
 Continente::Continente(std::string nombre){
     std::cout << "Creando continente: " << nombre << std::endl;
     this->nombre = nombre;
@@ -65,7 +93,6 @@ void Continente::setPaisesPrimerMundo(){
 void Continente::setPaisesDesarrollo(){
     if (!checkContinent(nombre)){
         // Si el continente no existe, se le pregunta al usuario si desea agregar paises en desarrollo manualmente
-        std::cout << "Continente no encontrado" << std::endl;
         std::cout << "Desea agregar paises en desarrollo manualmente? 1: Si, 0: No" << std::endl;
         int choice;
         std::cin >> choice;
@@ -74,7 +101,7 @@ void Continente::setPaisesDesarrollo(){
             std::string nombre;
             std::cin >> nombre;
             paisesDesarrollo[0] = new Desarrollo(nombre);
-            numPaisesDesarrollo = 1;
+            numPaisesDesarrollo = 1; // Como no habia paises en desarrollo, se agrega uno
         } else {
             numPaisesDesarrollo = 0;
             return;
@@ -109,10 +136,10 @@ void Continente::setPaisesDesarrollo(){
 
 void Continente::addCountry(int typeCountry, std::string nombre){
     if (typeCountry == PRIMER_MUNDO){
-        paisesPrimerMundo[numPaisesPrimerMundo] = new PrimerMundo(nombre);
+        paisesPrimerMundo[numPaisesPrimerMundo] = new PrimerMundo(nombre);//Se crea un nuevo pais de primer mundo en el heap
         numPaisesPrimerMundo++;
     } else if (typeCountry == DESARROLLO){
-        paisesDesarrollo[numPaisesDesarrollo] = new Desarrollo(nombre);
+        paisesDesarrollo[numPaisesDesarrollo] = new Desarrollo(nombre);//Se crea un nuevo pais en desarrollo en el heap
         numPaisesDesarrollo++;
     }
 }
@@ -141,8 +168,13 @@ void Continente::print(){
     }
 }
 
+/// @note Un avion puede pasar por un continente si este tiene mas de un pais con aeropuerto.
+/// @return cantidad de paises con aeropuerto
 int Continente::countCountriesAirport(){
     int count = 0;
+
+    // Contar los paises con aeropuerto en paisesPrimerMundo y paisesDesarrollo
+
     for (int i = 0; i < numPaisesPrimerMundo; i++){
         if (paisesPrimerMundo[i]->getAirport()){
             count++;
@@ -153,8 +185,11 @@ int Continente::countCountriesAirport(){
             count++;
         }
     }
+
     return count;
 }
+
+
 std::string Continente::getNombre(){
     return nombre;
 }
@@ -169,14 +204,20 @@ void Continente::printCountries(){
 }
 
 void Continente::deleteCountry(){
+
+    // Si no hay paises en el continente no se puede eliminar
     if (numPaisesPrimerMundo == 0 && numPaisesDesarrollo == 0){
         std::cout << "No hay paises en el continente" << std::endl;
         return;
     }
+    // Mostrar los paises del continente
     printCountries();
+    
+    // Solicitar el nombre del pais a eliminar
     std::cout << "Ingrese el nombre del pais que desea eliminar: ";
     std::string nombre;
     std::cin >> nombre;
+
     // Buscar el pais en paisesPrimerMundo
     for (int i = 0; i < numPaisesPrimerMundo; i++){
         if (paisesPrimerMundo[i]->getNombre() == nombre){
@@ -251,6 +292,8 @@ void Continente::compareCountries(std::string nombre1, std::string nombre2){
         }
     }
 }
+
+/// @note Para evitar memory leaks, se eliminan los objetos paises del heap.
 Continente::~Continente(){
     for (int i = 0; i < numPaisesPrimerMundo; i++){
         delete paisesPrimerMundo[i];

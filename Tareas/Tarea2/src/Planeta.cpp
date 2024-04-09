@@ -1,3 +1,31 @@
+/// @file Definicion de la clase Planeta
+///
+/// @brief Clase que representa un planeta.
+
+/*!
+MIT License
+
+Copyright (c) 2024 Msolis314
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
 #include <iostream>
 #include <string>
 #include "TiposPaises.hpp"
@@ -7,6 +35,7 @@
 
 
 Planeta::Planeta(std::string nombre){
+    //ASCII ART
     std::cout << std::endl;
     std::cout << " /\\_/\\   " << std::endl;
     std::cout << "( o.o )  " << std::endl;
@@ -15,14 +44,17 @@ Planeta::Planeta(std::string nombre){
     std::cout << "Creando planeta " << nombre << std::endl;
     this->nombre = nombre;
     std::cout << "Si ingresa un continente existente, se agregaran paises de primer mundo y en desarrollo automaticamente" << std::endl;
-    setNumContinentes();
-    setContinentes();
+    setNumContinentes();//Se establece el numero de continentes
+    setContinentes();//Se establecen los continentes
 }
 void Planeta::setNumContinentes(){
     std::cout << "\nIngrese el numero de continentes: ";
     std::cin >> numContinentes;
+
     if (numContinentes > MAX_CONTINENTS){
-        numContinentes = MAX_CONTINENTS;
+        std::cout << "Numero de continentes excede el maximo permitido" << std::endl;
+        std::cout << "Se establece el numero de continentes en " << MAX_CONTINENTS << std::endl;
+        numContinentes = MAX_CONTINENTS;//Se establece el maximo de continentes
     }
 }
 void Planeta::setContinentes(){
@@ -41,6 +73,7 @@ void Planeta::avion(){
         std::cout << "No hay continentes" << std::endl;
         return;
     } 
+    //Impresion de los continentes por los que puede pasar el avion
     for (int i = 0; i < numContinentes; i++){
         if (continentes[i]->countCountriesAirport() > 1){
             std::cout << "En el continente "<< continentes[i]->getNombre() << " puede pasar el avion" << std::endl;
@@ -49,6 +82,7 @@ void Planeta::avion(){
 }
 
 void Planeta:: print(){
+    //Impresion de la informacion del planeta
     std::cout << "Nombre del planeta: " << nombre << std::endl;
     std::cout << "\nPlaneta posee " << numContinentes << " continentes: ";
     for (int i = 0; i < numContinentes; i++){
@@ -59,9 +93,10 @@ void Planeta:: print(){
     for (int i = 0; i < numContinentes; i++){
         continentes[i]->printGeneralInfo();
     }
-
+    //Se determina si el avion puede pasar por un continente
     avion();
 
+    //Impresion de la informacion de los paises por continente
     std::cout << "\nInformacion de los paises: " << std::endl;
     for (int i = 0; i < numContinentes; i++){
         continentes[i]->print();
@@ -70,6 +105,7 @@ void Planeta:: print(){
 
 }
 
+/// @note Se muestran los nombres de los continentes almacenados en el arreglo de continentes.
 void Planeta::displayContinents(){
     for (int i = 0; i < numContinentes; i++){
         std::cout << continentes[i]->getNombre() << std::endl;
@@ -91,12 +127,8 @@ std::string* Planeta::getArrayNames(){
 Continente* Planeta::getContinentes(){
     return *continentes;
 }
-Planeta::~Planeta(){
-    for (int i = 0; i < numContinentes; i++){
-        delete continentes[i];
-    }
-}   
 
+/// @note Se solicita al usuario el nombre del continente y se agrega un pais a este es un metodo para el menu
 
 void Planeta:: agregarPais(){
     //Primero se muestran los continentes
@@ -135,11 +167,15 @@ void Planeta:: agregarPais(){
     }
 }
 
+
+/// @note Se solicita al usuario el nombre del continente y se elimina un pais de este es un metodo para el menu
 void Planeta:: eliminarPais(){
     displayContinents();
     std::cout << "Ingrese el continente al que desea eliminar el pais: ";
     std::string continente;
     std::cin >> continente;
+
+    //Se busca el continente y se elimina el pais
     for (int i = 0; i < getNumContinentes(); i++){
         if (continentes[i] -> getNombre() == continente){
             continentes[i] -> deleteCountry();
@@ -148,6 +184,8 @@ void Planeta:: eliminarPais(){
     }
 }
 
+
+/// @note Metodo para comparar paises , se utiliza en el menu
 void Planeta:: compararPaises(){
     //Primero se muestran los continentes
     displayContinents();
@@ -172,3 +210,10 @@ void Planeta:: compararPaises(){
         }
     }
 }
+
+/// @note Destructor de la clase Planeta para liberar memoria
+Planeta::~Planeta(){
+    for (int i = 0; i < numContinentes; i++){
+        delete continentes[i];
+    }
+}   
