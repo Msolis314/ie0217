@@ -9,40 +9,46 @@ class Queue{
         int items[SIZE],front,rear;
     public:
         Queue(){
-            front = -1;
-            rear = -1;
+            front = -1; //indice del primer elemento
+            rear = -1;//indice del ultimo elemento
         }
+    
+    //Revisar si la cola esta llena
     bool isFull(){
+        //El inicio de la cola es 0 y el final es SIZE - 1
         if (front == 0 && rear == SIZE -1){
             return true;
         }
         return false;
     }
 
+    //Revisar si la cola esta vacia
     bool isEmpty(){
         if (front == -1)
-            return true;
+            return true;//Si el frente es -1, la cola esta vacia
         else
             return false;
     }
 
+    //Agregar elementos a la cola
     void enQueue(int element){
         if (isFull()){
             cout << "Queue is full";
         } else {
-            if(front == -1) front = 0;
+            if(front == -1) front = 0;//Si el frente es -1, la cola esta vacia, y por lo tanto se inicializa en 0
             rear++;
-            items[rear] = element;
+            items[rear] = element; //Se incrementa el indice rear y se agrega el nuevo elemento
             cout << endl
                  << "Inserted " << element << endl;
         }
     }
 
+    //Eliminar elementos de la cola
     int deQueue(){
         int element;
         if(isEmpty()){
             cout << "Queue is empty" << endl;
-            return (-1);
+            return (-1);//Si la cola esta vacia, se regresa -1
         } else {
             element = items[front];
             if (front >= rear){

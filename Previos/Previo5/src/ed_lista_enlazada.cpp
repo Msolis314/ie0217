@@ -7,8 +7,8 @@ using namespace std;
 //Creating a node
 class Node{
     public:
-        int value;
-        Node* next;
+        int value; // Contiene el valor del nodo
+        Node* next; // Contiene la dirección del siguiente nodo
 };
 
 int main(){
