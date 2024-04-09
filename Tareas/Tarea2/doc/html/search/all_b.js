@@ -8,7 +8,7 @@ var searchData=
   ['planeta_2ecpp_5',['Planeta.cpp',['../_planeta_8cpp.html',1,'']]],
   ['planeta_2ehpp_6',['Planeta.hpp',['../_planeta_8hpp.html',1,'']]],
   ['population_7',['Population',['../_pais_8cpp.html#a43ff71a1d5a913875a2d9939d700bc66',1,'Pais.cpp']]],
-  ['preguntas_20teóricas_8',['Preguntas Teóricas',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]],
+  ['preguntas_20teóricas_8',['Preguntas Teóricas',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]],
   ['primer_5fmundo_9',['PRIMER_MUNDO',['../_tools_8hpp.html#a41ddede7bd8c82ccbb8de81f0f0f3bfca69205e9eb04fd56269b571d6bf93bf4f',1,'Tools.hpp']]],
   ['primermundo_10',['PrimerMundo',['../class_primer_mundo.html',1,'PrimerMundo'],['../class_primer_mundo.html#a7b15c9d46220c33e4c1d9db2c43ea898',1,'PrimerMundo::PrimerMundo()']]],
   ['primermundo_2ecpp_11',['PrimerMundo.cpp',['../_primer_mundo_8cpp.html',1,'']]],

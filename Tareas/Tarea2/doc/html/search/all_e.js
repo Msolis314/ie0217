@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['teóricas_0',['Preguntas Teóricas',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]],
+  ['teóricas_0',['Preguntas Teóricas',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]],
   ['tipospaises_2ehpp_1',['TiposPaises.hpp',['../_tipos_paises_8hpp.html',1,'']]],
   ['tools_2ecpp_2',['Tools.cpp',['../_tools_8cpp.html',1,'']]],
   ['tools_2ehpp_3',['Tools.hpp',['../_tools_8hpp.html',1,'']]],
