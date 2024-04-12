@@ -29,7 +29,7 @@ class HashTable
        
         void insertar(string nombre, int telefono);
         void eliminar(string nombre, int telefono);
-        //int buscar(string nombre);
+        int buscar(string nombre);
         void print();
         //void print_search(string nombre);
 };  

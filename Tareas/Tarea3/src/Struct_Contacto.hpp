@@ -25,4 +25,10 @@ void printContactosAlphabetically();
 
 void freeMemory();
 
+void deleteContact(string nombre);
+
+void lowerCasetoUpper(string str);
+
+void swapValues(int *i, int *j);
+
 #endif //STRUCT_CONTACTO_HPP

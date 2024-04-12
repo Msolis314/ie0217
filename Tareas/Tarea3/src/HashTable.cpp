@@ -104,12 +104,35 @@ void HashTable::eliminar(string nombre,int telefono){
 //Printear la tabla hash
 void HashTable:: print() {
         for (int i = 0; i < capacidad; ++i) {
+            cout << "Nodo: " << i << endl;
             Node* current = tabla[i];
             while (current != nullptr) {
                 cout << "Nombre: " << current->nombre << ", Telefono: " << current->telefono << endl;
                 current = current->next;
             }
         }
+}
+
+//Buscar un item en la tabla hash
+int HashTable::buscar(string nombre){
+    //Iterar sobre la tabla hash
+    for (int i = 0; i < capacidad; i++){
+        //Si la posicion en la tabla esta vacia, no hay item que buscar
+        if (tabla[i] == nullptr){
+            continue;
+        }
+        //Si la posicion no esta vacia, iterar sobre la lista enlazada
+        Node *temp = tabla[i];
+        while (temp != nullptr){
+            //Retornar el item si se encuentra
+            if (temp->nombre == nombre){
+                return temp->telefono;
+            }
+            temp = temp->next;
+        }
+    }
+    //Retornar -1 si no se encuentra el item
+    return -1;
 }
 
 
