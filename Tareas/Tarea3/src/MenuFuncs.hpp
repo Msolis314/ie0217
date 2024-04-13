@@ -28,6 +28,6 @@ void eliminarContacto(HashTable *tabla);
 
 void imprimirContactosHash(HashTable *tabla);
 
-void imprimirContactosAlphabetically();
+void imprimirContactosMemoria();
 
 #endif //MENU_FUNCS_HPP

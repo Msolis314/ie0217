@@ -84,6 +84,9 @@ void printContactosAlphabetically(){
         cout << contactos[maxIndex]->nombre << " " << contactos[maxIndex]->telefono << endl;
         swapValues(&asciiValuesNames[i], &asciiValuesNames[maxIndex]);
     }
+    cout << contactos[numContactos - 1]->nombre << " " << contactos[numContactos - 1]->telefono << endl;
+
+
 
 }
 

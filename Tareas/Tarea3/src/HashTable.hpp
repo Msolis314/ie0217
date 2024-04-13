@@ -34,7 +34,7 @@ class HashTable
         //void print_search(string nombre);
 };  
 
-//HashTable* createTable(int capacidad);
+HashTable* createTable(int capacidad);
 
 //void freeTable(HashTable *tabla);
 

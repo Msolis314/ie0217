@@ -30,7 +30,7 @@ HashTable::HashTable(int capacidad):capacidad(capacidad){
 void HashTable::insertar(string nombre,int telefono){
     //Calcular el indice del item-llave
     unsigned long index = hashFunction(nombre,telefono,capacidad);
-    cout << "Index: " << index << endl;
+    //cout << "Index: " << index << endl;
     //Crear un nuevo item
     Node *newNode = new Node(nombre,telefono);
     if (newNode == nullptr){
@@ -48,7 +48,7 @@ void HashTable::insertar(string nombre,int telefono){
     } else {
         //Si la posicion no esta vacia hubo colision
         Node *temp = tabla[index];
-        //Iterar sobre la lista enlazada
+        //Iterar sobre la lista enlazada de la posicion
         while (temp->next != nullptr){
             temp = temp->next;
         }
@@ -104,8 +104,12 @@ void HashTable::eliminar(string nombre,int telefono){
 //Printear la tabla hash
 void HashTable:: print() {
         for (int i = 0; i < capacidad; ++i) {
-            cout << "Nodo: " << i << endl;
+           
             Node* current = tabla[i];
+            if (current == nullptr) {
+                continue;
+            }
+            cout << "Nodo: " << i << endl;
             while (current != nullptr) {
                 cout << "Nombre: " << current->nombre << ", Telefono: " << current->telefono << endl;
                 current = current->next;
@@ -149,4 +153,8 @@ HashTable::~HashTable(){
         }
     }
     delete[] tabla;
+}
+
+HashTable* createTable(int capacidad){
+    return new HashTable(capacidad);
 }

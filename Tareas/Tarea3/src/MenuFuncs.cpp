@@ -82,7 +82,12 @@ void eliminarContacto(HashTable *tabla){
     
 }
 
-void imprimirContactorHash(HashTable *tabla){
+void imprimirContactosHash(HashTable *tabla){
     cout << "Tabla hash" << endl;
     tabla->print();
+}
+
+void imprimirContactosMemoria(){
+    cout << "Memoria celular" << endl;
+    printContactosAlphabetically();
 }
