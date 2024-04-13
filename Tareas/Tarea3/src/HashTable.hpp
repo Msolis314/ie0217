@@ -26,6 +26,7 @@ class HashTable
     public:
         HashTable(int capacidad);
         ~HashTable();
+        void showContactos();
        
         void insertar(string nombre, int telefono);
         void eliminar(string nombre, int telefono);

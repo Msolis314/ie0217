@@ -139,6 +139,20 @@ int HashTable::buscar(string nombre){
     return -1;
 }
 
+void HashTable::showContactos(){
+    //Iterar sobre la tabla hash
+    for (int i = 0; i < capacidad; i++){
+        //Encontrar los nodos que no son nullptr
+        if (tabla[i] != nullptr){
+            Node *temp = tabla[i];//iterar sobre la lista enlazada
+            while (temp != nullptr){
+                cout << "Nombre: " << temp->nombre << endl;
+                temp = temp->next;
+            }
+        }
+    }
+}
+
 
 //Destructor de la tabla hash
 HashTable::~HashTable(){

@@ -29,6 +29,8 @@ void deleteContact(string nombre);
 
 void lowerCasetoUpper(string str);
 
-void swapValues(int *i, int *j);
+void showContactos();
+
+void swapValues(Contacto **i, Contacto **j);
 
 #endif //STRUCT_CONTACTO_HPP

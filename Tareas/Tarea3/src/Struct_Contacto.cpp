@@ -63,39 +63,36 @@ int checkContactosExits(string nombre){
 }
 
 void printContactosAlphabetically(){
-    int asciiValuesNames[numContactos];
-    for (int i = 0; i < numContactos; i++){
-        if (contactos[i] -> nombre.empty() == true){
-            continue;
-        }
-        string name = contactos[i] -> nombre;
-        lowerCasetoUpper(name);
-        asciiValuesNames[i] = int(name[0]);
-    }
-
-    //Selection sort para ordenar los contactos alfabeticamente
+    bool swap;
     for (int i = 0; i < numContactos - 1; i++){
-        int maxIndex = i;
-        for (int j = i + 1; j < numContactos; j++){
-            if (asciiValuesNames[j] > asciiValuesNames[maxIndex]){
-                maxIndex = j;
+        swap = false;
+        for (int j = 0; j < numContactos - i - 1; j++){
+            if (contactos[j]->nombre > contactos[j + 1]->nombre){
+                swapValues(&contactos[j], &contactos[j + 1]);
+                swap = true;
             }
         }
-        cout << contactos[maxIndex]->nombre << " " << contactos[maxIndex]->telefono << endl;
-        swapValues(&asciiValuesNames[i], &asciiValuesNames[maxIndex]);
+        if (!swap){
+            break;
+        }
     }
-    cout << contactos[numContactos - 1]->nombre << " " << contactos[numContactos - 1]->telefono << endl;
-
-
-
+    for (int i = 0; i < numContactos; i++){
+        cout << "Nombre: " << contactos[i]->nombre << ", Telefono: " << contactos[i]->telefono << endl;
+    }
 }
 
-void swapValues(int *i, int *j){
-    int temp = *i;
+void swapValues(Contacto **i, Contacto **j){
+    Contacto *temp = *i;
     *i = *j;
     *j = temp;
 }
 
+void showContactos(){
+    cout << "Contactos en la memoria celular:" << endl;
+    for (int i = 0; i < numContactos; i++){
+        cout << "Nombre: " << contactos[i]->nombre << endl;
+    }
+}
 void lowerCasetoUpper(string str){
     for (int i = 0; i < str.length(); i++){
         //Si el caracter es una letra minuscula, convertirlo a mayuscula

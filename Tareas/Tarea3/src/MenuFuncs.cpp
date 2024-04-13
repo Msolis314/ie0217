@@ -36,6 +36,7 @@ void eliminarContacto(HashTable *tabla){
 
         switch (opcion){
             case DELETE_IN_MEMORY:
+                showContactos();
                 cout << "Ingrese el nombre del contacto a eliminar: ";
                 cin >> nombre;
                 if (checkContactosExits(nombre) == -1){
@@ -44,18 +45,20 @@ void eliminarContacto(HashTable *tabla){
                 }
                 //Se elimina el contacto de la memoria celular
                 deleteContact(nombre);
-                break;
+                return;
             case DELETE_IN_HASH_TABLE:
+                tabla->showContactos();
                 cout << "Ingrese el nombre del contacto a eliminar: ";
                 cin >> nombre;
                 if (tabla->buscar(nombre) == -1){
                     cout << "El contacto no existe" << endl;
-                    break;
+                    return;
                 }
                 telefono = tabla->buscar(nombre);
                 //Se elimina el contacto de la tabla hash
                 tabla->eliminar(nombre, telefono);
-                break;
+
+                return;
             case DELETE_IN_BOTH:
                 cout << "Ingrese el nombre del contacto a eliminar: ";
                 cin >> nombre;
@@ -70,7 +73,7 @@ void eliminarContacto(HashTable *tabla){
                 }
                 telefono = tabla->buscar(nombre);
                 tabla->eliminar(nombre, telefono);
-                break;
+                return;
             case DELETE_EXIT:
                 return;
                 break;
