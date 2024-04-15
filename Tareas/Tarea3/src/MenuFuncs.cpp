@@ -5,6 +5,11 @@
 #include "MenuFuncs.hpp"
 using namespace std;
 
+//Global variables
+extern int numContactos;
+extern Contacto *contactos[MAX_CONTACTOS];
+
+/// @note Se agrega el contacto simultaneamente a la memoria celular y a la tabla hash
 void agregarContactoMemoria(HashTable *tabla){
     string nombre;
     int telefono;
@@ -22,6 +27,8 @@ void agregarContactoMemoria(HashTable *tabla){
 
 }
 
+
+/// @note Se elimina el contacto de la memoria celular y de la tabla hash dando la opcion al usuario de elegir
 void eliminarContacto(HashTable *tabla){
     do{
         cout << "Donde desea eliminar el contacto" << endl;
@@ -39,6 +46,7 @@ void eliminarContacto(HashTable *tabla){
                 showContactos();
                 cout << "Ingrese el nombre del contacto a eliminar: ";
                 cin >> nombre;
+                //Se verifica si el contacto existe
                 if (checkContactosExits(nombre) == -1){
                     cout << "El contacto no existe" << endl;
                     break;
@@ -50,6 +58,7 @@ void eliminarContacto(HashTable *tabla){
                 tabla->showContactos();
                 cout << "Ingrese el nombre del contacto a eliminar: ";
                 cin >> nombre;
+                //Se verifica si el contacto existe
                 if (tabla->buscar(nombre) == -1){
                     cout << "El contacto no existe" << endl;
                     return;
@@ -60,13 +69,19 @@ void eliminarContacto(HashTable *tabla){
 
                 return;
             case DELETE_IN_BOTH:
+                //Se muestra los nombres de los contactos que estan en la memoria celular y en la tabla hash
+                printNamesBoth(tabla);
                 cout << "Ingrese el nombre del contacto a eliminar: ";
                 cin >> nombre;
+
+                //Se verifica si el contacto existe
                 if (checkContactosExits(nombre) == -1){
                     cout << "El contacto no existe" << endl;
                     break;
                 }
                 deleteContact(nombre);
+
+                //Se verifica si el contacto existe
                 if (tabla->buscar(nombre) == -1){
                     cout << "El contacto no existe" << endl;
                     break;
@@ -85,12 +100,32 @@ void eliminarContacto(HashTable *tabla){
     
 }
 
+/// @note Se imprimen los nombres de los contactos que estan en la memoria celular y en la tabla hash para que el usuario pueda verlos
+void printNamesBoth(HashTable *tabla){
+    cout << "Contactos en memoria celular y en la tabla hash" << endl;
+    //Imprimir los nombres de los contactos que estan en la memoria celular y en la tabla hash
+    for (int i = 0; i < numContactos; i++){
+        if (tabla->buscar(contactos[i]->nombre) != -1){
+            cout << "Nombre: " << contactos[i]->nombre << endl;
+        }
+    }
+}
+
+/// @note Se imprimen los contactos de la tabla hash, para ordenar la llamada a la funcion print de la tabla hash en el main
 void imprimirContactosHash(HashTable *tabla){
     cout << "Tabla hash" << endl;
     tabla->print();
 }
 
+/// @note Se imprimen los contactos de la memoria celular, para ordenar la llamada a la funcion print de la memoria celular en el main
 void imprimirContactosMemoria(){
     cout << "Memoria celular" << endl;
     printContactosAlphabetically();
+}
+
+void printArt(){
+    std::cout << "  o   o   o  " << std::endl;
+    std::cout << " /|\\ /|\\ /|\\ " << std::endl;
+    std::cout << " ( ) ( ) ( )" << std::endl;
+   
 }

@@ -93,9 +93,12 @@ void HashTable::eliminar(string nombre,int telefono){
                 delete temp;
             }
             size--;
-            return;
-            
+            cout << "Se elimino el item" << endl;
+            return;   
         }
+        //Actualizar los punteros
+        prev = temp;
+        temp = temp->next;
     }
    
     cout << "No se encontro el item" << endl;

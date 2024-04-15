@@ -3,9 +3,17 @@
 #include "Struct_Contacto.hpp"
 using namespace std;
 
+/// Diferencia entre mayusculas y minusculas en ASCII
 #define DIFFERENCE_UPPER_LOWER_CASE 32
+
+// Variables globales
 Contacto *contactos[MAX_CONTACTOS] = {nullptr};
 int numContactos = 0;
+
+//Funciones
+
+/// @note En esta funcion se agrega un contacto a la memoria celular
+/// @note En caso de que el contacto ya exista, se pregunta si se desea sobreescribir
 void agregarContacto(string nombre, int telefono){
 
     if (numContactos == MAX_CONTACTOS){
@@ -22,12 +30,11 @@ void agregarContacto(string nombre, int telefono){
     }
     newContacto->nombre = nombre;
     newContacto->telefono = telefono;
-    cout << newContacto->nombre << endl;
     
 
     if (numContactos == 0){
         cout << "No hay contactos" << endl;
-        cout << "Agregando contacto" << endl;
+        cout << "\nAgregando contacto" << endl;
         contactos[numContactos] = newContacto;
         numContactos++;
         return;
@@ -52,6 +59,8 @@ void agregarContacto(string nombre, int telefono){
     
 }
 
+
+/// @note En esta funcion se verifica si un contacto existe en la memoria celular
 int checkContactosExits(string nombre){
     for (int i = 0; i < numContactos; i++){
         if (contactos[i] -> nombre == nombre){
@@ -62,25 +71,32 @@ int checkContactosExits(string nombre){
     return -1;
 }
 
+/// @note En esta funcion se imprimen los contactos en orden alfabetico utilizando un algoritmo de ordenamiento tipo burbuja
 void printContactosAlphabetically(){
     bool swap;
+    //Ordenar los contactos en orden alfabetico
     for (int i = 0; i < numContactos - 1; i++){
         swap = false;
+        //Comparar los nombres de los contactos
         for (int j = 0; j < numContactos - i - 1; j++){
+            //Si el nombre del contacto actual es mayor al siguiente, intercambiar los valores
             if (contactos[j]->nombre > contactos[j + 1]->nombre){
                 swapValues(&contactos[j], &contactos[j + 1]);
                 swap = true;
             }
         }
+        //Si no se hicieron intercambios, el arreglo esta ordenado
         if (!swap){
             break;
         }
     }
+    //Imprimir los contactos en orden alfabetico
     for (int i = 0; i < numContactos; i++){
         cout << "Nombre: " << contactos[i]->nombre << ", Telefono: " << contactos[i]->telefono << endl;
     }
 }
 
+/// @note En esta funcion se intercambian los valores de dos punteros a contactos
 void swapValues(Contacto **i, Contacto **j){
     Contacto *temp = *i;
     *i = *j;
@@ -102,6 +118,8 @@ void lowerCasetoUpper(string str){
         }
     }
 }
+
+/// @note En esta funcion se elimina un contacto de la memoria celular, se libera la memoria del contacto y se reorganiza el arreglo de contactos
 void deleteContact(string nombre){
     int index = checkContactosExits(nombre);
     if (index == -1){
@@ -117,6 +135,8 @@ void deleteContact(string nombre){
     }
    
 }
+
+/// @note En esta funcion se libera la memoria de los contactos para evitar memory leaks
 void freeMemory(){
     for (int i = 0; i < numContactos; i++){
         delete contactos[i];

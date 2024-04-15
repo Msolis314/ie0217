@@ -7,7 +7,10 @@ using namespace std;
 
 int main(){
     cout << "Agenda telefonica" << endl;
-    cout << "Ingrese la capacidad de la tabla hash: ";
+    cout << "-----------------" << endl;
+    printArt();
+    cout << "-----------------" << endl;
+    cout << "\nIngrese la capacidad de la tabla hash: ";
     int capacidad;
     int opcion;
     cin >> capacidad;
@@ -18,6 +21,7 @@ int main(){
         cout << "3. Imprimir contactos" << endl;
         cout << "4. Imprimir contactos ordenados alfabeticamente" << endl;
         cout << "5. Salir" << endl;
+        cout << "Ingrese una opcion: ";
         cin >> opcion;
         switch (opcion){
             case AGREGAR_CONTACTO:
