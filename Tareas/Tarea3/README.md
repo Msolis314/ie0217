@@ -1,6 +1,6 @@
 # README Tarea #3
 
-## Compilacion 
+## Compilación 
 Para la compilación se utilizó un Makefile. Todos los archivos fuente se encuentran en src.\
 
 Para compilar ejecutar el siguiente comando en una terminal de bash:
@@ -12,6 +12,9 @@ Esto generara el ejecutable agenda. Para desplegar el programa hacer uso de:
 ./agenda.exe
 ```
 
+## Documentación
+
+Link de la documentación: [https://main--tarea3ie0217marianasolis.netlify.app/index.html](https://main--tarea3ie0217marianasolis.netlify.app/index.html)
 
 ## Parte Teórica
 
