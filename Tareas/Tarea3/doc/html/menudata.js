@@ -23,19 +23,19 @@
  @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var menudata={children:[
-{text:"Main Page",url:"index.html"},
-{text:"Related Pages",url:"pages.html"},
-{text:"Classes",url:"annotated.html",children:[
-{text:"Class List",url:"annotated.html"},
-{text:"Class Index",url:"classes.html"},
-{text:"Class Members",url:"functions.html",children:[
-{text:"All",url:"functions.html"},
-{text:"Functions",url:"functions_func.html"},
+{text:"Página principal",url:"index.html"},
+{text:"Páginas relacionadas",url:"pages.html"},
+{text:"Clases",url:"annotated.html",children:[
+{text:"Lista de clases",url:"annotated.html"},
+{text:"Índice de clases",url:"classes.html"},
+{text:"Miembros de clases",url:"functions.html",children:[
+{text:"Todos",url:"functions.html"},
+{text:"Funciones",url:"functions_func.html"},
 {text:"Variables",url:"functions_vars.html"}]}]},
-{text:"Files",url:"files.html",children:[
-{text:"File List",url:"files.html"},
-{text:"File Members",url:"globals.html",children:[
-{text:"All",url:"globals.html",children:[
+{text:"Archivos",url:"files.html",children:[
+{text:"Lista de archivos",url:"files.html"},
+{text:"Miembros de los archivos",url:"globals.html",children:[
+{text:"Todos",url:"globals.html",children:[
 {text:"a",url:"globals.html#index_a"},
 {text:"c",url:"globals.html#index_c"},
 {text:"d",url:"globals.html#index_d"},
@@ -48,7 +48,7 @@ var menudata={children:[
 {text:"n",url:"globals.html#index_n"},
 {text:"p",url:"globals.html#index_p"},
 {text:"s",url:"globals.html#index_s"}]},
-{text:"Functions",url:"globals_func.html",children:[
+{text:"Funciones",url:"globals_func.html",children:[
 {text:"a",url:"globals_func.html#index_a"},
 {text:"c",url:"globals_func.html#index_c"},
 {text:"d",url:"globals_func.html#index_d"},
@@ -61,7 +61,7 @@ var menudata={children:[
 {text:"p",url:"globals_func.html#index_p"},
 {text:"s",url:"globals_func.html#index_s"}]},
 {text:"Variables",url:"globals_vars.html"},
-{text:"Typedefs",url:"globals_type.html"},
-{text:"Enumerations",url:"globals_enum.html"},
-{text:"Enumerator",url:"globals_eval.html"},
-{text:"Macros",url:"globals_defs.html"}]}]}]}
+{text:"typedefs",url:"globals_type.html"},
+{text:"Enumeraciones",url:"globals_enum.html"},
+{text:"Valores de enumeraciones",url:"globals_eval.html"},
+{text:"defines",url:"globals_defs.html"}]}]}]}

@@ -24,30 +24,30 @@
 */
 var NAVTREE =
 [
-  [ "Tarea 3", "index.html", [
+  [ "Tarea 3 IE-0217", "index.html", [
     [ "README Tarea #3", "md__r_e_a_d_m_e.html", [
       [ "Compilación", "md__r_e_a_d_m_e.html#autotoc_md1", null ],
       [ "Parte Teórica", "md__r_e_a_d_m_e.html#autotoc_md2", null ]
     ] ],
-    [ "Classes", "annotated.html", [
-      [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
+    [ "Clases", "annotated.html", [
+      [ "Lista de clases", "annotated.html", "annotated_dup" ],
+      [ "Índice de clases", "classes.html", null ],
+      [ "Miembros de clases", "functions.html", [
+        [ "Todos", "functions.html", null ],
+        [ "Funciones", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
+    [ "Archivos", "files.html", [
+      [ "Lista de archivos", "files.html", "files_dup" ],
+      [ "Miembros de los archivos", "globals.html", [
+        [ "Todos", "globals.html", null ],
+        [ "Funciones", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+        [ "typedefs", "globals_type.html", null ],
+        [ "Enumeraciones", "globals_enum.html", null ],
+        [ "Valores de enumeraciones", "globals_eval.html", null ],
+        [ "defines", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -58,5 +58,5 @@ var NAVTREEINDEX =
 "_hash_table_8cpp.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'pulsar para deshabilitar sincronización';
+var SYNCOFFMSG = 'pulsar para habilitar sincronización';

@@ -11,6 +11,6 @@ var _struct___contacto_8hpp =
     [ "printContactosAlphabetically", "_struct___contacto_8hpp.html#a7b1bcb07a2098449cc35551ab538185f", null ],
     [ "showContactos", "_struct___contacto_8hpp.html#adc8f93dd98215661918eb0c19d0af5e0", null ],
     [ "swapValues", "_struct___contacto_8hpp.html#a89561eb8895494ae931ea729f9da8892", null ],
-    [ "contactos", "_struct___contacto_8hpp.html#a1f5b2e1454f3e83becf9b736146ca835", null ],
+    [ "contactos", "_struct___contacto_8hpp.html#a7ed31b729d50aee6befa51a9b2d4a809", null ],
     [ "numContactos", "_struct___contacto_8hpp.html#a4aca8063cf78f8c317561f32e18d28c3", null ]
 ];

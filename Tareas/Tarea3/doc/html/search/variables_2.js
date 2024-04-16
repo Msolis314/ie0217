@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['telefono_0',['telefono',['../struct_hash_item.html#a3e5ff16e7df446c37bfd2b01ca49f640',1,'HashItem::telefono'],['../struct_node.html#a377827aa92cfb6104b247cd3e047c846',1,'Node::telefono'],['../struct_contacto.html#a704ac92d6e2ae1a2cbdb70cd4ac3f6a0',1,'Contacto::telefono']]]
+  ['next_0',['next',['../struct_node.html#a2559a716f69ccaa76d648d9f1b83065e',1,'Node']]],
+  ['nombre_1',['nombre',['../struct_hash_item.html#ac95b392365028a6b21e21b4cd42fc5ff',1,'HashItem::nombre'],['../struct_node.html#a1d611a6aa34f58edcdc7279ed57b3381',1,'Node::nombre'],['../struct_contacto.html#af6f5520eebc1b7471d1f4924bcfdf781',1,'Contacto::nombre']]],
+  ['numcontactos_2',['numContactos',['../_menu_funcs_8cpp.html#a4aca8063cf78f8c317561f32e18d28c3',1,'numContactos:&#160;Struct_Contacto.cpp'],['../_struct___contacto_8cpp.html#a4aca8063cf78f8c317561f32e18d28c3',1,'numContactos:&#160;Struct_Contacto.cpp'],['../_struct___contacto_8hpp.html#a4aca8063cf78f8c317561f32e18d28c3',1,'numContactos:&#160;Struct_Contacto.cpp']]]
 ];

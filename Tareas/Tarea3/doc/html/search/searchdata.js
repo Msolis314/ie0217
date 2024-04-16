@@ -4,7 +4,7 @@ var indexSectionsWithContent =
   1: "chn",
   2: "hlmrs",
   3: "abcdefhilmnps~",
-  4: "cnt",
+  4: "chnst",
   5: "chn",
   6: "dm",
   7: "adeis",
@@ -28,15 +28,15 @@ var indexSectionNames =
 
 var indexSectionLabels =
 {
-  0: "All",
-  1: "Classes",
-  2: "Files",
-  3: "Functions",
+  0: "Todos",
+  1: "Clases",
+  2: "Archivos",
+  3: "Funciones",
   4: "Variables",
-  5: "Typedefs",
-  6: "Enumerations",
-  7: "Enumerator",
-  8: "Macros",
-  9: "Pages"
+  5: "typedefs",
+  6: "Enumeraciones",
+  7: "Valores de enumeraciones",
+  8: "defines",
+  9: "Páginas"
 };
 
