@@ -1,6 +1,12 @@
 # Previo 7
 
-Tener en cuenta que los temas se encuentran dividos por archivo.cpp
+Tener en cuenta que los temas se encuentran dividos por archivo.cpp.
+| **Archivo** 	| **STL** 	| **Tema** 	|
+|---	|---	|---	|
+| Algoritmos.cpp 	| Sort 	| Algoritmos de la biblioteca STL 	|
+| Containers.cpp 	| vector map set  unordered_set  stack 	| Mostrar el uso y diferencias entre los diferentes tipos de contenedores - Contenedores de Secuencia - Contenedores Asociativos - Contenedores Asociativos Ordenados 	|
+| Iterators.cpp 	| Iterator 	| Crear iteradores que apunten a elementos de estructuras 	|
+| TiposIterators.cpp 	| ostream_iterator istream_iterator forward_list vector 	| Mostrar como los iteradores de diferentes containers difieren en sus características. - Input iterator - Output iterator - Forward iterator - Bidirectional iterator - Random Access iterator 	|
 
 ## Ejecución 
 
