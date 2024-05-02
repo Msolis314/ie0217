@@ -22,6 +22,7 @@ class Matrix{
         void llenarMatriz();
         void printMatrix();
         void getDims(int *rows, int *cols);
+    ~Matrix();
 
 };
 

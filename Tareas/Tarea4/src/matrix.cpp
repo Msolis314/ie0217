@@ -15,6 +15,7 @@ Matrix<T>::Matrix(int rows, int cols){
         if (!setDimensiones(rows, cols)){
             throw invalid_argument("Las dimensiones de la matriz no son validas");
         }
+        llenarMatriz();
     } 
     catch (invalid_argument &e){
         cout << e.what() << endl;
@@ -26,7 +27,6 @@ Matrix<T>::Matrix(int rows, int cols){
     }
     
 
-    llenarMatriz();
     
 }
 
@@ -89,5 +89,9 @@ void Matrix<T>::getDims(int *rows, int *cols){
     *rows = this->rows;
     *cols = this->cols;
 }
-
+template <class T>
+Matrix<T>::~Matrix(){
+    cout << "Destructor" << endl;
+    vector<vector<T>>().swap(this->matrix);
+}
 #include "checkInput.cpp"
