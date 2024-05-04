@@ -16,6 +16,7 @@ class Matrix{
         vector<vector<T>> matrix;
         int rows;
         int cols;
+        friend class OperacionesBasicas<T>;
     public:
         Matrix(int rows, int cols);
         bool setDimensiones(int rows, int cols);
