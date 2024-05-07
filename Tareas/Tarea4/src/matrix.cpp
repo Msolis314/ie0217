@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <bits/stdc++.h>
 #include "checkInput.hpp"
+#include "operaciones.hpp"
 #include "matrix.hpp"
 using namespace std;
 
@@ -19,17 +20,42 @@ Matrix<T>::Matrix(int rows, int cols){
     } 
     catch (invalid_argument &e){
         cout << e.what() << endl;
-        cout << "Ingrese el nuevamente el numero de filas: ";
-        cin >> rows;
-        cout << "Ingrese el nuevamente el numero de columnas: ";
-        cin >> cols;
-        setDimensiones(rows, cols);
+        abort();
     }
     
+}
+template <class T>
+Matrix<T>:: Matrix()= default;
 
+template <class T>
+Matrix<T> Matrix<T>:: operator+(Matrix<T> &b){
+    OperacionesBasicas<T> operaciones;
     
+    if( operaciones.validarSumaResta(*this, b)){
+        return operaciones.suma(*this, b);
+    }
 }
 
+template <class T>
+Matrix<T> Matrix<T>:: operator-(Matrix &b){
+    OperacionesBasicas<T> operaciones;
+   
+    if( operaciones.validarResta(*this, b)){
+        return operaciones.resta(*this, b);
+    
+    }
+   
+}
+
+template <class T>
+Matrix<T> Matrix<T>:: operator*(Matrix &b){
+    OperacionesBasicas<T> operaciones;
+    
+    Matrix<T> result(this->rows, cols);
+    if( operaciones.validarMultiplicacion(*this, b)){
+        return operaciones.multiplicacion(*this, b);
+    }
+}
 template <class T>
 bool Matrix<T>::setDimensiones(int rows, int cols){
     ValidadorDeEntrada<int> validador;
@@ -95,3 +121,4 @@ Matrix<T>::~Matrix(){
     vector<vector<T>>().swap(this->matrix);
 }
 #include "checkInput.cpp"
+#include "operaciones.cpp"

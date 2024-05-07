@@ -1,3 +1,6 @@
+#ifndef OPERACIONES_CPP
+#define OPERACIONES_CPP
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -51,9 +54,7 @@ Matrix<T> OperacionesBasicas<T>::suma(Matrix<T> &a, Matrix<T> &b){
     b.getDims(&rowsB, &colsB);
     Matrix<T> resultSum(rowsA, colsA);
     for ( int i = 0; i <rowsA; i++){
-        for (int j = 0; j < colsA; j++){
-            resultSum.matrix[i][j] = a.matrix[i][j] + b.matrix[i][j];
-        }
+        transform(a.matrix[i].begin(), a.matrix[i].end(), b.matrix[i].begin(), resultSum.matrix[i].begin(), plus<T>());
     }
     //a + b = resultSum
     return resultSum;
@@ -66,12 +67,28 @@ Matrix<T> OperacionesBasicas<T>::resta(Matrix<T> &a, Matrix<T> &b){
     b.getDims(&rowsB, &colsB);
     Matrix<T> resultResta(rowsA, colsA);
     for ( int i = 0; i <rowsA; i++){
-        for (int j = 0; j < colsA; j++){
-            resultResta.matrix[i][j] = a.matrix[i][j] - b.matrix[i][j];
-        }
+        transform(a.matrix[i].begin(), a.matrix[i].end(), b.matrix[i].begin(), resultResta.matrix[i].begin(), minus<T>());
     }
     //a - b = resultResta
     return resultResta;
 }
 
 
+template <class T>
+Matrix<T> OperacionesBasicas<T>::multiplicacion(Matrix<T> &a,Matrix<T> &b){
+    int rowsA, colsA, rowsB, colsB;
+    a.getDims(&rowsA, &colsA);
+    b.getDims(&rowsB, &colsB);
+    Matrix<T> resultMult(rowsA, colsB);
+    for(int i = 0;i < rowsA; i++){
+        for (int j = 0; j < colsB; j++){
+            for (int k = 0; k < colsA; k++){
+                resultMult.matrix[i][j] += a.matrix[i][k] * b.matrix[k][j];
+            }
+        }
+    }
+    //a * b = resultMult
+    return resultMult;
+}
+
+#endif // OPERACIONES_CPP
