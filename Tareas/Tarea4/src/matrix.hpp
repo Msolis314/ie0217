@@ -58,6 +58,8 @@ class Matrix{
         /// @param rows puntero a la variable que almacena el numero de filas
         /// @param cols puntero a la variable que almacena el numero de columnas
         void getDims(int *rows, int *cols);
+
+        void fillMatrixRandom();
     ~Matrix();
 
 };
