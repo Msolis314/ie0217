@@ -3,6 +3,7 @@
 #include <vector>
 #include <complex>
 #include "operaciones.hpp"
+#include <random>
 #include "matrix.hpp"
 #include "checkInput.hpp"
 #include "menuFuncs.hpp"
@@ -68,7 +69,84 @@ void askParams(menu &m){
         cout << "Entrada invalida. Intente de nuevo." << endl;
     }
 
+    //Se pide al usuario si quiere llenar las matrices con numeros random
+    while(cout << "Desea llenar las matrices con numeros random?\n 1) Si \n 2) No\n " && !(cin >> m.beginRandom) || m.beginRandom < 1 || m.beginRandom > 2){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Entrada invalida. Intente de nuevo." << endl;
+    }
+
 
 }
 
 
+template <class T>
+T randomNum(int type){
+    //Para generar numeros random
+    //Se usa la libreria random
+    //Se usa un random_device para obtener un seed
+    random_device rd;
+
+    //Se usa un motor de numeros random
+    //Se le pasa el seed
+    default_random_engine gen(rd());
+    //Se usa una distribucion uniforme
+    //Se le pasa el tipo de dato
+    uniform_int_distribution<T> dist(1, 100);
+
+    //Se regresa un numero random
+    return dist(gen);
+}
+
+template <class T>
+void generarRandomNumbers(menu &m, Matrix<T> &a, Matrix<T> &b){
+    while (cout << "Cual matriz desea llenar con numeros random?\n 1) Matriz A \n 2) Matriz B\n 3) A y B\n " && !(cin >> m.whichMatrix) || m.input < 1 || m.input > 3){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Entrada invalida. Intente de nuevo." << endl;
+    }
+
+    switch (m.whichMatrix)
+    {
+    case A:
+        a.fillMatrixRandom();
+        break;
+    case B:
+        b.fillMatrixRandom();
+        break;
+    case BOTH:
+        a.fillMatrixRandom();
+        b.fillMatrixRandom();
+        break;
+    default:
+        break;
+    }
+}
+template <class T>
+void printMatrices(menu &m, Matrix<T> &a, Matrix<T> &b){
+    cout << "Matriz A: " << endl;
+    a.printMatrix();
+    cout << "Matriz B: " << endl;
+    b.printMatrix();
+}
+
+template <class T>
+void doOperation(menu &m, Matrix<T> &a, Matrix<T> &b){
+    switch (m.operacion)
+    {
+    case SUMA:
+        cout << "A + B = \n";
+        (a + b).printMatrix();
+        break;
+    case RESTA:
+        cout << "A - B = \n";
+        (a - b).printMatrix();
+        break;
+    case MULTIPLICACION:
+        cout << "A * B = \n";
+        (a * b).printMatrix();
+        break;
+    default:
+        break;
+    }
+}

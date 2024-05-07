@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <bits/stdc++.h>
 #include "checkInput.hpp"
+#include "menuFuncs.hpp"
 using namespace std;
 /// @brief Clase Matrix
 /// @tparam T tipo de dato generico
@@ -18,6 +19,8 @@ class Matrix{
     private:
         int rows;
         int cols;
+        int tipoDato;
+        int complexType;
         //friend class OperacionesBasicas;
     public:
         /// @brief Constructor de la clase Matrix default
@@ -31,7 +34,7 @@ class Matrix{
         /// @brief Constructor de la clase Matrix
         /// @param rows Numero de filas de la matriz
         /// @param cols  Numero de columnas de la matriz
-        Matrix(int rows, int cols);
+        Matrix(int rows, int cols,menu &menu);
 
         /// @brief Sobrecarga del operador +
         /// @return this + b  Matriz resultante de la suma
@@ -51,6 +54,8 @@ class Matrix{
         /// @brief Metodo que llena la matriz
         /// Se llama cuando se crea una matriz
         void llenarMatriz();
+
+        void llenarMatrixComplejo();
         /// @brief Metodo que imprime la matriz
         void printMatrix();
 

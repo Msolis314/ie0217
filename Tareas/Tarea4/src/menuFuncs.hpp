@@ -19,6 +19,7 @@ struct menu{
     int operacion;
     int tipoDato;
     int complexType;
+    int beginRandom;
 
 } ;
 
@@ -50,7 +51,8 @@ void askParams(menu &menu);
 
 /// @brief Funcion que le permite al usuario elegir si quiere sobreescribir los parametros de la matriz con numeros random
 /// @param menu  estructura que contiene los parametros que el usuario debe ingresar
-void generarRandomNumbers(menu &menu);
+template <class T>
+void generarRandomNumbers(menu &menu,Matrix<T> &a, Matrix<T> &b);
 
 /// @brief Funcion para imprimir las matrices
 /// @tparam T Dato generico de la matriz
@@ -67,6 +69,9 @@ void printMatrices(menu &menu, Matrix<T> &a, Matrix<T> &b);
 /// @param b Matriz b
 template <class T>
 void doOperation(menu &menu, Matrix<T> &a, Matrix<T> &b);
+
+template <class T>
+T randomNum(int type);
 
 
 #endif // MENU_HPP
