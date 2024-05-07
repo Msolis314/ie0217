@@ -1,5 +1,3 @@
-#ifndef OPERACIONES_CPP
-#define OPERACIONES_CPP
 
 #include <iostream>
 #include <string>
@@ -11,10 +9,11 @@
 #include "checkInput.hpp"
 #include "matrix.hpp"
 #include "operaciones.hpp"
+#include "menuFuncs.hpp"
 using namespace std;
-
+/*
 template <class T>
-bool OperacionesBasicas<T>:: validarSumaResta(Matrix<T> &a, Matrix<T> &b){
+bool OperacionesBasicas<T>::validarSumaResta(Matrix<T> &a, Matrix<T> &b){
     int rowsA, colsA, rowsB, colsB;
     a.getDims(&rowsA, &colsA);
     b.getDims(&rowsB, &colsB);
@@ -90,5 +89,6 @@ Matrix<T> OperacionesBasicas<T>::multiplicacion(Matrix<T> &a,Matrix<T> &b){
     //a * b = resultMult
     return resultMult;
 }
+*/
 
-#endif // OPERACIONES_CPP
+

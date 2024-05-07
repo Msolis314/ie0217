@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -8,8 +9,9 @@
 #include "checkInput.hpp"
 #include "operaciones.hpp"
 #include "matrix.hpp"
-#include "menuFuncs.hpp"
+//#include "menuFuncs.hpp"
 using namespace std;
+
 
 /// @details Constructor de la clase Matrix con parametros, lanzara una excepcion si las dimensiones de la matriz no son validas
 template <class T>
@@ -26,7 +28,8 @@ Matrix<T>::Matrix(int rows, int cols, menu &menu){
             fillMatrixRandom();
         } else {
             if (this->tipoDato == COMPLEX){
-                llenarMatrixComplejo();
+                //llenarMatrixComplejo();
+                abort();
             }
             else {
             llenarMatriz();
@@ -37,11 +40,9 @@ Matrix<T>::Matrix(int rows, int cols, menu &menu){
     catch (invalid_argument &e){
         cout << e.what() << endl;
         abort();
-    }
-    
+    }   
 }
-template <class T>
-Matrix<T>:: Matrix()= default;
+
 
 template <class T>
 Matrix<T> Matrix<T>:: operator+(Matrix<T> &b){
@@ -62,6 +63,8 @@ Matrix<T> Matrix<T>:: operator-(Matrix &b){
     }
    
 }
+
+
 
 template <class T>
 Matrix<T> Matrix<T>:: operator*(Matrix &b){
@@ -84,9 +87,8 @@ bool Matrix<T>::setDimensiones(int rows, int cols){
 }
 
 template <class T>
-void Matrix<T> :: llenarMatriz(){
+void Matrix<T>::llenarMatriz(){
     ValidadorDeEntrada<T> validador;
-    
     for ( int i = 0; i < this->rows; i++){
         vector<T> row;
         for( int col = 0; col < this-> cols ; col++){
@@ -98,65 +100,54 @@ void Matrix<T> :: llenarMatriz(){
                 cout << "Ingrese el elemento en el indice [" << i << "][" << col << "]: ";
                 cin >> member;
             }
-            /*
-            try {
-                if (!validador.validarTipoDato(member)){
-                    throw invalid_argument("El tipo de dato ingresado no es valido");
-                }
-            }
-            catch (invalid_argument &e){
-                cout << e.what() << endl;
-                cout << "Ingrese el elemento en el indice [" << i << "][" << col << "]: ";
-                cin >> member;
-            } */
-
+            
             row.push_back(value);
         }
         this->matrix.push_back(row);
     }
-
 }
 
+/*
 template <class T>
 void Matrix<T>::llenarMatrixComplejo(){
-    //Esta funcion llena la matriz con numeros complejos
+    // Esta función llena la matriz con números complejos
     ValidadorDeEntrada<T> validador;
-    for ( int i = 0; i < this->rows; i++){
-        vector<T> row;
-        for( int col = 0; col < this-> cols ; col++){
-            //Se debe ingresar la parte real e imaginaria de un numero complejo
+    for (int i = 0; i < this->rows; i++){
+        vector<complex<T>> row;
+        for (int col = 0; col < this->cols; col++){
+            // Se debe ingresar la parte real e imaginaria de un número complejo
             string member;
             T value;
 
-            //Se pide la parte real del numero complejo
-            cout << "Ingrese la parte real del elemento en el indice [" << i << "][" << col << "]: ";
+            // Se pide la parte real del número complejo
+            cout << "Ingrese la parte real del elemento en el índice [" << i << "][" << col << "]: ";
             cin >> member;
 
-            //Se verifica si el valor ingresado es un numero de tipo T
+            // Se verifica si el valor ingresado es un número de tipo T
             while (!validador.validarTipoDato(member, &value)){
-                cout<< "Valor invalido, intente de nuevo.\n";
-                cout << "Ingrese la parte real del elemento en el indice [" << i << "][" << col << "]: ";
+                cout << "Valor inválido, intente de nuevo.\n";
+                cout << "Ingrese la parte real del elemento en el índice [" << i << "][" << col << "]: ";
                 cin >> member;
             }
             T real = value;
-            cout << "Ingrese la parte imaginaria del elemento en el indice [" << i << "][" << col << "]: ";
+            
+            cout << "Ingrese la parte imaginaria del elemento en el índice [" << i << "][" << col << "]: ";
             cin >> member;
 
-            //Se verifica si el valor ingresado es un numero de tipo T
+            // Se verifica si el valor ingresado es un número de tipo T
             while (!validador.validarTipoDato(member, &value)){
-                cout<< "Valor invalido, intente de nuevo.\n"
-                cout << "Ingrese la parte imaginaria del elemento en el indice [" << i << "][" << col << "]: ";
+                cout << "Valor inválido, intente de nuevo.\n";
+                cout << "Ingrese la parte imaginaria del elemento en el índice [" << i << "][" << col << "]: ";
                 cin >> member;
             }
             T imag = value;
             complex<T> complejo(real, imag);
             row.push_back(complejo);
         }
-        this->matrix.push_back(row);
+        this->matrixComplejo.push_back(row);
     }
-
 }
-
+*/
 template <class T>
 void Matrix<T>::printMatrix(){
     for (int i = 0; i < this->rows; i++){
@@ -203,5 +194,4 @@ Matrix<T>::~Matrix(){
     cout << "Destructor" << endl;
     vector<vector<T>>().swap(this->matrix);
 }
-#include "checkInput.cpp"
-#include "operaciones.cpp"
+

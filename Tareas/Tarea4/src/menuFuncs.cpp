@@ -2,12 +2,14 @@
 #include <string>
 #include <vector>
 #include <complex>
-#include "operaciones.hpp"
+#include <cmath>
+#include <algorithm>
+#include <bits/stdc++.h>
 #include <random>
 #include "matrix.hpp"
 #include "checkInput.hpp"
 #include "menuFuncs.hpp"
-
+#include "operaciones.hpp"
 using namespace std;
 
 void askParams(menu &m){
@@ -80,7 +82,7 @@ void askParams(menu &m){
 }
 
 
-template <class T>
+template <typename T>
 T randomNum(int type){
     //Para generar numeros random
     //Se usa la libreria random
@@ -92,15 +94,15 @@ T randomNum(int type){
     default_random_engine gen(rd());
     //Se usa una distribucion uniforme
     //Se le pasa el tipo de dato
-    uniform_int_distribution<T> dist(1, 100);
+    uniform_real_distribution<T> dist(1, 100);
 
     //Se regresa un numero random
     return dist(gen);
 }
 
-template <class T>
+template <typename T>
 void generarRandomNumbers(menu &m, Matrix<T> &a, Matrix<T> &b){
-    while (cout << "Cual matriz desea llenar con numeros random?\n 1) Matriz A \n 2) Matriz B\n 3) A y B\n " && !(cin >> m.whichMatrix) || m.input < 1 || m.input > 3){
+    while (cout << "Cual matriz desea llenar con numeros random?\n 1) Matriz A \n 2) Matriz B\n 3) A y B\n " && !(cin >> m.whichMatrix) || m.whichMatrix < 1 || m.whichMatrix > 3){
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Entrada invalida. Intente de nuevo." << endl;
@@ -122,7 +124,7 @@ void generarRandomNumbers(menu &m, Matrix<T> &a, Matrix<T> &b){
         break;
     }
 }
-template <class T>
+template <typename T>
 void printMatrices(menu &m, Matrix<T> &a, Matrix<T> &b){
     cout << "Matriz A: " << endl;
     a.printMatrix();
@@ -130,8 +132,9 @@ void printMatrices(menu &m, Matrix<T> &a, Matrix<T> &b){
     b.printMatrix();
 }
 
-template <class T>
+template <typename T>
 void doOperation(menu &m, Matrix<T> &a, Matrix<T> &b){
+
     switch (m.operacion)
     {
     case SUMA:
@@ -145,6 +148,27 @@ void doOperation(menu &m, Matrix<T> &a, Matrix<T> &b){
     case MULTIPLICACION:
         cout << "A * B = \n";
         (a * b).printMatrix();
+        break;
+    default:
+        break;
+    }
+}
+
+template <typename T>
+void menuDisplay(menu &m, Matrix<T> &a, Matrix<T> &b){
+    switch (m.input)
+    {
+    case GENERATE_RANDOM_NUMBERS:
+        generarRandomNumbers(m, a, b);
+        break;
+    case PRINT_MATRICES:
+        printMatrices(m, a, b);
+        break;
+    case DO_OPERATION:
+        doOperation(m, a, b);
+        break;
+    case EXIT:
+        cout << "Saliendo del programa" << endl;
         break;
     default:
         break;

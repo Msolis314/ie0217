@@ -3,58 +3,75 @@
 #include <vector>
 #include "matrix.hpp"
 #include "operaciones.hpp"
+#include "menuFuncs.hpp"
+#include "tools.hpp"
 
 using namespace std;
 
 int main(){
-    int rows, cols;
-    while (cout << "Ingrese el numero de filas: " && !(cin >> rows)){
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Entrada invalida. Intente de nuevo." << endl;
-    }
-    while (cout << "Ingrese el numero de columnas: " && !(cin >> cols)){
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Entrada invalida. Intente de nuevo." << endl;
-    }
-    try {
-        Matrix<int> matrix(rows, cols);
-        matrix.printMatrix();
-    }
-    catch (invalid_argument &e){
-        cout << e.what() << endl;
-        return 1;
-    }
+    menu menu;
+    int opcion;
+    askParams(menu);
 
-    while (cout << "Ingrese el numero de filas: " && !(cin >> rows)){
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Entrada invalida. Intente de nuevo." << endl;
-    }
-    while (cout << "Ingrese el numero de columnas: " && !(cin >> cols)){
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Entrada invalida. Intente de nuevo." << endl;
-    }
+    
 
-    try {
-        Matrix<int> matrix1(rows, cols); // Add a semicolon at the end of this line
-        matrix1.printMatrix();
-        Matrix<int> matrix2(rows, cols);
-        matrix2.printMatrix();
-        Matrix<int> result = matrix1 + matrix2;
-        result.printMatrix();
-    }
-    catch (invalid_argument &e){
-        cout << e.what() << endl;
-        return 1;
-    }
+    Matrix<int> a;
+    Matrix<int> b;
+    Matrix<float> a_float;
+    Matrix<float> b_float;
+    Matrix<double> a_double;
+    Matrix<double> b_double;
+    int typeData = menu.tipoDato;
+    int complexType = menu.complexType;
+    int beginRandom = menu.beginRandom;
 
+    switch (menu.tipoDato) {
+        case INT:
+            a = Matrix<int>(menu.rowsA, menu.colsA, typeData, complexType, beginRandom);
+            b = Matrix<int>(menu.rowsB, menu.colsB, typeData, complexType, beginRandom);
+            menuDisplay<int>(menu, a, b);
+            break;
+        case FLOAT:
+            a_float = Matrix<float>(menu.rowsA, menu.colsA, typeData, complexType, beginRandom);
+            b_float = Matrix<float>(menu.rowsB, menu.colsB, typeData, complexType, beginRandom);
+            menuDisplay<float>(menu, a_float, b_float);
+            break;
+        case DOUBLE:
+            a_double = Matrix<double>(menu.rowsA, menu.colsA, typeData, complexType, beginRandom);
+            b_double = Matrix<double>(menu.rowsB, menu.colsB, typeData, complexType, beginRandom);
+            menuDisplay<double>(menu, a_double, b_double);
+            break;
+        case COMPLEX:
+            if (menu.complexType == INT)
+            {
+                a = Matrix<int>(menu.rowsA, menu.colsA, typeData, complexType, beginRandom);
+                b = Matrix<int>(menu.rowsB, menu.colsB, typeData, complexType, beginRandom);
+                menuDisplay<int>(menu, a, b);
+            }
+            else if (menu.complexType == FLOAT)
+            {
+                a_float = Matrix<float>(menu.rowsA, menu.colsA, typeData, complexType, beginRandom);
+                b_float = Matrix<float>(menu.rowsB, menu.colsB, typeData, complexType, beginRandom);
+                menuDisplay<float>(menu, a_float, b_float);
+            }
+            else if (menu.complexType == DOUBLE)
+            {
+                a_double = Matrix<double>(menu.rowsA, menu.colsA, typeData, complexType, beginRandom);
+                b_double = Matrix<double>(menu.rowsB, menu.colsB, typeData, complexType, beginRandom);
+                menuDisplay<double>(menu, a_double, b_double);
+            }
+            break;
+        default:
+            break;
+    }
+   
     
     
     return 0;
 }
 
-#include "matrix.cpp"
+#include "checkInput.cpp"
 #include "operaciones.cpp"
+#include "menuFuncs.cpp"
+#include "matrix.cpp"
+

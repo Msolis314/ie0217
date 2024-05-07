@@ -8,8 +8,9 @@
 #include <algorithm>
 #include <bits/stdc++.h>
 #include "checkInput.hpp"
-#include "menuFuncs.hpp"
-using namespace std;
+//#include "operaciones.hpp"
+#include "tools.hpp"
+
 /// @brief Clase Matrix
 /// @tparam T tipo de dato generico
 ///
@@ -23,18 +24,19 @@ class Matrix{
         int complexType;
         //friend class OperacionesBasicas;
     public:
-        /// @brief Constructor de la clase Matrix default
-        /// @param no recibe parametros
-        Matrix();
+        Matrix() = default;
 
         /// @brief Atributo de la clase Matrix
         /// Necesita ser publico para poder ser accedido por la clase OperacionesBasicas
         vector<vector<T>> matrix;
 
+        /// @brief Matrix de numeros complejos
+        vector<vector<complex<T>>> matrixComplejo;
+
         /// @brief Constructor de la clase Matrix
         /// @param rows Numero de filas de la matriz
         /// @param cols  Numero de columnas de la matriz
-        Matrix(int rows, int cols,menu &menu);
+        Matrix(int rows, int cols, int tipoDato, int complexType, int beginRandom);
 
         /// @brief Sobrecarga del operador +
         /// @return this + b  Matriz resultante de la suma
@@ -69,4 +71,6 @@ class Matrix{
 
 };
 
+
+//#include "matrix.cpp"
 #endif // MATRIX_HPP

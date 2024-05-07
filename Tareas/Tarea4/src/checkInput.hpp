@@ -9,4 +9,5 @@ class ValidadorDeEntrada {
         bool validarTipoDato(std::string input, T *value);
         bool validarDimensiones(int tamano);
 };
+
 #endif // CHECKINPUT_HPP

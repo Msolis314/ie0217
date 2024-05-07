@@ -39,23 +39,7 @@ bool ValidadorDeEntrada<T>::validarTipoDato(string input, T *value){
     }
 }
 
-template <class T>
-bool ValidadorDeEntrada<T>::validarTipoDatoComplejo(string input, complex<T> *value){
-    try {
-        //Instancia un objeto de tipo istringstream para convertir el string a un tipo de dato complejo
-        istringstream stream(input);
 
-        //Verifica si el string se puede convertir a un tipo de dato complejo
-        if (!(stream >> *value) || !(stream >> ws).eof()){
-            throw invalid_argument("El tipo de dato ingresado no es valido");
-        }
-        return true;
-    }
-    catch (invalid_argument &e){
-        cout << e.what() << endl;
-        return false;
-    }
-}
 
 template <class T>
 bool ValidadorDeEntrada<T>::validarDimensiones(int tamano){
