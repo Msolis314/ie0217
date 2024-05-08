@@ -40,4 +40,13 @@ enum MenuOptions
     DO_OPERATION,
     EXIT
 };
+
+/// @brief Funcion para generar un numero aleatorio
+/// @tparam T 
+/// @param type 
+/// @return 
+template <typename T>
+T randomNum(int type);
+
+
 #endif // TOOL_HPP

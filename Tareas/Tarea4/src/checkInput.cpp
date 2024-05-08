@@ -7,9 +7,9 @@
 #include <stdexcept>
 #include <sstream>
 #include <type_traits>
-#include <bits/stdc++.h>
 #include "checkInput.hpp"
 using namespace std;
+
 
 template <class T>
 bool ValidadorDeEntrada<T>::validarTipoDato(string input, T *value){

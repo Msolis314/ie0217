@@ -1,4 +1,7 @@
 
+#ifndef OPERACIONES_CPP
+#define OPERACIONES_CPP
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,11 +12,10 @@
 #include "checkInput.hpp"
 #include "matrix.hpp"
 #include "operaciones.hpp"
-#include "menuFuncs.hpp"
 using namespace std;
-/*
+bool isOP;
 template <class T>
-bool OperacionesBasicas<T>::validarSumaResta(Matrix<T> &a, Matrix<T> &b){
+bool OperacionesBasicas<T>:: validarSumaResta(Matrix<T> &a, Matrix<T> &b){
     int rowsA, colsA, rowsB, colsB;
     a.getDims(&rowsA, &colsA);
     b.getDims(&rowsB, &colsB);
@@ -47,11 +49,12 @@ bool OperacionesBasicas<T>:: validarMultiplicacion(Matrix<T> &a, Matrix<T> &b){
 }
 
 template <class T>
-Matrix<T> OperacionesBasicas<T>::suma(Matrix<T> &a, Matrix<T> &b){
+Matrix<T> OperacionesBasicas<T>::suma(Matrix<T> &a, Matrix<T> &b,int tipoDato,int complexType,int beginRandom){
+    isOP = true;
     int rowsA, colsA, rowsB, colsB;
     a.getDims(&rowsA, &colsA);
     b.getDims(&rowsB, &colsB);
-    Matrix<T> resultSum(rowsA, colsA);
+    Matrix<T> resultSum(rowsA, colsA, tipoDato, complexType, beginRandom);
     for ( int i = 0; i <rowsA; i++){
         transform(a.matrix[i].begin(), a.matrix[i].end(), b.matrix[i].begin(), resultSum.matrix[i].begin(), plus<T>());
     }
@@ -60,11 +63,12 @@ Matrix<T> OperacionesBasicas<T>::suma(Matrix<T> &a, Matrix<T> &b){
 }
 
 template <class T>
-Matrix<T> OperacionesBasicas<T>::resta(Matrix<T> &a, Matrix<T> &b){
+Matrix<T> OperacionesBasicas<T>::resta(Matrix<T> &a, Matrix<T> &b,int tipoDato,int complexType,int beginRandom){
+    isOP = true;
     int rowsA, colsA, rowsB, colsB;
     a.getDims(&rowsA, &colsA);
     b.getDims(&rowsB, &colsB);
-    Matrix<T> resultResta(rowsA, colsA);
+    Matrix<T> resultResta(rowsA, colsA, tipoDato, complexType, beginRandom);
     for ( int i = 0; i <rowsA; i++){
         transform(a.matrix[i].begin(), a.matrix[i].end(), b.matrix[i].begin(), resultResta.matrix[i].begin(), minus<T>());
     }
@@ -74,11 +78,12 @@ Matrix<T> OperacionesBasicas<T>::resta(Matrix<T> &a, Matrix<T> &b){
 
 
 template <class T>
-Matrix<T> OperacionesBasicas<T>::multiplicacion(Matrix<T> &a,Matrix<T> &b){
+Matrix<T> OperacionesBasicas<T>::multiplicacion(Matrix<T> &a,Matrix<T> &b,int tipoDato,int complexType,int beginRandom){
+    isOP = true;
     int rowsA, colsA, rowsB, colsB;
     a.getDims(&rowsA, &colsA);
     b.getDims(&rowsB, &colsB);
-    Matrix<T> resultMult(rowsA, colsB);
+    Matrix<T> resultMult(rowsA, colsB, tipoDato, complexType, beginRandom);
     for(int i = 0;i < rowsA; i++){
         for (int j = 0; j < colsB; j++){
             for (int k = 0; k < colsA; k++){
@@ -89,6 +94,7 @@ Matrix<T> OperacionesBasicas<T>::multiplicacion(Matrix<T> &a,Matrix<T> &b){
     //a * b = resultMult
     return resultMult;
 }
-*/
+
+#endif // OPERACIONES_CPP
 
 

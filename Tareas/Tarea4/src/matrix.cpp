@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,70 +8,71 @@
 #include "checkInput.hpp"
 #include "operaciones.hpp"
 #include "matrix.hpp"
-//#include "menuFuncs.hpp"
+#include "tools.hpp"
 using namespace std;
 
 
-/// @details Constructor de la clase Matrix con parametros, lanzara una excepcion si las dimensiones de la matriz no son validas
 template <class T>
-Matrix<T>::Matrix(int rows, int cols, menu &menu){
-    this->tipoDato = menu.tipoDato;
-    if (this->tipoDato == COMPLEX){
-        this->complexType = menu.complexType;
+Matrix<T>::Matrix(int rows, int cols, int tipoDato, int complexType,int beginRandom){
+    this -> tipoDato = tipoDato;
+    if (tipoDato == COMPLEX){
+        this -> complexType = complexType;
     }
     try {
         if (!setDimensiones(rows, cols)){
             throw invalid_argument("Las dimensiones de la matriz no son validas");
         }
-        if (menu.beginRandom == 1){
-            fillMatrixRandom();
-        } else {
-            if (this->tipoDato == COMPLEX){
-                //llenarMatrixComplejo();
-                abort();
-            }
-            else {
-            llenarMatriz();
-            }
+        if (isOP == true){
+            return;
         }
-        
+        if (beginRandom == 1){
+            fillMatrixRandom();
+        } else
+        if (tipoDato == COMPLEX){
+            llenarMatrizCompleja();
+        } else {
+            llenarMatriz();
+        }
     } 
     catch (invalid_argument &e){
         cout << e.what() << endl;
         abort();
-    }   
+    }
+    
 }
-
+template <class T>
+Matrix<T>:: Matrix()= default;
 
 template <class T>
 Matrix<T> Matrix<T>:: operator+(Matrix<T> &b){
     OperacionesBasicas<T> operaciones;
     
     if( operaciones.validarSumaResta(*this, b)){
-        return operaciones.suma(*this, b);
-    }
+        return operaciones.suma(*this, b, this->tipoDato, this->complexType, 0);
+    } else {
+        cout << "No se puede realizar la suma" << endl;
+        return Matrix<T>();}
 }
 
 template <class T>
 Matrix<T> Matrix<T>:: operator-(Matrix &b){
     OperacionesBasicas<T> operaciones;
    
-    if( operaciones.validarResta(*this, b)){
-        return operaciones.resta(*this, b);
+    if( operaciones.validarSumaResta(*this, b)){
+        return operaciones.resta(*this, b, this->tipoDato, this->complexType, 0);
     
-    }
+    } else {
+        cout << "No se puede realizar la resta" << endl;
+        return Matrix<T>();}
    
 }
-
-
 
 template <class T>
 Matrix<T> Matrix<T>:: operator*(Matrix &b){
     OperacionesBasicas<T> operaciones;
     
-    Matrix<T> result(this->rows, cols);
     if( operaciones.validarMultiplicacion(*this, b)){
-        return operaciones.multiplicacion(*this, b);
+        return operaciones.multiplicacion(*this, b, this->tipoDato, this->complexType, 0);
     }
 }
 template <class T>
@@ -87,7 +87,7 @@ bool Matrix<T>::setDimensiones(int rows, int cols){
 }
 
 template <class T>
-void Matrix<T>::llenarMatriz(){
+void Matrix<T> :: llenarMatriz(){
     ValidadorDeEntrada<T> validador;
     for ( int i = 0; i < this->rows; i++){
         vector<T> row;
@@ -100,62 +100,73 @@ void Matrix<T>::llenarMatriz(){
                 cout << "Ingrese el elemento en el indice [" << i << "][" << col << "]: ";
                 cin >> member;
             }
-            
+            /*
+            try {
+                if (!validador.validarTipoDato(member)){
+                    throw invalid_argument("El tipo de dato ingresado no es valido");
+                }
+            }
+            catch (invalid_argument &e){
+                cout << e.what() << endl;
+                cout << "Ingrese el elemento en el indice [" << i << "][" << col << "]: ";
+                cin >> member;
+            } */
+
             row.push_back(value);
         }
         this->matrix.push_back(row);
     }
+
 }
 
-/*
 template <class T>
-void Matrix<T>::llenarMatrixComplejo(){
-    // Esta función llena la matriz con números complejos
+void Matrix<T>::llenarMatrizCompleja(){
     ValidadorDeEntrada<T> validador;
-    for (int i = 0; i < this->rows; i++){
+    for ( int i = 0; i < this->rows; i++){
         vector<complex<T>> row;
-        for (int col = 0; col < this->cols; col++){
-            // Se debe ingresar la parte real e imaginaria de un número complejo
+        for( int col = 0; col < this-> cols ; col++){
             string member;
             T value;
-
-            // Se pide la parte real del número complejo
-            cout << "Ingrese la parte real del elemento en el índice [" << i << "][" << col << "]: ";
+            cout << "Ingrese la parte real del elemento en el indice [" << i << "][" << col << "]: ";
             cin >> member;
-
-            // Se verifica si el valor ingresado es un número de tipo T
             while (!validador.validarTipoDato(member, &value)){
-                cout << "Valor inválido, intente de nuevo.\n";
-                cout << "Ingrese la parte real del elemento en el índice [" << i << "][" << col << "]: ";
+                cout << "Ingrese la parte real del elemento en el indice [" << i << "][" << col << "]: ";
                 cin >> member;
             }
             T real = value;
-            
-            cout << "Ingrese la parte imaginaria del elemento en el índice [" << i << "][" << col << "]: ";
+            cout << "Ingrese la parte imaginaria del elemento en el indice [" << i << "][" << col << "]: ";
             cin >> member;
-
-            // Se verifica si el valor ingresado es un número de tipo T
             while (!validador.validarTipoDato(member, &value)){
-                cout << "Valor inválido, intente de nuevo.\n";
-                cout << "Ingrese la parte imaginaria del elemento en el índice [" << i << "][" << col << "]: ";
+                cout << "Ingrese la parte imaginaria del elemento en el indice [" << i << "][" << col << "]: ";
                 cin >> member;
             }
             T imag = value;
             complex<T> complejo(real, imag);
             row.push_back(complejo);
         }
-        this->matrixComplejo.push_back(row);
+        this->matrixCompleja.push_back(row);
     }
+
 }
-*/
+
 template <class T>
 void Matrix<T>::printMatrix(){
-    for (int i = 0; i < this->rows; i++){
-        for (int j = 0; j < this->cols; j++){
-            cout << this->matrix[i][j] << " ";
+    if (this->tipoDato == COMPLEX){
+        for (int i = 0; i < this->rows; i++){
+            for (int j = 0; j < this->cols; j++){
+                cout << this->matrixCompleja[i][j] << " ";
+            }
+            cout << endl;
         }
-        cout << endl;
+    } else {
+        for (int i = 0; i < this->rows; i++){
+            for (int j = 0; j < this->cols; j++){
+                cout << this->matrix[i][j] << " ";
+            }
+            cout << endl;
+        }
     }
+    
 }
 
 template <class T>
@@ -163,35 +174,30 @@ void Matrix<T>::getDims(int *rows, int *cols){
     *rows = this->rows;
     *cols = this->cols;
 }
-
-
-template <class T>
-void Matrix<T>::fillMatrixRandom(){
-    if (this-> tipoDato == COMPLEX){
+template<class T>
+void Matrix<T>::fillMatrixRandom() {
+    if (this-> tipoDato == COMPLEX) {
         for (int i = 0; i < this->rows; i++){
-            vector<T> row;
+            vector<complex<T>> row;
             for (int j = 0; j < this->cols; j++){
                 T real = randomNum<T>(this->complexType);
                 T imag = randomNum<T>(this->complexType);
                 complex<T> complejo(real, imag);
                 row.push_back(complejo);
             }
-            this->matrix.push_back(row);
-        }
-    } else {
+            this->matrixCompleja.push_back(row);
+            } 
+        } else {
         for (int i = 0; i < this->rows; i++){
             vector<T> row;
             for (int j = 0; j < this->cols; j++){
-                T value = randomNum<T>(this->tipoDato);
-                row.push_back(value);
+                T num = randomNum<T>(this->tipoDato);
+                row.push_back(num);
             }
-            this->matrix.push_back(row);
-        }
+            this->matrix.push_back(row); }
     }
 }
 template <class T>
 Matrix<T>::~Matrix(){
-    cout << "Destructor" << endl;
     vector<vector<T>>().swap(this->matrix);
 }
-
