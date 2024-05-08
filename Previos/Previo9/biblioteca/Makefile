@@ -3,6 +3,7 @@
 TARGET = gestion_biblioteca.exe
 
 #Objetivo predeterminado
+#Por defecto, busca un archivo llamado "all" o el primer objetivo que encuentre
 all: $(TARGET)
 
 #Compilador de C++
