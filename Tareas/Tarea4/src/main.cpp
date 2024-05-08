@@ -8,7 +8,7 @@
 #include "menuFuncs.hpp"
 #include "tools.hpp" 
 
-
+bool isOP;
 using namespace std;
 void askParams(menu &m);
 void askParams(menu &m){
@@ -78,6 +78,7 @@ void askParams(menu &m){
 }
 
 int main(){
+    isOP = false;
     srand(static_cast<unsigned int>(time(0)));
     Matrix<int> a;
     Matrix<int> b;

@@ -23,7 +23,7 @@ Matrix<T>::Matrix(int rows, int cols, int tipoDato, int complexType,int beginRan
             throw invalid_argument("Las dimensiones de la matriz no son validas");
         }
         if (isOP == true){
-            return;
+            fillMatrixRandom();
         }
         if (beginRandom == 1){
             fillMatrixRandom();

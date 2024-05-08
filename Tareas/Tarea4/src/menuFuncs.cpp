@@ -51,8 +51,9 @@ void doOperation(menu &m, Matrix<T> &a, Matrix<T> &b){
     case SUMA:
         cout << "A + B = \n";
         if (operaciones.validarSumaResta(a, b)) {
-            (a + b).printMatrix();}
-        else {
+            (a + b).printMatrix();
+            isOP = false;
+        } else {
             cout << "No se puede realizar la suma" << endl;
             return;
         }
@@ -61,8 +62,9 @@ void doOperation(menu &m, Matrix<T> &a, Matrix<T> &b){
     case RESTA:
         cout << "A - B = \n";
         if (operaciones.validarSumaResta(a, b)) {
-            (a - b).printMatrix();}
-        else {
+            (a - b).printMatrix();
+            isOP = false;
+        } else {
             cout << "No se puede realizar la resta" << endl;
             return;
         }
@@ -70,8 +72,9 @@ void doOperation(menu &m, Matrix<T> &a, Matrix<T> &b){
     case MULTIPLICACION:
         cout << "A * B = \n";
         if (operaciones.validarMultiplicacion(a, b)){
-            (a * b).printMatrix();}
-        else {
+            (a * b).printMatrix();
+            isOP = false;
+        } else {
             cout << "No se puede realizar la multiplicacion" << endl;
             return;
         }

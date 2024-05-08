@@ -13,7 +13,7 @@
 #include "matrix.hpp"
 #include "operaciones.hpp"
 using namespace std;
-bool isOP;
+
 template <class T>
 bool OperacionesBasicas<T>:: validarSumaResta(Matrix<T> &a, Matrix<T> &b){
     int rowsA, colsA, rowsB, colsB;
@@ -55,11 +55,20 @@ Matrix<T> OperacionesBasicas<T>::suma(Matrix<T> &a, Matrix<T> &b,int tipoDato,in
     a.getDims(&rowsA, &colsA);
     b.getDims(&rowsB, &colsB);
     Matrix<T> resultSum(rowsA, colsA, tipoDato, complexType, beginRandom);
-    for ( int i = 0; i <rowsA; i++){
-        transform(a.matrix[i].begin(), a.matrix[i].end(), b.matrix[i].begin(), resultSum.matrix[i].begin(), plus<T>());
+    if (tipoDato == COMPLEX){
+        for ( int i = 0; i <rowsA; i++){
+            transform(a.matrixCompleja[i].begin(), a.matrixCompleja[i].end(), b.matrixCompleja[i].begin(), resultSum.matrixCompleja[i].begin(), plus<complex<T>>());
+        }
+        //a + b = resultSum
+        return resultSum;
+    } else {
+        for ( int i = 0; i <rowsA; i++){
+            transform(a.matrix[i].begin(), a.matrix[i].end(), b.matrix[i].begin(), resultSum.matrix[i].begin(), plus<T>());
+        }
+        //a + b = resultSum
+        return resultSum;
     }
-    //a + b = resultSum
-    return resultSum;
+
 }
 
 template <class T>
@@ -69,11 +78,20 @@ Matrix<T> OperacionesBasicas<T>::resta(Matrix<T> &a, Matrix<T> &b,int tipoDato,i
     a.getDims(&rowsA, &colsA);
     b.getDims(&rowsB, &colsB);
     Matrix<T> resultResta(rowsA, colsA, tipoDato, complexType, beginRandom);
-    for ( int i = 0; i <rowsA; i++){
-        transform(a.matrix[i].begin(), a.matrix[i].end(), b.matrix[i].begin(), resultResta.matrix[i].begin(), minus<T>());
+    if (tipoDato == COMPLEX ){
+        for ( int i = 0; i <rowsA; i++){
+            transform(a.matrixCompleja[i].begin(), a.matrixCompleja[i].end(), b.matrixCompleja[i].begin(), resultResta.matrixCompleja[i].begin(), minus<complex<T>>());
+        }
+        //a - b = resultResta
+        return resultResta;
+    } else {
+        for ( int i = 0; i <rowsA; i++){
+            transform(a.matrix[i].begin(), a.matrix[i].end(), b.matrix[i].begin(), resultResta.matrix[i].begin(), minus<T>());
+        }
+        //a - b = resultResta
+        return resultResta;
     }
-    //a - b = resultResta
-    return resultResta;
+    
 }
 
 
@@ -84,15 +102,28 @@ Matrix<T> OperacionesBasicas<T>::multiplicacion(Matrix<T> &a,Matrix<T> &b,int ti
     a.getDims(&rowsA, &colsA);
     b.getDims(&rowsB, &colsB);
     Matrix<T> resultMult(rowsA, colsB, tipoDato, complexType, beginRandom);
-    for(int i = 0;i < rowsA; i++){
-        for (int j = 0; j < colsB; j++){
-            for (int k = 0; k < colsA; k++){
-                resultMult.matrix[i][j] += a.matrix[i][k] * b.matrix[k][j];
+    if (tipoDato == COMPLEX ){
+        for(int i = 0; i < rowsA; i++){
+            for (int j = 0; j < colsB; j++){
+                for (int k = 0; k < colsA; k++){
+                    resultMult.matrixCompleja[i][j] += a.matrixCompleja[i][k] * b.matrixCompleja[k][j];
+                }
             }
         }
+        //a * b = resultMult
+        return resultMult;
+    } else {
+        for(int i = 0; i < rowsA; i++){
+            for (int j = 0; j < colsB; j++){
+                for (int k = 0; k < colsA; k++){
+                    resultMult.matrix[i][j] += a.matrix[i][k] * b.matrix[k][j];
+                }
+            }
+        }
+        //a * b = resultMult
+        return resultMult;
     }
-    //a * b = resultMult
-    return resultMult;
+    
 }
 
 #endif // OPERACIONES_CPP
