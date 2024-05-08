@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TAREA4-IE0217: TAREA 4</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="matriz.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">TAREA4-IE0217<span id="projectnumber">&#160;0.001</span>
+   </div>
+   <div id="projectbrief">Tarea #4 del curso una calculadora de matrices</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">TAREA 4</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Templates</h1>
+<ol type="1">
+<li><p class="startli">Definición de Templates: Explique el concepto de templates en C++ y proporcione un ejemplo simple</p>
+<p class="startli">Las templates son una forma en C++ de reutilizar clases y funciones con diferentes tipos y estruturas de <a class="el" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe" title="Constructor de la clase Matrix default.">datos.El</a> compilador se encarga internamente de resolver el tipo. Esto permite no repetir funcionalidades en el codigo para diferentes tipos de datos.</p>
+<p class="startli">Por ejemplo, se podría crear una template de función que devuelva la división entre dos números y que funcione para floatantes y enteros.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="keyword">using namespace </span>std;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_class" href="class_matrix.html">divide</a>(<a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_class" href="class_matrix.html">x</a>, <a class="code hl_class" href="class_matrix.html">Ty</a>) {</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_class" href="class_matrix.html">x</a> / <a class="code hl_class" href="class_matrix.html">y</a>;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
+<div class="line">    <span class="comment">//Llamar a la funcion con int</span></div>
+<div class="line">    <a class="code hl_class" href="class_matrix.html">divInt</a> = <a class="code hl_class" href="class_matrix.html">divide&lt;int&gt;</a>(9,3);</div>
+<div class="line">    <span class="comment">//Llamer a la funcion con float</span></div>
+<div class="line">    <a class="code hl_class" href="class_matrix.html">divFloat</a> = <a class="code hl_class" href="class_matrix.html">divide&lt;float&gt;</a>(10.5,9.0);</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_matrix_html"><div class="ttname"><a href="class_matrix.html">Matrix</a></div><div class="ttdoc">Clase Matrix.</div><div class="ttdef"><b>Definition</b> matrix.hpp:44</div></div>
+<div class="ttc" id="amain_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition</b> main.cpp:109</div></div>
+</div><!-- fragment --></li>
+<li><p class="startli">Sobrecarga de Plantillas: ¿Cómo se realiza la sobrecarga de funciones con plantillas en C++?</p>
+<p class="startli">Basicamente se escribe la funcion con un dato genérico definido con la palabra template como se muestra a continuación:</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_class" href="class_matrix.html">myfunc</a>( <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_class" href="class_matrix.html">param</a> 1, <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_class" href="class_matrix.html">param</a> 2) {</div>
+<div class="line">    std:: cout &lt;&lt; <a class="code hl_class" href="class_matrix.html">param</a> 1 &lt;&lt; <span class="stringliteral">&quot;and&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">param</a> 2;</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_class" href="class_matrix.html">param</a> 1 + <a class="code hl_class" href="class_matrix.html">param</a> 2;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p class="startli">En este caso se denota como con el parametro T permite definir param 1 y param 2 como cualquier tipo de dato, sin embargo si deben concidir en tipo. Si se quiere enviar otro tipo de dato se debe definir otro tipo generico.</p>
+</li>
+<li><p class="startli">Plantillas de Clases: Explique cómo se pueden utilizar plantillas en la definición de clases en C++</p>
+<p class="startli">De forma similar que con la funciones se debe definir un tipo de dato generico usando la palabra class. Por ejemplo, a continuación se muestra como definir una clase anteriormente nombra el parámetro T como genérico. Este puede ser utilizado en el interior de la clase y también para hacer definiciones externas de los métodos de la clase con la sintaxis conocida:</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_matrix.html">MyClass</a> {</div>
+<div class="line">    <span class="keyword">private</span>:</div>
+<div class="line">        <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">atributo</a>;</div>
+<div class="line">    <span class="keyword">public</span>:</div>
+<div class="line">        <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">funcionToDefine</a>();</div>
+<div class="line">    </div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">MyClass&lt;T&gt;:: functionToDefine</a>() {</div>
+<div class="line"><span class="comment">//codigo</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_matrix_html_a9d567e3a121b1be0c3f9c461cab524fe"><div class="ttname"><a href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">Matrix::Matrix</a></div><div class="ttdeci">Matrix()</div><div class="ttdoc">Constructor de la clase Matrix default.</div></div>
+</div><!-- fragment --></li>
+</ol>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Excepciones</h1>
+<ol type="1">
+<li><p class="startli">Manejo de Excepciones: Describa los bloques try, catch y throw y cómo se utilizan para el manejo de excepciones en C++.</p><ul>
+<li><b>Try</b>: Le indica al programa que esa porción de código podría generar una excepción durante su ejecución.</li>
+<li><b>throw</b>: Genera la excepción si se llega a detectar un error, esto permite crear errores personalizados.</li>
+<li><b>catch</b> : Define un bloque de código que se ejecuta si se detecta un <a class="el" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe" title="Constructor de la clase Matrix default.">error.Básicamente</a>, es lo que le indica al programa como reaccionar ante la excepción.</li>
+</ul>
+<p class="startli">En C++ se utilizan estas palabras en conjunto para comprobar si una parte del código genera un potencial error, y si es el caso definir el error y reaccionar de forma que no se caiga el resto de la implementación. Por ejemplo:</p>
+<p class="startli">```cpp try { int num = -1;</p>
+<p class="startli">// Se define la condición // de error if (num &gt; 0 ) { cout &lt;&lt; "Ok"; } else { // Levantar la excepcion throw(num); }</p>
+<p class="startli">}</p>
+<p class="startli">// El parametro corresponde a lo indicado por throw catch (int expNum) { // Se define como reaccionar cout &lt;&lt; "No negatives"; cout &lt;&lt; expNum; } ```</p>
+</li>
+<li><p class="startli">Excepciones Estándar: Nombre al menos tres excepciones estándar proporcionadas por C++ y proporciona ejemplos de situaciones en las que podrían ser útiles.</p>
+<p class="startli">En C++ existen varias clases definidas por lenguaje como excepciones estándar. Algunas son:</p>
+</li>
+</ol>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Excepción   </th><th class="markdownTableHeadNone">Sucede   </th><th class="markdownTableHeadNone">Utilidad    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">std::invalid_argument   </td><td class="markdownTableBodyNone">Cuando se pasa un argumento invalido a una función   </td><td class="markdownTableBodyNone">Permite que el programa no falle en caso que por error se le pase a una función un argumento que no corresponde con su definición.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">std::range_error   </td><td class="markdownTableBodyNone">Cuando se intenta almacenar un valor fuera de rango.   </td><td class="markdownTableBodyNone">Puede ser útil cuando se trabaja con indexación de arreglos o estructuras de datos. En especial cuando se le pide al usuario el índice donde desea buscar al dato    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">std::bad_alloc   </td><td class="markdownTableBodyNone">Esta excepción es levantada por new cuando resulta. Un error en la asignación de memoria.   </td><td class="markdownTableBodyNone">Puede ser util para prevenir errores cunado se utiliza la memoria dinámica que generen en comportamiento impredecible.   </td></tr>
+</table>
+<p>Fuente: (<a href="https://www.tutorialspoint.com/cplusplus/cpp_exceptions_handling.htm">https://www.tutorialspoint.com/cplusplus/cpp_exceptions_handling.htm</a>)[<a href="https://www.tutorialspoint.com/cplusplus/cpp_exceptions_handling.htm">https://www.tutorialspoint.com/cplusplus/cpp_exceptions_handling.htm</a>]</p>
+<ol type="1">
+<li><p class="startli">Política de Manejo de Excepciones: ¿Qué es una política de manejo de excepciones y por qué es importante considerarla al diseñar software?</p>
+<p class="startli">Una política de manejo de excepciones es una forma de responder a comportamiento impredecible durante la ejecución de un programa. Aunque posiblemente la excepción más común corresponde a las entradas erróneas por parte del usuario pueden suceder otros casos como lo son los errores en el código, problemas de memoria o conflictos de dependencias.</p>
+<p class="startli">El manejo de excepciones permite responder de manera que se interrumpe la ejecución del programa de una manera adecuada y controlada.</p>
+<p class="startli">Fuentes: (<a href="https://www.techtarget.com/searchsoftwarequality/definition/error-handling">https://www.techtarget.com/searchsoftwarequality/definition/error-handling</a>)[<a href="https://www.techtarget.com/searchsoftwarequality/definition/error-handling">https://www.techtarget.com/searchsoftwarequality/definition/error-handling</a>]</p>
+</li>
+<li><p class="startli"><b>Noexcept</b>: Explica el propósito de la palabra clave noexcept y cómo se utiliza en C++.</p>
+<p class="startli">Es un operador en tiempo de compilación que funciona para comprobar si una función va a dar una excepción o al menos alguna que se pueda atrapar. Si se atrapa una excepción no se libera el stack. Es útil porque permite optimizar el código ya que el compilador no debe desplegar sus políticas de manejo de excepciones. Se utiliza la siguiente sintaxis:</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_class" href="class_matrix.html">myFunction</a>() <a class="code hl_class" href="class_matrix.html">noexcept</a> {</div>
+<div class="line">    <span class="comment">// Function implementation</span></div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+<li><p class="startli">Explique la diferencia entre las excepciones std::logic error y std::runtime error.</p>
+<p class="startli">El <code>std::logic</code> se refiere a un error que ocurre y que podría ser detectada leyendo el código. Esto se refiere a un programa que se ejecuta de manera correcta pero no produce el resultado deseado. En cambio <code>std::runtime</code> sucede cuando existe un error que causa que la ejecución fracase por ejemplo asignar un dato tipo char a un float.</p>
+<p class="startli">Fuente: (<a href="https://www.sololearn.com/en/Discuss/546778/what-is-runtime-error-logical-error-and-syntax-error">https://www.sololearn.com/en/Discuss/546778/what-is-runtime-error-logical-error-and-syntax-error</a>)[<a href="https://www.sololearn.com/en/Discuss/546778/what-is-runtime-error-logical-error-and-syntax-error">https://www.sololearn.com/en/Discuss/546778/what-is-runtime-error-logical-error-and-syntax-error</a>]</p>
+</li>
+<li><p class="startli">Explique qué ocurre cuando una excepción no es capturada.</p>
+<p class="startli">Resulta en la terminación del programa de forma subita. El programa desenrrolla el stack en busca de un bloque de catch para manejar la excepción, sino lo encuentra se termina anormalmente el programa con algún mensaje de error.</p>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md3"></a>
+STL (Standard Template Library)</h1>
+<ol type="1">
+<li><p class="startli">Contenedores STL: Nombre cinco contenedores diferentes de la STL y explique brevemente en qu´e situaciones ser´ıa apropiado usar cada uno.</p>
+<p class="startli">Los contenedores se utilizan para manejar colecciones de objetos de cierto <a class="el" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe" title="Constructor de la clase Matrix default.">tipo.Pueden</a> ser implementados como arrays, listas enlazadas o pares llave-valor.</p>
+</li>
+</ol>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Contenedor   </th><th class="markdownTableHeadNone">Definición   </th><th class="markdownTableHeadNone">Uso    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Vector   </td><td class="markdownTableBodyNone">Arreglo dinámico. Puede cambiar de Tamaño conforme se insertan o eliminan elementos   </td><td class="markdownTableBodyNone">Cuando se manejan datos ordenados pero no se conoce el tamaño del arreglo    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Map   </td><td class="markdownTableBodyNone">Contenedor asociativo que relaciona una llave con un valor.   </td><td class="markdownTableBodyNone">Cuando se busca acceder a un elemento por medio de una llave en preferencia a un índice.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Set   </td><td class="markdownTableBodyNone">Contenedor acociativo, donde cada valor debe ser único y se almacena en orden descendente o ascendente.   </td><td class="markdownTableBodyNone">Cuando no se quieren valores repetidos en la estructura de datos.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">deque   </td><td class="markdownTableBodyNone">Contenedores de secuencia, que permiten la expansión en ambos extremos.   </td><td class="markdownTableBodyNone">Son más eficientes que los vectores en términos de eliminar al frente o atras <a class="el" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe" title="Constructor de la clase Matrix default.">elementos.Como</a> no se guarda secuencialmente en memoria también es util si es de interes que el tamaño del bloque en espacio se encoja despues de eliminar un elemento.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Unordered Set   </td><td class="markdownTableBodyNone">Es un contenedor asociativo desordenado que se implementa por medio de una tabla hash para asignar a cada llave un indice calculado de forma aleatoria por una función hash.   </td><td class="markdownTableBodyNone">Cuando se quiere acceder a los elementos por un criterio específico en vez de por orden.   </td></tr>
+</table>
+<p>Fuentes: (<a href="https://www.geeksforgeeks.org/containers-cpp-stl/">https://www.geeksforgeeks.org/containers-cpp-stl/</a>)[<a href="https://www.geeksforgeeks.org/containers-cpp-stl/">https://www.geeksforgeeks.org/containers-cpp-stl/</a>]</p>
+<p>(<a href="https://www.hackerearth.com/practice/notes/c-stls-when-to-use-which-stl/#:~:text=You%20should%20also%20use%20a,because%20it%20uses%20several%20blocks">https://www.hackerearth.com/practice/notes/c-stls-when-to-use-which-stl/#:~:text=You should also use a,because it uses several blocks</a>)[<a href="https://www.hackerearth.com/practice/notes/c-stls-when-to-use-which-stl/#:~:text=You%20should%20also%20use%20a,because%20it%20uses%20several%20blocks">https://www.hackerearth.com/practice/notes/c-stls-when-to-use-which-stl/#:~:text=You should also use a,because it uses several blocks</a>]</p>
+<ol type="1">
+<li><p class="startli">Iteradores en STL: Explique el concepto de iteradores en la STL y cómo se utilizan para acceder a elementos en contenedores.</p>
+<p class="startli">Los iteradores se asemejan a los punteros, pero para los elementos dentro de un contenedor. Básicamente apuntan a cierta posición dentro del <a href="http://contenedor.No">contenedor.</a> No obstante, a diferencia de los punteros existen diferentes tipos de iteradores con cierta funcionalidad.</p><ol type="a">
+<li>Los iteradores de entrada leen valores iterando hacia adelante y solo pueden ser usados en algoritmos que procesan el contenedor secuencialmente.</li>
+<li>Los iteradores de salida escriben valores mientras iteran hacia adelante y igual que los iteradores de entrada solo pueden ser usados en iteraciones secuenciales.</li>
+<li><em>forward iterators</em> pueden leer o escribir mientras iteran unicamente hacia adelante.</li>
+<li>Los iteradores bidireccionales pueden iterar hacia atras y hacia adelante, y conservan las propiedades de sus antecesores.</li>
+<li>Los iteradores de acceso aleatorio pueden acceder a cualquier elemento dentro del contenedor. No dependen del orden secuencial.</li>
+</ol>
+<p class="startli">Cabe señalar que el iterador comumente depende de la naturaleza del contenedor:</p>
+<p class="startli">![] (<a href="https://media.geeksforgeeks.org/wp-content/uploads/C_Iterator_Support.jpg">https://media.geeksforgeeks.org/wp-content/uploads/C_Iterator_Support.jpg</a>)</p>
+</li>
+<li>Algoritmos STL: Proporcione ejemplos de al menos tres algoritmos de la STL y describa sus funciones básicas.</li>
+</ol>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Algoritmo   </th><th class="markdownTableHeadNone">Función   </th><th class="markdownTableHeadNone">Sintáxis    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Sort   </td><td class="markdownTableBodyNone">Recibe dos parámetros que delimitan el ambito donde se quiere ordernar y el tercer parámetro es opcional e indica si se quiere organizar los elementos de forma ascendente o descendente.   </td><td class="markdownTableBodyNone">std::sort (primerIterador,ultimoIterador);    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">find if   </td><td class="markdownTableBodyNone">Recibe dos parámetros que delimitan el ambito de busqueda. Devuelve el índice del primer elemento que coincide con el valor buscado.   </td><td class="markdownTableBodyNone">find(primerIterador, ultimoIterador, valorbuscado)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">transform   </td><td class="markdownTableBodyNone">Aplica una operación a los elementos dentro de un rangoy guarda lo resultante en otro rango   </td><td class="markdownTableBodyNone">transform(primerIteradorentrada, ultimoIteradorentrada, Iterator ultimosalida,unary_operation)   </td></tr>
+</table>
+<p>Fuente: (<a href="https://www.geeksforgeeks.org/c-magicians-stl-algorithms/?ref=lbp">https://www.geeksforgeeks.org/c-magicians-stl-algorithms/?ref=lbp</a>)[<a href="https://www.geeksforgeeks.org/c-magicians-stl-algorithms/?ref=lbp">https://www.geeksforgeeks.org/c-magicians-stl-algorithms/?ref=lbp</a>]</p>
+<ol type="1">
+<li><p class="startli">Algoritmos Personalizados: ¿C´omo podría utilizar un algoritmo personalizado con la STL? Por ejemplo, como se realizo en el previo se puede utilizar un algoritmo ya predefinido por la librería y se le pasa un parámetro con una función creada personalmente.</p>
+<p class="startli">Este es el caso realizado en clase, donde se usa sort con una función propia.</p>
+<div class="fragment"><div class="line"><span class="comment">//using function as comp</span></div>
+<div class="line">    std::sort (<a class="code hl_class" href="class_matrix.html">myvector</a>.begin() + 4, <a class="code hl_class" href="class_matrix.html">myvector</a>.end(), <a class="code hl_class" href="class_matrix.html">myFunction</a>);</div>
+</div><!-- fragment --><p class="startli">Myfunction es lo siguiente:</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> <a class="code hl_class" href="class_matrix.html">myFunction</a>(<span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">i</a> , <span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">j</a>) {<span class="keywordflow">return</span> (<a class="code hl_class" href="class_matrix.html">i</a> &lt; <a class="code hl_class" href="class_matrix.html">j</a>);}</div>
+</div><!-- fragment --><p class="startli">En este caso se logra algo similar al funcionamiento de sort, pero esto permite modificar los algoritmos de la stl a conveniencia. </p>
+</li>
+</ol>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>

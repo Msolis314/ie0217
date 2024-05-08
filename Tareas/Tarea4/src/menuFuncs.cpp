@@ -76,6 +76,7 @@ void printMatrices(menu &m, Matrix<T> &a, Matrix<T> &b){
 template <class T>
 void doOperation(menu &m, Matrix<T> &a, Matrix<T> &b){
     OperacionesBasicas<T> operaciones;
+    isOP = true;
     switch (m.operacion)
     {
     case SUMA:

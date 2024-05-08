@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TAREA4-IE0217: Archivo de código fuente src/matrix.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="matriz.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">TAREA4-IE0217<span id="projectnumber">&#160;0.001</span>
+   </div>
+   <div id="projectbrief">Tarea #4 del curso una calculadora de matrices</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">matrix.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="matrix_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;complex&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;bits/stdc++.h&gt;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="check_input_8hpp.html">checkInput.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;<a class="code" href="operaciones_8hpp.html">operaciones.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="matrix_8hpp.html">matrix.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="tools_8hpp.html">tools.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_matrix.html#a33f436d236136c0ef89b86714d88fce4">   43</a></span><a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">Matrix&lt;T&gt;::Matrix</a>(<span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols, <span class="keywordtype">int</span> tipoDato, <span class="keywordtype">int</span> complexType,<span class="keywordtype">int</span> beginRandom){</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">this</span> -&gt; tipoDato = tipoDato;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">//Si el tipo de dato es complejo, se guarda el tipo de dato de la parte real e imaginaria</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">if</span> (tipoDato == <a class="code hl_enumvalue" href="tools_8hpp.html#ad8ed01ff3ff33333d8e19db4d2818bb6a5374e1234e4d55af346d6ae6263ad573">COMPLEX</a>){</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">this</span> -&gt; complexType = complexType;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">//Si el usuario selecciona llenar las matrices con numeros random, se llena la matriz con numeros random</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">if</span> (!setDimensiones(rows, cols)){</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">throw</span> invalid_argument(<span class="stringliteral">&quot;Las dimensiones de la matriz no son validas&quot;</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="comment">//Si el constructor es llamado por la operacion de suma o resta, se llena la matriz con numeros random inicialmente</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8cpp.html#a4631fcae3ac069103a0bb254cd593c7b">isOP</a> == <span class="keyword">true</span> || beginRandom == 1){</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            fillMatrixRandom();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (tipoDato == <a class="code hl_enumvalue" href="tools_8hpp.html#ad8ed01ff3ff33333d8e19db4d2818bb6a5374e1234e4d55af346d6ae6263ad573">COMPLEX</a>){</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            llenarMatrizCompleja();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            llenarMatriz();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    } </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">catch</span> (invalid_argument &amp;e){</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        cout &lt;&lt; e.what() &lt;&lt; endl;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        abort();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
+</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">Matrix&lt;T&gt;:: Matrix</a>()= <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_matrix.html#a85ccb2dd025cff9b6cbac10e85049821">   78</a></span><a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a85ccb2dd025cff9b6cbac10e85049821">Matrix&lt;T&gt;:: operator+</a>(<a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;b){</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <a class="code hl_class" href="class_operaciones_basicas.html">OperacionesBasicas&lt;T&gt;</a> operaciones;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">//Se valida si se pueden sumar las matrices</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">if</span>( operaciones.<a class="code hl_function" href="class_operaciones_basicas.html#a48a160628760425a26d3820c01888a24">validarSumaResta</a>(*<span class="keyword">this</span>, b)){</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="comment">//Se retorna la matriz resultante de la suma</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">return</span> operaciones.<a class="code hl_function" href="class_operaciones_basicas.html#a0cee9238e7cc29bd9d374b74d8835b47">suma</a>(*<span class="keyword">this</span>, b, this-&gt;tipoDato, this-&gt;complexType, 0);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        cout &lt;&lt; <span class="stringliteral">&quot;No se puede realizar la suma&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a>();}</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
+</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00091" data-start="{" data-end="}">
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="class_matrix.html#a887dc696b4112eb6a0c89ac1bbf28ca1">   91</a></span><a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a887dc696b4112eb6a0c89ac1bbf28ca1">Matrix&lt;T&gt;:: operator-</a>(<a class="code hl_class" href="class_matrix.html">Matrix</a> &amp;<a class="code hl_class" href="class_matrix.html">b</a>){</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <a class="code hl_class" href="class_matrix.html">OperacionesBasicas&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">operaciones</a>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>   <span class="comment">//Se valida si se pueden restar las matrices</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">if</span>( <a class="code hl_class" href="class_matrix.html">operaciones</a>.validarSumaResta(*<span class="keyword">this</span>, <a class="code hl_class" href="class_matrix.html">b</a>)){</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="comment">//Se retorna la matriz resultante de la resta</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="class_matrix.html">operaciones</a>.resta(*<span class="keyword">this</span>, <a class="code hl_class" href="class_matrix.html">b</a>, this-&gt;<a class="code hl_variable" href="class_matrix.html#aed4ad9d7f489c6bff377fa6bc68fe1e7">tipoDato</a>, this-&gt;<a class="code hl_variable" href="class_matrix.html#a3fab14ba0b6e6b2ce9e84e9f998a2123">complexType</a>, 0);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; <span class="stringliteral">&quot;No se puede realizar la resta&quot;</span> &lt;&lt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">endl</a>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">Matrix&lt;T&gt;</a>();}</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>   </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
+</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="class_matrix.html#a18742138339a2587d67fc8616db3a444">  106</a></span><a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a18742138339a2587d67fc8616db3a444">Matrix&lt;T&gt;:: operator*</a>(<a class="code hl_class" href="class_matrix.html">Matrix</a> &amp;<a class="code hl_class" href="class_matrix.html">b</a>){</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_class" href="class_matrix.html">OperacionesBasicas&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">operaciones</a>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">//Se valida si se pueden multiplicar las matrices</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">if</span>( <a class="code hl_class" href="class_matrix.html">operaciones</a>.validarMultiplicacion(*<span class="keyword">this</span>, <a class="code hl_class" href="class_matrix.html">b</a>)){</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="comment">//Se retorna la matriz resultante de la multiplicacion</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="class_matrix.html">operaciones</a>.multiplicacion(*<span class="keyword">this</span>, <a class="code hl_class" href="class_matrix.html">b</a>, this-&gt;<a class="code hl_variable" href="class_matrix.html#aed4ad9d7f489c6bff377fa6bc68fe1e7">tipoDato</a>, this-&gt;<a class="code hl_variable" href="class_matrix.html#a3fab14ba0b6e6b2ce9e84e9f998a2123">complexType</a>, 0);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="class_matrix.html#ab15a753d858e473e9e8d0a78255224c8">  117</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_matrix.html#ab15a753d858e473e9e8d0a78255224c8">Matrix&lt;T&gt;::setDimensiones</a>(<span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols){</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <a class="code hl_class" href="class_matrix.html">ValidadorDeEntrada&lt;int&gt;</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">validador</a>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="comment">//Se valida si las dimensiones de la matriz son validas</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="class_matrix.html">validador</a>.validarDimensiones(<a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>) &amp;&amp; <a class="code hl_class" href="class_matrix.html">validador</a>.validarDimensiones(<a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>)){</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="comment">//Se setean las dimensiones de la matriz</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        this-&gt;rows = <a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        this-&gt;cols = <a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>}</div>
+</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="class_matrix.html#a930c15e8bcc23f4c4f564900b979891d">  131</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_matrix.html#a930c15e8bcc23f4c4f564900b979891d">Matrix&lt;T&gt; :: llenarMatriz</a>(){</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <a class="code hl_class" href="class_matrix.html">ValidadorDeEntrada&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">validador</a>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="comment">//Primer loop que recorre las filas de la matriz</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">i</a> = 0; <a class="code hl_class" href="class_matrix.html">i</a> &lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>; <a class="code hl_class" href="class_matrix.html">i</a>++){</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <a class="code hl_class" href="class_matrix.html">vector&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">row</a>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="comment">//Segundo loop que recorre las columnas de la matriz</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">col</a> = 0; <a class="code hl_class" href="class_matrix.html">col</a> &lt; this-&gt; <a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a> ; <a class="code hl_class" href="class_matrix.html">col</a>++){</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <span class="comment">//variable que almacena el valor ingresado por el usuario</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <span class="keywordtype">string</span> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">member</a>;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            <span class="comment">//variable que almacena el valor convertido a tipo T</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">value</a>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; <span class="stringliteral">&quot;Ingrese el elemento en el indice [&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">i</a> &lt;&lt; <span class="stringliteral">&quot;][&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">col</a> &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span>;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            <a class="code hl_class" href="class_matrix.html">cin</a> &gt;&gt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">member</a>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <span class="comment">//Se valida si el valor ingresado por el usuario puede ser convertido a tipo T</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            <span class="keywordflow">while</span> (!<a class="code hl_class" href="class_matrix.html">validador</a>.validarTipoDato(<a class="code hl_class" href="class_matrix.html">member</a>, &amp;<a class="code hl_class" href="class_matrix.html">value</a>)){</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; <span class="stringliteral">&quot;Ingrese el elemento en el indice [&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">i</a> &lt;&lt; <span class="stringliteral">&quot;][&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">col</a> &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span>;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                <a class="code hl_class" href="class_matrix.html">cin</a> &gt;&gt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">member</a>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            <span class="comment">//Se guarda el valor convertido en la fila</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            <a class="code hl_class" href="class_matrix.html">row</a>.push_back(<a class="code hl_class" href="class_matrix.html">value</a>);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        }</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        this-&gt;<a class="code hl_variable" href="class_matrix.html#a5aa7d00d90565760c81fe58a02e93ea6">matrix</a>.push_back(row);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    }</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}</div>
+</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00160" data-start="{" data-end="}">
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="class_matrix.html#ada6cd3866a5c20b0d97ad64a9d3d7c17">  160</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_matrix.html#ada6cd3866a5c20b0d97ad64a9d3d7c17">Matrix&lt;T&gt;::llenarMatrizCompleja</a>(){</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <a class="code hl_class" href="class_matrix.html">ValidadorDeEntrada&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">validador</a>;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">//Primer loop que recorre las filas de la matriz</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">i</a> = 0; <a class="code hl_class" href="class_matrix.html">i</a> &lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>; <a class="code hl_class" href="class_matrix.html">i</a>++){</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        <a class="code hl_class" href="class_matrix.html">vector&lt;complex&lt;T&gt;</a>&gt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">row</a>;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="comment">//Segundo loop que recorre las columnas de la matriz</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">col</a> = 0; <a class="code hl_class" href="class_matrix.html">col</a> &lt; this-&gt; <a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a> ; <a class="code hl_class" href="class_matrix.html">col</a>++){</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            <span class="keywordtype">string</span> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">member</a>;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">value</a>;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            <span class="comment">//Se pide al usuario que ingrese la parte real e imaginaria del numero complejo</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; <span class="stringliteral">&quot;Ingrese la parte real del elemento en el indice [&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">i</a> &lt;&lt; <span class="stringliteral">&quot;][&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">col</a> &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span>;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            <a class="code hl_class" href="class_matrix.html">cin</a> &gt;&gt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">member</a>;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            <span class="keywordflow">while</span> (!<a class="code hl_class" href="class_matrix.html">validador</a>.validarTipoDato(<a class="code hl_class" href="class_matrix.html">member</a>, &amp;<a class="code hl_class" href="class_matrix.html">value</a>)){</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; <span class="stringliteral">&quot;Ingrese la parte real del elemento en el indice [&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">i</a> &lt;&lt; <span class="stringliteral">&quot;][&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">col</a> &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                <a class="code hl_class" href="class_matrix.html">cin</a> &gt;&gt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">member</a>;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_class" href="class_matrix.html">real</a> = <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">value</a>;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; <span class="stringliteral">&quot;Ingrese la parte imaginaria del elemento en el indice [&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">i</a> &lt;&lt; <span class="stringliteral">&quot;][&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">col</a> &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span>;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            <a class="code hl_class" href="class_matrix.html">cin</a> &gt;&gt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">member</a>;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            <span class="keywordflow">while</span> (!<a class="code hl_class" href="class_matrix.html">validador</a>.validarTipoDato(<a class="code hl_class" href="class_matrix.html">member</a>, &amp;<a class="code hl_class" href="class_matrix.html">value</a>)){</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; <span class="stringliteral">&quot;Ingrese la parte imaginaria del elemento en el indice [&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">i</a> &lt;&lt; <span class="stringliteral">&quot;][&quot;</span> &lt;&lt; <a class="code hl_class" href="class_matrix.html">col</a> &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span>;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                <a class="code hl_class" href="class_matrix.html">cin</a> &gt;&gt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">member</a>;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            }</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_class" href="class_matrix.html">imag</a> = <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">value</a>;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            <a class="code hl_class" href="class_matrix.html">complex&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">complejo</a>(<a class="code hl_class" href="class_matrix.html">real</a>, <a class="code hl_class" href="class_matrix.html">imag</a>);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            <a class="code hl_class" href="class_matrix.html">row</a>.push_back(<a class="code hl_class" href="class_matrix.html">complejo</a>);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        }</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        this-&gt;<a class="code hl_variable" href="class_matrix.html#a8ffe69676f1233c6d526bbc02d2f97b5">matrixCompleja</a>.push_back(row);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    }</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>}</div>
+</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00194" data-start="{" data-end="}">
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="class_matrix.html#a45eb851d6e6e919d72744b0e47d44830">  194</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_matrix.html#a45eb851d6e6e919d72744b0e47d44830">Matrix&lt;T&gt;::printMatrix</a>(){</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="comment">//Si el tipo de dato es complejo, se imprime la matriz compleja</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="class_matrix.html#aed4ad9d7f489c6bff377fa6bc68fe1e7">tipoDato</a> == <a class="code hl_enumvalue" href="tools_8hpp.html#ad8ed01ff3ff33333d8e19db4d2818bb6a5374e1234e4d55af346d6ae6263ad573">COMPLEX</a>){</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">i</a> = 0; <a class="code hl_class" href="class_matrix.html">i</a> &lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>; <a class="code hl_class" href="class_matrix.html">i</a>++){</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">j</a> = 0; <a class="code hl_class" href="class_matrix.html">j</a> &lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>; <a class="code hl_class" href="class_matrix.html">j</a>++){</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#a8ffe69676f1233c6d526bbc02d2f97b5">matrixCompleja</a>[<a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">i</a>][<a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">j</a>] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            }</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">endl</a>;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        }</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">i</a> = 0; <a class="code hl_class" href="class_matrix.html">i</a> &lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>; <a class="code hl_class" href="class_matrix.html">i</a>++){</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">j</a> = 0; <a class="code hl_class" href="class_matrix.html">j</a> &lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>; <a class="code hl_class" href="class_matrix.html">j</a>++){</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#a5aa7d00d90565760c81fe58a02e93ea6">matrix</a>[<a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">i</a>][<a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">j</a>] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            }</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            <a class="code hl_class" href="class_matrix.html">cout</a> &lt;&lt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">endl</a>;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        }</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    }</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    </div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>}</div>
+</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00219" data-start="{" data-end="}">
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="class_matrix.html#a8fd6058e747b9beb048086cd21ffd7b7">  219</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_matrix.html#a8fd6058e747b9beb048086cd21ffd7b7">Matrix&lt;T&gt;::getDims</a>(<span class="keywordtype">int</span> *rows, <span class="keywordtype">int</span> *cols){</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    *<a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a> = this-&gt;<a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    *cols = this-&gt;<a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>}</div>
+</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00226" data-start="{" data-end="}">
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno"><a class="line" href="class_matrix.html#adbfc6a56c40e801198f3bdff1bb6ead8">  226</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_matrix.html#adbfc6a56c40e801198f3bdff1bb6ead8">Matrix&lt;T&gt;::fillMatrixRandom</a>() {</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="comment">//Si es complejo, se llena la matriz compleja con numeros random</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordflow">if</span> (this-&gt; <a class="code hl_variable" href="class_matrix.html#aed4ad9d7f489c6bff377fa6bc68fe1e7">tipoDato</a> == <a class="code hl_enumvalue" href="tools_8hpp.html#ad8ed01ff3ff33333d8e19db4d2818bb6a5374e1234e4d55af346d6ae6263ad573">COMPLEX</a>) {</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">i</a> = 0; <a class="code hl_class" href="class_matrix.html">i</a> &lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>; <a class="code hl_class" href="class_matrix.html">i</a>++){</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            <a class="code hl_class" href="class_matrix.html">vector&lt;complex&lt;T&gt;</a>&gt; <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">row</a>;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">j</a> = 0; <a class="code hl_class" href="class_matrix.html">j</a> &lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>; <a class="code hl_class" href="class_matrix.html">j</a>++){</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                <span class="comment">//Se utiliza la funcion randomNum para obtener un numero random</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                <span class="comment">//Del tipo de dato de la parte real e imaginaria</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_class" href="class_matrix.html">real</a> = <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">randomNum&lt;T&gt;</a>(this-&gt;<a class="code hl_variable" href="class_matrix.html#a3fab14ba0b6e6b2ce9e84e9f998a2123">complexType</a>);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>                <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_class" href="class_matrix.html">imag</a> = <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">randomNum&lt;T&gt;</a>(this-&gt;<a class="code hl_variable" href="class_matrix.html#a3fab14ba0b6e6b2ce9e84e9f998a2123">complexType</a>);</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>                <a class="code hl_class" href="class_matrix.html">complex&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">complejo</a>(<a class="code hl_class" href="class_matrix.html">real</a>, <a class="code hl_class" href="class_matrix.html">imag</a>);</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>                <a class="code hl_class" href="class_matrix.html">row</a>.push_back(<a class="code hl_class" href="class_matrix.html">complejo</a>);</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            }</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            this-&gt;<a class="code hl_variable" href="class_matrix.html#a8ffe69676f1233c6d526bbc02d2f97b5">matrixCompleja</a>.push_back(row);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            } </div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">i</a> = 0; <a class="code hl_class" href="class_matrix.html">i</a> &lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>; <a class="code hl_class" href="class_matrix.html">i</a>++){</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            <a class="code hl_class" href="class_matrix.html">vector&lt;T&gt;</a> <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">row</a>;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="class_matrix.html">j</a> = 0; <a class="code hl_class" href="class_matrix.html">j</a> &lt; this-&gt;<a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>; <a class="code hl_class" href="class_matrix.html">j</a>++){</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>                <span class="comment">//Se utiliza la funcion randomNum para obtener un numero random</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>                <a class="code hl_class" href="class_matrix.html">T</a> <a class="code hl_class" href="class_matrix.html">num</a> = <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">randomNum&lt;T&gt;</a>(this-&gt;<a class="code hl_variable" href="class_matrix.html#aed4ad9d7f489c6bff377fa6bc68fe1e7">tipoDato</a>);</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>                row.push_back(<a class="code hl_class" href="class_matrix.html">num</a>);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            }</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            this-&gt;<a class="code hl_variable" href="class_matrix.html#a5aa7d00d90565760c81fe58a02e93ea6">matrix</a>.push_back(row); }</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    }</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>}</div>
+</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00255" data-start="{" data-end="}">
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno"><a class="line" href="class_matrix.html#a91aa704de674203e96aece9e1955ccd3">  255</a></span><a class="code hl_function" href="class_matrix.html#a91aa704de674203e96aece9e1955ccd3">Matrix&lt;T&gt;::~Matrix</a>(){</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <a class="code hl_class" href="class_matrix.html">vector&lt;vector&lt;T&gt;</a>&gt;().<a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">swap</a>(this-&gt;<a class="code hl_variable" href="class_matrix.html#a5aa7d00d90565760c81fe58a02e93ea6">matrix</a>);</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>}</div>
+</div>
+<div class="ttc" id="acheck_input_8hpp_html"><div class="ttname"><a href="check_input_8hpp.html">checkInput.hpp</a></div><div class="ttdoc">Declaracion de la clase ValidadorDeEntrada MIT License.</div></div>
+<div class="ttc" id="aclass_matrix_html"><div class="ttname"><a href="class_matrix.html">Matrix</a></div><div class="ttdoc">Clase Matrix.</div><div class="ttdef"><b>Definition</b> matrix.hpp:44</div></div>
+<div class="ttc" id="aclass_matrix_html_a18742138339a2587d67fc8616db3a444"><div class="ttname"><a href="class_matrix.html#a18742138339a2587d67fc8616db3a444">Matrix::operator*</a></div><div class="ttdeci">Matrix operator*(Matrix &amp;b)</div><div class="ttdoc">Sobrecarga del operador *.</div><div class="ttdef"><b>Definition</b> matrix.cpp:106</div></div>
+<div class="ttc" id="aclass_matrix_html_a28e99540a5a95cb42dfaceb8942a48bd"><div class="ttname"><a href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">Matrix::cols</a></div><div class="ttdeci">int cols</div><div class="ttdef"><b>Definition</b> matrix.hpp:47</div></div>
+<div class="ttc" id="aclass_matrix_html_a3fab14ba0b6e6b2ce9e84e9f998a2123"><div class="ttname"><a href="class_matrix.html#a3fab14ba0b6e6b2ce9e84e9f998a2123">Matrix::complexType</a></div><div class="ttdeci">int complexType</div><div class="ttdef"><b>Definition</b> matrix.hpp:49</div></div>
+<div class="ttc" id="aclass_matrix_html_a45eb851d6e6e919d72744b0e47d44830"><div class="ttname"><a href="class_matrix.html#a45eb851d6e6e919d72744b0e47d44830">Matrix::printMatrix</a></div><div class="ttdeci">void printMatrix()</div><div class="ttdoc">Metodo que imprime la matriz.</div><div class="ttdef"><b>Definition</b> matrix.cpp:194</div></div>
+<div class="ttc" id="aclass_matrix_html_a5aa7d00d90565760c81fe58a02e93ea6"><div class="ttname"><a href="class_matrix.html#a5aa7d00d90565760c81fe58a02e93ea6">Matrix::matrix</a></div><div class="ttdeci">vector&lt; vector&lt; T &gt; &gt; matrix</div><div class="ttdoc">Atributo de la clase Matrix Necesita ser publico para poder ser accedido por la clase OperacionesBasi...</div><div class="ttdef"><b>Definition</b> matrix.hpp:58</div></div>
+<div class="ttc" id="aclass_matrix_html_a85ccb2dd025cff9b6cbac10e85049821"><div class="ttname"><a href="class_matrix.html#a85ccb2dd025cff9b6cbac10e85049821">Matrix::operator+</a></div><div class="ttdeci">Matrix operator+(Matrix &amp;b)</div><div class="ttdoc">Sobrecarga del operador +.</div><div class="ttdef"><b>Definition</b> matrix.cpp:78</div></div>
+<div class="ttc" id="aclass_matrix_html_a887dc696b4112eb6a0c89ac1bbf28ca1"><div class="ttname"><a href="class_matrix.html#a887dc696b4112eb6a0c89ac1bbf28ca1">Matrix::operator-</a></div><div class="ttdeci">Matrix operator-(Matrix &amp;b)</div><div class="ttdoc">Sobrecarga del operador -.</div><div class="ttdef"><b>Definition</b> matrix.cpp:91</div></div>
+<div class="ttc" id="aclass_matrix_html_a8fd6058e747b9beb048086cd21ffd7b7"><div class="ttname"><a href="class_matrix.html#a8fd6058e747b9beb048086cd21ffd7b7">Matrix::getDims</a></div><div class="ttdeci">void getDims(int *rows, int *cols)</div><div class="ttdoc">Metodo que obtiene las dimensiones de la matriz.</div><div class="ttdef"><b>Definition</b> matrix.cpp:219</div></div>
+<div class="ttc" id="aclass_matrix_html_a8ffe69676f1233c6d526bbc02d2f97b5"><div class="ttname"><a href="class_matrix.html#a8ffe69676f1233c6d526bbc02d2f97b5">Matrix::matrixCompleja</a></div><div class="ttdeci">vector&lt; vector&lt; complex&lt; T &gt; &gt; &gt; matrixCompleja</div><div class="ttdef"><b>Definition</b> matrix.hpp:59</div></div>
+<div class="ttc" id="aclass_matrix_html_a91aa704de674203e96aece9e1955ccd3"><div class="ttname"><a href="class_matrix.html#a91aa704de674203e96aece9e1955ccd3">Matrix::~Matrix</a></div><div class="ttdeci">~Matrix()</div><div class="ttdef"><b>Definition</b> matrix.cpp:255</div></div>
+<div class="ttc" id="aclass_matrix_html_a930c15e8bcc23f4c4f564900b979891d"><div class="ttname"><a href="class_matrix.html#a930c15e8bcc23f4c4f564900b979891d">Matrix::llenarMatriz</a></div><div class="ttdeci">void llenarMatriz()</div><div class="ttdoc">Metodo que llena la matriz Se llama cuando se crea una matriz.</div><div class="ttdef"><b>Definition</b> matrix.cpp:131</div></div>
+<div class="ttc" id="aclass_matrix_html_a9d567e3a121b1be0c3f9c461cab524fe"><div class="ttname"><a href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">Matrix::Matrix</a></div><div class="ttdeci">Matrix()</div><div class="ttdoc">Constructor de la clase Matrix default.</div></div>
+<div class="ttc" id="aclass_matrix_html_ab15a753d858e473e9e8d0a78255224c8"><div class="ttname"><a href="class_matrix.html#ab15a753d858e473e9e8d0a78255224c8">Matrix::setDimensiones</a></div><div class="ttdeci">bool setDimensiones(int rows, int cols)</div><div class="ttdoc">Metodo que setea las dimensiones de la matriz.</div><div class="ttdef"><b>Definition</b> matrix.cpp:117</div></div>
+<div class="ttc" id="aclass_matrix_html_acd67456c163fd2259c8aef072c9177fa"><div class="ttname"><a href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">Matrix::rows</a></div><div class="ttdeci">int rows</div><div class="ttdef"><b>Definition</b> matrix.hpp:46</div></div>
+<div class="ttc" id="aclass_matrix_html_ada6cd3866a5c20b0d97ad64a9d3d7c17"><div class="ttname"><a href="class_matrix.html#ada6cd3866a5c20b0d97ad64a9d3d7c17">Matrix::llenarMatrizCompleja</a></div><div class="ttdeci">void llenarMatrizCompleja()</div><div class="ttdef"><b>Definition</b> matrix.cpp:160</div></div>
+<div class="ttc" id="aclass_matrix_html_adbfc6a56c40e801198f3bdff1bb6ead8"><div class="ttname"><a href="class_matrix.html#adbfc6a56c40e801198f3bdff1bb6ead8">Matrix::fillMatrixRandom</a></div><div class="ttdeci">void fillMatrixRandom()</div><div class="ttdoc">Metodo que llena la matriz con numeros random.</div><div class="ttdef"><b>Definition</b> matrix.cpp:226</div></div>
+<div class="ttc" id="aclass_matrix_html_aed4ad9d7f489c6bff377fa6bc68fe1e7"><div class="ttname"><a href="class_matrix.html#aed4ad9d7f489c6bff377fa6bc68fe1e7">Matrix::tipoDato</a></div><div class="ttdeci">int tipoDato</div><div class="ttdef"><b>Definition</b> matrix.hpp:48</div></div>
+<div class="ttc" id="aclass_operaciones_basicas_html"><div class="ttname"><a href="class_operaciones_basicas.html">OperacionesBasicas</a></div><div class="ttdoc">Clase que contiene las operaciones basicas de matrices.</div><div class="ttdef"><b>Definition</b> operaciones.hpp:45</div></div>
+<div class="ttc" id="aclass_operaciones_basicas_html_a0cee9238e7cc29bd9d374b74d8835b47"><div class="ttname"><a href="class_operaciones_basicas.html#a0cee9238e7cc29bd9d374b74d8835b47">OperacionesBasicas::suma</a></div><div class="ttdeci">Matrix&lt; T &gt; suma(Matrix&lt; T &gt; &amp;a, Matrix&lt; T &gt; &amp;b, int tipoDato, int complexType, int beginRandom)</div><div class="ttdoc">Metodo que suma dos matrices.</div><div class="ttdef"><b>Definition</b> operaciones.cpp:85</div></div>
+<div class="ttc" id="aclass_operaciones_basicas_html_a48a160628760425a26d3820c01888a24"><div class="ttname"><a href="class_operaciones_basicas.html#a48a160628760425a26d3820c01888a24">OperacionesBasicas::validarSumaResta</a></div><div class="ttdeci">bool validarSumaResta(Matrix&lt; T &gt; &amp;a, Matrix&lt; T &gt; &amp;b)</div><div class="ttdoc">Metodo que valida si se pueden sumar o restar dos matrices.</div><div class="ttdef"><b>Definition</b> operaciones.cpp:46</div></div>
+<div class="ttc" id="amain_8cpp_html_a4631fcae3ac069103a0bb254cd593c7b"><div class="ttname"><a href="main_8cpp.html#a4631fcae3ac069103a0bb254cd593c7b">isOP</a></div><div class="ttdeci">bool isOP</div><div class="ttdef"><b>Definition</b> main.cpp:39</div></div>
+<div class="ttc" id="amatrix_8hpp_html"><div class="ttname"><a href="matrix_8hpp.html">matrix.hpp</a></div><div class="ttdoc">definicion de la clase Matrix MIT License</div></div>
+<div class="ttc" id="aoperaciones_8hpp_html"><div class="ttname"><a href="operaciones_8hpp.html">operaciones.hpp</a></div><div class="ttdoc">Declaracion de la clase OperacionesBasicas MIT License.</div></div>
+<div class="ttc" id="atools_8hpp_html"><div class="ttname"><a href="tools_8hpp.html">tools.hpp</a></div><div class="ttdoc">Declaracion de las funciones de la clase Tools MIT License.</div></div>
+<div class="ttc" id="atools_8hpp_html_ad8ed01ff3ff33333d8e19db4d2818bb6a5374e1234e4d55af346d6ae6263ad573"><div class="ttname"><a href="tools_8hpp.html#ad8ed01ff3ff33333d8e19db4d2818bb6a5374e1234e4d55af346d6ae6263ad573">COMPLEX</a></div><div class="ttdeci">@ COMPLEX</div><div class="ttdef"><b>Definition</b> tools.hpp:60</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>

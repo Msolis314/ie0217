@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TAREA4-IE0217: Archivo de código fuente src/operaciones.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="matriz.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">TAREA4-IE0217<span id="projectnumber">&#160;0.001</span>
+   </div>
+   <div id="projectbrief">Tarea #4 del curso una calculadora de matrices</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">operaciones.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="operaciones_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#ifndef OPERACIONES_HPP</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define OPERACIONES_HPP</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;complex&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;bits/stdc++.h&gt;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="check_input_8hpp.html">checkInput.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="matrix_8hpp.html">matrix.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="operaciones_8hpp.html#a4631fcae3ac069103a0bb254cd593c7b">isOP</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="};">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_operaciones_basicas.html">   45</a></span><span class="keyword">class </span><a class="code hl_class" href="class_operaciones_basicas.html">OperacionesBasicas</a> {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_operaciones_basicas.html#a48a160628760425a26d3820c01888a24">validarSumaResta</a>(<a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;<a class="code hl_class" href="class_matrix.html">a</a>, <a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;<a class="code hl_class" href="class_matrix.html">b</a>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_operaciones_basicas.html#a36cdba1434711bd4cb117e906a74c86a">validarMultiplicacion</a>(<a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;<a class="code hl_class" href="class_matrix.html">a</a>, <a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;<a class="code hl_class" href="class_matrix.html">b</a>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> <a class="code hl_function" href="class_operaciones_basicas.html#a0cee9238e7cc29bd9d374b74d8835b47">suma</a>(<a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;<a class="code hl_class" href="class_matrix.html">a</a>, <a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;<a class="code hl_class" href="class_matrix.html">b</a>,<span class="keywordtype">int</span> tipoDato,<span class="keywordtype">int</span> complexType,<span class="keywordtype">int</span> beginRandom);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> <a class="code hl_function" href="class_operaciones_basicas.html#a9c6f943ca563234b2ca94a7302376d14">resta</a>(<a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;<a class="code hl_class" href="class_matrix.html">a</a>, <a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;<a class="code hl_class" href="class_matrix.html">b</a>,<span class="keywordtype">int</span> tipoDato,<span class="keywordtype">int</span> complexType,<span class="keywordtype">int</span> beginRandom);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> <a class="code hl_function" href="class_operaciones_basicas.html#abf8a8b7e3c5f98720daa7ea424936731">multiplicacion</a>(<a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;<a class="code hl_class" href="class_matrix.html">a</a>, <a class="code hl_class" href="class_matrix.html">Matrix&lt;T&gt;</a> &amp;<a class="code hl_class" href="class_matrix.html">b</a>,<span class="keywordtype">int</span> tipoDato,<span class="keywordtype">int</span> complexType,<span class="keywordtype">int</span> beginRandom);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif </span><span class="comment">// OPERACIONES_HPP</span></div>
+<div class="ttc" id="acheck_input_8hpp_html"><div class="ttname"><a href="check_input_8hpp.html">checkInput.hpp</a></div><div class="ttdoc">Declaracion de la clase ValidadorDeEntrada MIT License.</div></div>
+<div class="ttc" id="aclass_matrix_html"><div class="ttname"><a href="class_matrix.html">Matrix</a></div><div class="ttdoc">Clase Matrix.</div><div class="ttdef"><b>Definition</b> matrix.hpp:44</div></div>
+<div class="ttc" id="aclass_operaciones_basicas_html"><div class="ttname"><a href="class_operaciones_basicas.html">OperacionesBasicas</a></div><div class="ttdoc">Clase que contiene las operaciones basicas de matrices.</div><div class="ttdef"><b>Definition</b> operaciones.hpp:45</div></div>
+<div class="ttc" id="aclass_operaciones_basicas_html_a0cee9238e7cc29bd9d374b74d8835b47"><div class="ttname"><a href="class_operaciones_basicas.html#a0cee9238e7cc29bd9d374b74d8835b47">OperacionesBasicas::suma</a></div><div class="ttdeci">Matrix&lt; T &gt; suma(Matrix&lt; T &gt; &amp;a, Matrix&lt; T &gt; &amp;b, int tipoDato, int complexType, int beginRandom)</div><div class="ttdoc">Metodo que suma dos matrices.</div><div class="ttdef"><b>Definition</b> operaciones.cpp:85</div></div>
+<div class="ttc" id="aclass_operaciones_basicas_html_a36cdba1434711bd4cb117e906a74c86a"><div class="ttname"><a href="class_operaciones_basicas.html#a36cdba1434711bd4cb117e906a74c86a">OperacionesBasicas::validarMultiplicacion</a></div><div class="ttdeci">bool validarMultiplicacion(Matrix&lt; T &gt; &amp;a, Matrix&lt; T &gt; &amp;b)</div><div class="ttdoc">Metodo que valida si se pueden multiplicar dos matrices.</div><div class="ttdef"><b>Definition</b> operaciones.cpp:67</div></div>
+<div class="ttc" id="aclass_operaciones_basicas_html_a48a160628760425a26d3820c01888a24"><div class="ttname"><a href="class_operaciones_basicas.html#a48a160628760425a26d3820c01888a24">OperacionesBasicas::validarSumaResta</a></div><div class="ttdeci">bool validarSumaResta(Matrix&lt; T &gt; &amp;a, Matrix&lt; T &gt; &amp;b)</div><div class="ttdoc">Metodo que valida si se pueden sumar o restar dos matrices.</div><div class="ttdef"><b>Definition</b> operaciones.cpp:46</div></div>
+<div class="ttc" id="aclass_operaciones_basicas_html_a9c6f943ca563234b2ca94a7302376d14"><div class="ttname"><a href="class_operaciones_basicas.html#a9c6f943ca563234b2ca94a7302376d14">OperacionesBasicas::resta</a></div><div class="ttdeci">Matrix&lt; T &gt; resta(Matrix&lt; T &gt; &amp;a, Matrix&lt; T &gt; &amp;b, int tipoDato, int complexType, int beginRandom)</div><div class="ttdoc">Metodo que resta dos matrices.</div><div class="ttdef"><b>Definition</b> operaciones.cpp:116</div></div>
+<div class="ttc" id="aclass_operaciones_basicas_html_abf8a8b7e3c5f98720daa7ea424936731"><div class="ttname"><a href="class_operaciones_basicas.html#abf8a8b7e3c5f98720daa7ea424936731">OperacionesBasicas::multiplicacion</a></div><div class="ttdeci">Matrix&lt; T &gt; multiplicacion(Matrix&lt; T &gt; &amp;a, Matrix&lt; T &gt; &amp;b, int tipoDato, int complexType, int beginRandom)</div><div class="ttdoc">Metodo que multiplica dos matrices.</div><div class="ttdef"><b>Definition</b> operaciones.cpp:145</div></div>
+<div class="ttc" id="amatrix_8hpp_html"><div class="ttname"><a href="matrix_8hpp.html">matrix.hpp</a></div><div class="ttdoc">definicion de la clase Matrix MIT License</div></div>
+<div class="ttc" id="aoperaciones_8hpp_html_a4631fcae3ac069103a0bb254cd593c7b"><div class="ttname"><a href="operaciones_8hpp.html#a4631fcae3ac069103a0bb254cd593c7b">isOP</a></div><div class="ttdeci">bool isOP</div><div class="ttdef"><b>Definition</b> main.cpp:39</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>

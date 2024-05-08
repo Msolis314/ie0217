@@ -53,13 +53,10 @@ Matrix<T>::Matrix(int rows, int cols, int tipoDato, int complexType,int beginRan
             throw invalid_argument("Las dimensiones de la matriz no son validas");
         }
         //Si el constructor es llamado por la operacion de suma o resta, se llena la matriz con numeros random inicialmente
-        if (isOP == true){
+        if (isOP == true || beginRandom == 1){
             fillMatrixRandom();
         }
-        if (beginRandom == 1){
-            fillMatrixRandom();
-        } else
-        if (tipoDato == COMPLEX){
+        else if (tipoDato == COMPLEX){
             llenarMatrizCompleja();
         } else {
             llenarMatriz();

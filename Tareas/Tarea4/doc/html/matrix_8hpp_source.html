@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TAREA4-IE0217: Archivo de código fuente src/matrix.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="matriz.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">TAREA4-IE0217<span id="projectnumber">&#160;0.001</span>
+   </div>
+   <div id="projectbrief">Tarea #4 del curso una calculadora de matrices</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">matrix.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="matrix_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#ifndef MATRIX_HPP</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define MATRIX_HPP</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;complex&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;bits/stdc++.h&gt;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="check_input_8hpp.html">checkInput.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="tools_8hpp.html">tools.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_matrix.html">   44</a></span><span class="keyword">class </span><a class="code hl_class" href="class_matrix.html">Matrix</a>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">   46</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">   47</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_matrix.html#aed4ad9d7f489c6bff377fa6bc68fe1e7">   48</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="class_matrix.html#aed4ad9d7f489c6bff377fa6bc68fe1e7">tipoDato</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="class_matrix.html#a3fab14ba0b6e6b2ce9e84e9f998a2123">   49</a></span>        <span class="keywordtype">int</span> <a class="code hl_variable" href="class_matrix.html#a3fab14ba0b6e6b2ce9e84e9f998a2123">complexType</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="comment">//friend class OperacionesBasicas;</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">   54</a></span>        <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">Matrix</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_matrix.html#a5aa7d00d90565760c81fe58a02e93ea6">   58</a></span>        <a class="code hl_class" href="class_matrix.html">vector&lt;vector&lt;T&gt;</a>&gt; <a class="code hl_variable" href="class_matrix.html#a5aa7d00d90565760c81fe58a02e93ea6">matrix</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_matrix.html#a8ffe69676f1233c6d526bbc02d2f97b5">   59</a></span>        <a class="code hl_class" href="class_matrix.html">vector&lt;vector&lt;complex&lt;T&gt;</a>&gt;&gt; <a class="code hl_variable" href="class_matrix.html#a8ffe69676f1233c6d526bbc02d2f97b5">matrixCompleja</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_function" href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">Matrix</a>(<span class="keywordtype">int</span> <a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>, <span class="keywordtype">int</span> <a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>, <span class="keywordtype">int</span> <a class="code hl_variable" href="class_matrix.html#aed4ad9d7f489c6bff377fa6bc68fe1e7">tipoDato</a>, <span class="keywordtype">int</span> <a class="code hl_variable" href="class_matrix.html#a3fab14ba0b6e6b2ce9e84e9f998a2123">complexType</a>,<span class="keywordtype">int</span> beginRandom);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_class" href="class_matrix.html">Matrix</a> <a class="code hl_function" href="class_matrix.html#a85ccb2dd025cff9b6cbac10e85049821">operator+ </a>(<a class="code hl_class" href="class_matrix.html">Matrix</a> &amp;<a class="code hl_class" href="class_matrix.html">b</a>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_class" href="class_matrix.html">Matrix</a> <a class="code hl_function" href="class_matrix.html#a887dc696b4112eb6a0c89ac1bbf28ca1">operator- </a>(<a class="code hl_class" href="class_matrix.html">Matrix</a> &amp;<a class="code hl_class" href="class_matrix.html">b</a>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <a class="code hl_class" href="class_matrix.html">Matrix</a> <a class="code hl_function" href="class_matrix.html#a18742138339a2587d67fc8616db3a444">operator* </a>(<a class="code hl_class" href="class_matrix.html">Matrix</a> &amp;<a class="code hl_class" href="class_matrix.html">b</a>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_matrix.html#ab15a753d858e473e9e8d0a78255224c8">setDimensiones</a>(<span class="keywordtype">int</span> <a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>, <span class="keywordtype">int</span> <a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matrix.html#a930c15e8bcc23f4c4f564900b979891d">llenarMatriz</a>();</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matrix.html#ada6cd3866a5c20b0d97ad64a9d3d7c17">llenarMatrizCompleja</a>();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matrix.html#a45eb851d6e6e919d72744b0e47d44830">printMatrix</a>();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matrix.html#a8fd6058e747b9beb048086cd21ffd7b7">getDims</a>(<span class="keywordtype">int</span> *<a class="code hl_variable" href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">rows</a>, <span class="keywordtype">int</span> *<a class="code hl_variable" href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">cols</a>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_matrix.html#adbfc6a56c40e801198f3bdff1bb6ead8">fillMatrixRandom</a>();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_function" href="class_matrix.html#a91aa704de674203e96aece9e1955ccd3">~Matrix</a>();</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>};</div>
+</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif </span><span class="comment">// MATRIX_HPP</span></div>
+<div class="ttc" id="acheck_input_8hpp_html"><div class="ttname"><a href="check_input_8hpp.html">checkInput.hpp</a></div><div class="ttdoc">Declaracion de la clase ValidadorDeEntrada MIT License.</div></div>
+<div class="ttc" id="aclass_matrix_html"><div class="ttname"><a href="class_matrix.html">Matrix</a></div><div class="ttdoc">Clase Matrix.</div><div class="ttdef"><b>Definition</b> matrix.hpp:44</div></div>
+<div class="ttc" id="aclass_matrix_html_a18742138339a2587d67fc8616db3a444"><div class="ttname"><a href="class_matrix.html#a18742138339a2587d67fc8616db3a444">Matrix::operator*</a></div><div class="ttdeci">Matrix operator*(Matrix &amp;b)</div><div class="ttdoc">Sobrecarga del operador *.</div><div class="ttdef"><b>Definition</b> matrix.cpp:106</div></div>
+<div class="ttc" id="aclass_matrix_html_a28e99540a5a95cb42dfaceb8942a48bd"><div class="ttname"><a href="class_matrix.html#a28e99540a5a95cb42dfaceb8942a48bd">Matrix::cols</a></div><div class="ttdeci">int cols</div><div class="ttdef"><b>Definition</b> matrix.hpp:47</div></div>
+<div class="ttc" id="aclass_matrix_html_a3fab14ba0b6e6b2ce9e84e9f998a2123"><div class="ttname"><a href="class_matrix.html#a3fab14ba0b6e6b2ce9e84e9f998a2123">Matrix::complexType</a></div><div class="ttdeci">int complexType</div><div class="ttdef"><b>Definition</b> matrix.hpp:49</div></div>
+<div class="ttc" id="aclass_matrix_html_a45eb851d6e6e919d72744b0e47d44830"><div class="ttname"><a href="class_matrix.html#a45eb851d6e6e919d72744b0e47d44830">Matrix::printMatrix</a></div><div class="ttdeci">void printMatrix()</div><div class="ttdoc">Metodo que imprime la matriz.</div><div class="ttdef"><b>Definition</b> matrix.cpp:194</div></div>
+<div class="ttc" id="aclass_matrix_html_a5aa7d00d90565760c81fe58a02e93ea6"><div class="ttname"><a href="class_matrix.html#a5aa7d00d90565760c81fe58a02e93ea6">Matrix::matrix</a></div><div class="ttdeci">vector&lt; vector&lt; T &gt; &gt; matrix</div><div class="ttdoc">Atributo de la clase Matrix Necesita ser publico para poder ser accedido por la clase OperacionesBasi...</div><div class="ttdef"><b>Definition</b> matrix.hpp:58</div></div>
+<div class="ttc" id="aclass_matrix_html_a85ccb2dd025cff9b6cbac10e85049821"><div class="ttname"><a href="class_matrix.html#a85ccb2dd025cff9b6cbac10e85049821">Matrix::operator+</a></div><div class="ttdeci">Matrix operator+(Matrix &amp;b)</div><div class="ttdoc">Sobrecarga del operador +.</div><div class="ttdef"><b>Definition</b> matrix.cpp:78</div></div>
+<div class="ttc" id="aclass_matrix_html_a887dc696b4112eb6a0c89ac1bbf28ca1"><div class="ttname"><a href="class_matrix.html#a887dc696b4112eb6a0c89ac1bbf28ca1">Matrix::operator-</a></div><div class="ttdeci">Matrix operator-(Matrix &amp;b)</div><div class="ttdoc">Sobrecarga del operador -.</div><div class="ttdef"><b>Definition</b> matrix.cpp:91</div></div>
+<div class="ttc" id="aclass_matrix_html_a8fd6058e747b9beb048086cd21ffd7b7"><div class="ttname"><a href="class_matrix.html#a8fd6058e747b9beb048086cd21ffd7b7">Matrix::getDims</a></div><div class="ttdeci">void getDims(int *rows, int *cols)</div><div class="ttdoc">Metodo que obtiene las dimensiones de la matriz.</div><div class="ttdef"><b>Definition</b> matrix.cpp:219</div></div>
+<div class="ttc" id="aclass_matrix_html_a8ffe69676f1233c6d526bbc02d2f97b5"><div class="ttname"><a href="class_matrix.html#a8ffe69676f1233c6d526bbc02d2f97b5">Matrix::matrixCompleja</a></div><div class="ttdeci">vector&lt; vector&lt; complex&lt; T &gt; &gt; &gt; matrixCompleja</div><div class="ttdef"><b>Definition</b> matrix.hpp:59</div></div>
+<div class="ttc" id="aclass_matrix_html_a91aa704de674203e96aece9e1955ccd3"><div class="ttname"><a href="class_matrix.html#a91aa704de674203e96aece9e1955ccd3">Matrix::~Matrix</a></div><div class="ttdeci">~Matrix()</div><div class="ttdef"><b>Definition</b> matrix.cpp:255</div></div>
+<div class="ttc" id="aclass_matrix_html_a930c15e8bcc23f4c4f564900b979891d"><div class="ttname"><a href="class_matrix.html#a930c15e8bcc23f4c4f564900b979891d">Matrix::llenarMatriz</a></div><div class="ttdeci">void llenarMatriz()</div><div class="ttdoc">Metodo que llena la matriz Se llama cuando se crea una matriz.</div><div class="ttdef"><b>Definition</b> matrix.cpp:131</div></div>
+<div class="ttc" id="aclass_matrix_html_a9d567e3a121b1be0c3f9c461cab524fe"><div class="ttname"><a href="class_matrix.html#a9d567e3a121b1be0c3f9c461cab524fe">Matrix::Matrix</a></div><div class="ttdeci">Matrix()</div><div class="ttdoc">Constructor de la clase Matrix default.</div></div>
+<div class="ttc" id="aclass_matrix_html_ab15a753d858e473e9e8d0a78255224c8"><div class="ttname"><a href="class_matrix.html#ab15a753d858e473e9e8d0a78255224c8">Matrix::setDimensiones</a></div><div class="ttdeci">bool setDimensiones(int rows, int cols)</div><div class="ttdoc">Metodo que setea las dimensiones de la matriz.</div><div class="ttdef"><b>Definition</b> matrix.cpp:117</div></div>
+<div class="ttc" id="aclass_matrix_html_acd67456c163fd2259c8aef072c9177fa"><div class="ttname"><a href="class_matrix.html#acd67456c163fd2259c8aef072c9177fa">Matrix::rows</a></div><div class="ttdeci">int rows</div><div class="ttdef"><b>Definition</b> matrix.hpp:46</div></div>
+<div class="ttc" id="aclass_matrix_html_ada6cd3866a5c20b0d97ad64a9d3d7c17"><div class="ttname"><a href="class_matrix.html#ada6cd3866a5c20b0d97ad64a9d3d7c17">Matrix::llenarMatrizCompleja</a></div><div class="ttdeci">void llenarMatrizCompleja()</div><div class="ttdef"><b>Definition</b> matrix.cpp:160</div></div>
+<div class="ttc" id="aclass_matrix_html_adbfc6a56c40e801198f3bdff1bb6ead8"><div class="ttname"><a href="class_matrix.html#adbfc6a56c40e801198f3bdff1bb6ead8">Matrix::fillMatrixRandom</a></div><div class="ttdeci">void fillMatrixRandom()</div><div class="ttdoc">Metodo que llena la matriz con numeros random.</div><div class="ttdef"><b>Definition</b> matrix.cpp:226</div></div>
+<div class="ttc" id="aclass_matrix_html_aed4ad9d7f489c6bff377fa6bc68fe1e7"><div class="ttname"><a href="class_matrix.html#aed4ad9d7f489c6bff377fa6bc68fe1e7">Matrix::tipoDato</a></div><div class="ttdeci">int tipoDato</div><div class="ttdef"><b>Definition</b> matrix.hpp:48</div></div>
+<div class="ttc" id="atools_8hpp_html"><div class="ttname"><a href="tools_8hpp.html">tools.hpp</a></div><div class="ttdoc">Declaracion de las funciones de la clase Tools MIT License.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0
+</small></address>
+</body>
+</html>
