@@ -38,7 +38,8 @@ using namespace std;
 template <class T>
 T randomNum(int tipoDato){
     T num;
-    
+   
+    srand(time(0));
     switch (tipoDato)
     {
     case INT:

@@ -49,14 +49,15 @@ void generarRandomNumbers(menu &m, Matrix<T> &a, Matrix<T> &b){
     switch (m.whichMatrix)
     {
     case A:
-        a.fillMatrixRandom();
+        //Se sobreescribe el objeto a
+        a = Matrix<T>(m.rowsA, m.colsA, m.tipoDato, m.complexType, 1);
         break;
     case B:
-        b.fillMatrixRandom();
+        b = Matrix<T>(m.rowsB, m.colsB, m.tipoDato, m.complexType, 1);
         break;
     case BOTH:
-        a.fillMatrixRandom();
-        b.fillMatrixRandom();
+        a = Matrix<T>(m.rowsA, m.colsA, m.tipoDato, m.complexType, 1);
+        b= Matrix<T>(m.rowsB, m.colsB, m.tipoDato, m.complexType, 1);
         break;
     default:
         break;

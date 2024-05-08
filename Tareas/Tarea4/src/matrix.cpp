@@ -229,6 +229,7 @@ void Matrix<T>::fillMatrixRandom() {
         for (int i = 0; i < this->rows; i++){
             vector<complex<T>> row;
             for (int j = 0; j < this->cols; j++){
+                srand(time(0));
                 //Se utiliza la funcion randomNum para obtener un numero random
                 //Del tipo de dato de la parte real e imaginaria
                 T real = randomNum<T>(this->complexType);
@@ -243,6 +244,7 @@ void Matrix<T>::fillMatrixRandom() {
             vector<T> row;
             for (int j = 0; j < this->cols; j++){
                 //Se utiliza la funcion randomNum para obtener un numero random
+                srand(time(0));
                 T num = randomNum<T>(this->tipoDato);
                 row.push_back(num);
             }
