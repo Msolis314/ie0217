@@ -8,6 +8,9 @@ class ValidadorEmail {
     public:
         void validarCorreo(std::string email);
         int countCharMatch(std::string email, std::string pattern);
+        std::string valExtention(std::string email);
+        std::string valDomain(std::string email);
+        void valName(std::string email);
 };
 
 #endif // VALIDADOR_HPP
