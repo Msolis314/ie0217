@@ -6,11 +6,12 @@ class ValidadorEmail {
     private: 
         std::string email;
     public:
-        void validarCorreo(std::string email);
+        void validarCorreo(std::string email,bool &valido);
         int countCharMatch(std::string email, std::string pattern);
-        std::string valExtention(std::string email);
-        std::string valDomain(std::string email);
-        void valName(std::string email);
+        bool valExtention(std::string email);
+        bool valDomain(std::string email);
+        std::string getDomain(std::string email);
+        bool valName(std::string email);
 };
 
 #endif // VALIDADOR_HPP

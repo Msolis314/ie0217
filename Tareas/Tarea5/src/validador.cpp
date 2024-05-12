@@ -2,7 +2,7 @@
 #include <iostream>
 #include "validador.hpp"
 
-void ValidadorEmail:: validarCorreo(std::string email){
+void ValidadorEmail:: validarCorreo(std::string email,bool &valido){
     try {
         if (countCharMatch(email,"@") != 1){
             throw "El correo no es valido, no tiene un solo @";
@@ -10,15 +10,18 @@ void ValidadorEmail:: validarCorreo(std::string email){
     } 
     catch (const char* msg){
         std::cerr << msg << std::endl;
-        abort();
+        bool valido = false;
+        return;
     }
-
-    std:: regex pattern1("^[a-zA-Z0-9][a-zA-Z0-9.-_]{0,13}[a-zA-Z0-9]@[a-zA-Z]+(?:\\.[a-zA-Z]+)+\\.[a-zA-Z]{2,6}$");
-    std::smatch match1;
-    if (std::regex_search(email,match1,pattern1)){
+    if (!valName(email) || !valDomain(email) || !valExtention(email)){
+        bool valido = false;
+        return;
+    } else {
+        bool valido = true;
         std::cout << "Correo valido" << std::endl;
         return;
     }
+
 
 }
 
@@ -41,18 +44,80 @@ int ValidadorEmail:: countCharMatch(std::string cadena, std::string pattern_sear
     return count;
 }
 
-std::string ValidadorEmail:: valExtention(std::string email){
+bool ValidadorEmail:: valExtention(std::string email){
     std::regex pattern("([.]{1}[a-zA-Z]{2,6}\\.{0,1}[a-zA-Z]{0,2})$");
     std::smatch match;
     std::regex_search(email,match,pattern);
     if(match.str().length()){
-        return match.str();
-    } else {
-        return "No se encontro extension";
+        return true;;
     }
+    
+}
+bool ValidadorEmail:: valDomain(std::string email){
+    std::string domain = getDomain(email);
+    try{
+        if(domain == ""){
+            throw "El correo no es valido, no tiene un dominio";
+        } 
+    }
+    catch (const char* msg){
+        std::cerr << msg << std::endl;
+        return false;
+    }
+    try {
+        if(countCharMatch(domain,"[^.]") > 30 || countCharMatch(domain,"[^.]") < 3){
+            throw "El correo no es valido, el dominio tiene un tamaño invalido";
+
+        }
+    }
+    catch (const char* msg){
+        std::cerr << msg << std::endl;
+        return false;
+    }
+    try {
+        if(countCharMatch(domain,"^.") > 1 || countCharMatch(domain,".$") > 1){
+            throw "El correo no es valido, el dominio empieza o termina con un punto";
+        }
+    
+    }
+    catch (const char* msg){
+        std::cerr << msg << std::endl;
+        return false;
+    }
+    try {
+        if(countCharMatch(domain,"[.]{2}") > 0){
+            throw "El correo no es valido, el dominio tiene puntos seguidos";
+        }
+    }
+    catch (const char* msg){
+        std::cerr << msg << std::endl;
+        return false;}
+    try{
+        if(countCharMatch(domain,"[^a-zA-Z.]") > 0){
+            throw "El correo no es valido, el dominio tiene caracteres invalidos";
+        }
+    }
+    catch (const char* msg){
+        std::cerr << msg << std::endl;
+        return false;
+    
+    }
+
+
+}
+std::string ValidadorEmail:: getDomain(std::string email){
+    std::regex pattern("^(.*?)@.*([.]{1}[a-zA-Z]{2,6}\\.{0,1}[a-zA-Z]{0,2})$");
+    std::smatch match;
+    if (std::regex_search(email,match,pattern))
+    {
+        if (match.size() > 1){
+            return match.str(2);
+        }
+    }
+    return "";
 }
 
-void ValidadorEmail:: valName(std::string email){
+bool ValidadorEmail:: valName(std::string email){
     std::regex pattern("^(.*?)@");
     std::smatch match;
     std::regex_search(email,match,pattern);
@@ -65,9 +130,9 @@ void ValidadorEmail:: valName(std::string email){
     }
     catch (const char* msg){
         std::cerr << msg << std::endl;
-        abort();
+        return false;
     }
-    std::regex pattern3("^(?!.*[.-_]{2})[^.-_][a-zA-Z0-9\\._-]*[^.-_]$");
+    std::regex pattern3("^(?!.*[.-_]{2})[^.-_][a-zA-Z0-9\\._-]*[^.-_]@$");
     std::smatch match3;
     std::regex_search(nombre,match3,pattern3);
     try {
@@ -79,14 +144,16 @@ void ValidadorEmail:: valName(std::string email){
         if (countCharMatch(nombre,"^[^.-_]") > 1){
             std::cerr << msg << std::endl;
             std::cerr << "Empieza con (.,-,_)" << std::endl;
+            return false;
         } else if (countCharMatch(nombre,"[^.-_]$") > 1){
             std::cerr << msg << std::endl;
             std::cerr << "Termina con (.,-,_)" << std::endl;
+            return false;
         } else {
             std::cerr << msg << std::endl;
             std::cerr << "Caracteres especiales seguidos" << std::endl;
+            return false;
         }
-        abort();
     }
 
 }
