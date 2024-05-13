@@ -1,3 +1,4 @@
+
 # FLAGS
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall
@@ -29,9 +30,11 @@ $(OUTDIR)/%.o: $(SRCDIR)/%.cpp | $(OUTDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 #Regla correr el ejecutable
+
 .PHONY: run
 run: 
 	./$(EXEC)
+
 
 #Regla para limpiar el directorio
 clean:

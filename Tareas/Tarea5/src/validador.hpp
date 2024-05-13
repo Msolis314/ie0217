@@ -11,6 +11,7 @@ class ValidadorEmail {
     public:
         void validarCorreo(std::string email,bool &valido);
 
+
         /// @brief Metodo que cuenta cuantas veces se repite un patron en una cadena
         /// @param email string que se va a analizar
         /// @param pattern patron regex que se va a buscar
@@ -35,6 +36,7 @@ class ValidadorEmail {
         /// @brief Metodo que valida el nombre de un correo electronico
         /// @param email correo electronico
         /// @return true si el nombre es valido, false si no
+
         bool valName(std::string email);
 };
 

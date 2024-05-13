@@ -49,7 +49,9 @@ bool ValidadorEmail:: valExtention(std::string email){
     std::smatch match;
     std::regex_search(email,match,pattern);
     if(match.str().length()){
+
         return true;
+
     }
     
 }
@@ -59,6 +61,7 @@ bool ValidadorEmail:: valDomain(std::string email){
         if(domain == ""){
             throw "El correo no es valido, no tiene un dominio";
         } 
+
         if (countCharMatch(domain,"[^.]")> 30 || countCharMatch(domain,"[^.]") < 3){
             throw "El correo no es valido, el dominio tiene un tamaño invalido";
         }
@@ -71,11 +74,13 @@ bool ValidadorEmail:: valDomain(std::string email){
         if(countCharMatch(domain,"[^a-zA-Z.]") > 0){
             throw "El correo no es valido, el dominio tiene caracteres invalidos";
         }
+
     }
     catch (const char* msg){
         std::cerr << msg << std::endl;
         return false;
     }
+
     catch (const std::regex_error& e){
         std::cerr << "Error: " << e.what() << std::endl;
         return false;
@@ -87,11 +92,14 @@ bool ValidadorEmail:: valDomain(std::string email){
 }
 std::string ValidadorEmail:: getDomain(std::string email){
     std::regex pattern("@(.*?)\\.[a-zA-Z]{2,6}\\.{0,1}[a-zA-Z]{0,2}$");
+
     std::smatch match;
     if (std::regex_search(email,match,pattern))
     {
         if (match.size() > 1){
+
             return match[1].str();
+
         }
     }
     return "";
@@ -112,7 +120,9 @@ bool ValidadorEmail:: valName(std::string email){
         std::cerr << msg << std::endl;
         return false;
     }
+
     std::regex pattern3("^(?!.*[.\\-_]{2})[^.\\-_][a-zA-Z0-9\\._\\-]*[^.\\-_]$");
+
     std::smatch match3;
     std::regex_search(nombre,match3,pattern3);
     try {
@@ -129,13 +139,24 @@ bool ValidadorEmail:: valName(std::string email){
         if(std::regex_search(nombre,std::regex("[.\\-_]{2}"))){
             throw "El correo no es valido, el nombre tiene caracteres especiales seguidos";
         }
+        if(countCharMatch(nombre,"[^a-zA-Z0-9._-]") > 0){
+            throw "El correo no es valido, el nombre tiene caracteres invalidos";
+        }
+        if(countCharMatch(nombre,"^[-._]") > 1 || countCharMatch(nombre,"[-._]$") > 1){
+            throw "El correo no es valido, el nombre empieza o termina con un caracter especial";
+        }
+        if(countCharMatch(nombre,"[.-_]{2}") > 0){
+            throw "El correo no es valido, el nombre tiene caracteres especiales seguidos";
+        }
     }
     catch (const char* msg){
         std::cout << msg << std::endl;
         return false;
     }
+
     catch (const std::regex_error& e){
         std::cerr << "Error: " << e.what() << std::endl;
+
         return false;
     }
     std::cout << "Nombre valido" << std::endl;
