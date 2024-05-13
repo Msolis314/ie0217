@@ -5,7 +5,7 @@
 wxIMPLEMENT_APP(App);
 
 bool App::OnInit() {
-	MainFrame* frame = new MainFrame("Eventos Estaticos");
+	MainFrame* frame = new MainFrame("Eventos Dinamicos");
 	frame->Show(true);
 	return true;
 }
