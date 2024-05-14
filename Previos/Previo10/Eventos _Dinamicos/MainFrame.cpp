@@ -9,13 +9,15 @@ MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY,title) {
 	//Misma sintaxis que antes, pero ahora se agrega el ID
 	wxPanel* panel = new wxPanel(this);
 	//Evento del Mouse
-	panel->Bind(wxEVT_LEFT_DOWN, &MainFrame::OnMouseEvent, this);
+	this->Bind(wxEVT_LEFT_DOWN, &MainFrame::OnMouseEvent, this);
 
 	//Evento del Teclado
-	panel->Bind(wxEVT_CHAR_HOOK, &MainFrame::OnKeyEvent, this);
+	this->Bind(wxEVT_CHAR_HOOK, &MainFrame::OnKeyEvent, this);
 
 	//Evento del Mouse para detectar movimiento
 	panel->Bind(wxEVT_MOTION, &MainFrame::OnMouseEvent, this);
+	
+	//Crear controles del panel
 	wxButton* button = new wxButton(panel,wxID_ANY ,"Button", wxPoint(300, 275), wxSize(200, 50));
 	wxSlider* slider = new wxSlider(panel,wxID_ANY , 0, 0, 100, wxPoint(300, 200), wxSize(200, -1));
 	wxTextCtrl* text = new wxTextCtrl(panel, wxID_ANY, "", wxPoint(300, 375), wxSize(200, -1));
@@ -26,6 +28,7 @@ MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY,title) {
 
 	//Como la posicion es relativa se debe ligar el evento mouse al objeto
 	button->Bind(wxEVT_MOTION, &MainFrame::OnMouseEvent, this);
+
 	//Propagacion de eventos
 	// Si existe un boton en el panel, se ejecutara el evento
 	//panel->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClicked, this);
@@ -43,7 +46,9 @@ MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY,title) {
 	statusBar->SetDoubleBuffered(true);
 
 	//Nuevo Panel
-	wxPanel* panel2 = new wxPanel(panel,wxID_ANY,wxPoint(600,0),wxSize(1000,1000));
+	//Ejemplo de propagacion de eventos I
+	wxPanel* panel2 = new wxPanel(panel,wxID_ANY,wxPoint(400,0),wxSize(1000,1000),wxTAB_TRAVERSAL,"Propagacion Eventos I");
+	panel2->Bind(wxEVT_MOTION, &MainFrame::OnMouseEvent, this);
 	wxButton* button1 = new wxButton(panel2, wxID_ANY, "Button 1", wxPoint(300, 275), wxSize(200, 50));
 	wxButton* button2 = new wxButton(panel2, wxID_ANY, "Button 2", wxPoint(300, 200), wxSize(200, 50));
 
@@ -51,7 +56,9 @@ MainFrame::MainFrame(const wxString& title) : wxFrame(nullptr, wxID_ANY,title) {
 	panel2->Bind(wxEVT_BUTTON, &MainFrame::OnButtonClicked2, this);
 	
 	//Nuevo panel
-	wxPanel* panel3 = new wxPanel(panel2, wxID_ANY, wxPoint(300, 400), wxSize(500, 500));
+	//Ejemplo de propagacion de eventos II
+	wxPanel* panel3 = new wxPanel(panel2, wxID_ANY, wxPoint(0, 200), wxSize(500, 500));
+	panel3->Bind(wxEVT_MOTION, &MainFrame::OnMouseEvent, this);
 	wxButton* button3 = new wxButton(panel3, wxID_ANY, "Button 3", wxPoint(300, 275), wxSize(200, 50));
 	wxButton* button4 = new wxButton(panel3, wxID_ANY, "Button 4", wxPoint(300, 200), wxSize(200, 50));
 
@@ -90,6 +97,7 @@ void MainFrame::OnTextChange(wxCommandEvent& evt) {
 	wxString str = wxString::Format("Text: %s", evt.GetString());
 	//Muestra el valor en la status bar
 	wxLogStatus(str);
+	evt.Skip();
 
 }
 
@@ -118,7 +126,10 @@ void MainFrame::OnMouseEvent(wxMouseEvent& evt) {
 }
 
 void MainFrame::OnKeyEvent(wxKeyEvent& evt) {
+	//Obtener el caracter de la tecla presionada
 	wxChar keyChar = evt.GetUnicodeKey();
+
+	//Si no se puede obtener el caracter, se obtiene el codigo de la tecla
 	if (keyChar == WXK_NONE) {
 		int keyCode = evt.GetKeyCode();
 		wxLogStatus("Key Event %d", keyCode);
@@ -129,6 +140,9 @@ void MainFrame::OnKeyEvent(wxKeyEvent& evt) {
 }
 
 void MainFrame::OnClose(wxCloseEvent& evt) {
+	//Mensaje en la consola
 	wxLogMessage("Frame Close");
+	//Cierra el frame
+	//Se debe usar Skip para que el evento se propague
 	evt.Skip();
 }
