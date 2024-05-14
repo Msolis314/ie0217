@@ -5,7 +5,7 @@ CXXFLAGS = -std=c++11 -Wall
 
 #Directorios
 SRCDIR = src
-OUTDIR = bin
+OUTDIR := bin
 
 #Se hace la sustitución de los archivos .cpp por los .o
 SOURCES = $(wildcard $(SRCDIR)/*.cpp)
@@ -38,5 +38,6 @@ run:
 
 #Regla para limpiar el directorio
 clean:
-	$(RM) -r $(OUTDIR)
+	del $(OUTDIR)\*.o
+	del $(EXEC)
 .PHONY: clean
