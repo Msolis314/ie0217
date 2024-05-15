@@ -6,6 +6,9 @@ En una terminal de windows ejecutar:
 mingw32-make
 ```
 Esto corre el ejecutable `tarea5.x` de forma automática.
+## Documentación 
+ El enlace a la documentación es:
+ [https://main--tarea5-ie0217.netlify.app/index.html](https://main--tarea5-ie0217.netlify.app/index.html)
 ## Parte Teórica
 
 1. **¿Qué es una expresión regular y cuál es su propósito en programación?**
