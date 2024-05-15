@@ -1,6 +1,5 @@
 # TAREA #5
 ## Compilación
-Crear un nuevo directorio en la carpeta que se crea el folder llamado bin.
 En una terminal de windows ejecutar:
 ```bash
 mingw32-make

@@ -36,8 +36,12 @@ run:
 	./$(EXEC)
 
 
+#Regla para crear el directorio
+$(OUTDIR):
+	mkdir -p $(OUTDIR)
+
+.PHONY: clean
 #Regla para limpiar el directorio
 clean:
 	del $(OUTDIR)\*.o
 	del $(EXEC)
-.PHONY: clean

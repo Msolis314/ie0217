@@ -37,7 +37,7 @@ void ValidadorEmail:: validarCorreo(std::string email,bool &valido){
     //Se verifica que el correo tenga un solo @
     try {
         if (countCharMatch(email,"@") != 1){
-            throw "El correo no es valido, no tiene un solo @";
+            throw "\nEl correo no es valido, no tiene un solo @\n";
         }
     } 
     catch (const char* msg){
@@ -52,7 +52,12 @@ void ValidadorEmail:: validarCorreo(std::string email,bool &valido){
         return;
     } else {
         bool valido = true;
-        std::cout << "Correo valido" << std::endl;
+        std::cout << "\nCorreo valido\n" << std::endl;
+        std::cout << "--------------\n";
+        std::cout << "|             |\n";
+        std::cout << "|~~~~~~@~~~~~~|\n";
+        std::cout << "|             |\n";
+        std::cout << " --------------\n";
         return;
     }
 }
@@ -87,18 +92,15 @@ bool ValidadorEmail:: valExtention(std::string email){
     std::regex pattern("([.]{1}[a-zA-Z]{2,6}\\.{0,1}[a-zA-Z]{0,2})$");
     std::smatch match;
     std::regex_search(email,match,pattern);
-    if(match.str().length()){
-        std::cout << "Extension: " << match.str() << std::endl;
-        std::cout << "Extension valida" << std::endl;
-        return true;
-    }
+
     try {
         if (countCharMatch(email,"([.]{1}[a-zA-Z]{2,6}\\.{0,1}[a-zA-Z]{0,2})$") > 6 || countCharMatch(email,"([.]{1}[a-zA-Z]{2,6}\\.{0,1}[a-zA-Z]{0,2})$") < 2){
-            throw "El correo no es valido, la extension tiene un tamaño invalido";
+            throw "\nEl correo no es valido, la extension tiene un tamaño invalido\n";
         }
         if (std::regex_search(email,std::regex("[.]$"))){
-            throw "El correo no es valido, la extension termina con un punto";
+            throw "\nEl correo no es valido, la extension termina con un punto\n";
         }
+
     } catch (const char* msg){
         std::cerr << msg << std::endl;
         return false;
@@ -107,8 +109,11 @@ bool ValidadorEmail:: valExtention(std::string email){
         std::cerr << "Error: " << e.what() << std::endl;
         return false;
     }
-    std::cout << "Extension valida" << std::endl;
-    return true;
+    if(match.str().length()){
+        std::cout << "Extension: " << match.str() << std::endl;
+        std::cout << "Extension valida" << std::endl;
+        return true;
+    }
     
 }
 
@@ -122,19 +127,19 @@ bool ValidadorEmail:: valDomain(std::string email){
     std::string domain = getDomain(email);
     try{
         if(domain == ""){
-            throw "El correo no es valido, no tiene un dominio";
+            throw "\nEl correo no es valido, no sigue el formato de un correo electronico con dominio y extension\n";
         } 
         if (countCharMatch(domain,"[^.]")> 30 || countCharMatch(domain,"[^.]") < 3){
-            throw "El correo no es valido, el dominio tiene un tamaño invalido";
+            throw "\nEl correo no es valido, el dominio tiene un tamaño invalido\n";
         }
         if(std::regex_search(domain,std::regex("^[.]")) || std::regex_search(domain,std::regex("[.]$"))){
-            throw "El correo no es valido, el dominio empieza o termina con un punto";
+            throw "\nEl correo no es valido, el dominio empieza o termina con un punto\n";
         }
         if(std::regex_search(domain,std::regex("[.]{2}"))){
-            throw "El correo no es valido, el dominio tiene puntos seguidos";
+            throw "\nEl correo no es valido, el dominio tiene puntos seguidos\n";
         }
         if(countCharMatch(domain,"[^a-zA-Z.]") > 0){
-            throw "El correo no es valido, el dominio tiene caracteres invalidos";
+            throw "\nEl correo no es valido, el dominio tiene caracteres invalidos\n";
         }
     }
     catch (const char* msg){
@@ -145,13 +150,16 @@ bool ValidadorEmail:: valDomain(std::string email){
         std::cerr << "Error: " << e.what() << std::endl;
         return false;
     }
-    std::cout << "Dominio: " << domain << std::endl;
-    std::cout << "Dominio valido" << std::endl;
+    std::cout << "\nDominio:\n " << domain << std::endl;
+    std::cout << "Dominio valido\n" << std::endl;
     return true;
 
 
 }
 std::string ValidadorEmail:: getDomain(std::string email){
+    //Patron para obtener el dominio
+    //Para obtener el dominio se busca todo lo que este entre el @ el final
+    //Se obtiene el segundo grupo de captura
     std::regex pattern("@(.*?)\\.[a-zA-Z]{2,6}\\.{0,1}[a-zA-Z]{0,2}$");
     std::smatch match;
     if (std::regex_search(email,match,pattern))
@@ -194,16 +202,18 @@ bool ValidadorEmail:: valName(std::string email){
     }
 
     //Patron para validar el nombre
-    std::regex pattern3("^(?!.*[.\\-_]{2})[^.\\-_][a-zA-Z0-9\\._\\-]*[0-9a-zA-Z][^.\\-_]$");
+    std::regex pattern3("^(?!.*[.\\\\-_]{2})[^.\\\\-_][a-zA-Z0-9\\\\._\\\\-]*[0-9a-zA-Z][^.\\\\-_]$");
     std::smatch match3;
     std::regex_search(nombre,match3,pattern3);
-    std::cout << match3[0].str() << std::endl;
+    std::cout << match3.str() << std::endl;
 
     try {
+        //Si el nombre cumple con el patron, se considera valido
         if(std::regex_match(nombre,match3,pattern3)){
             std::cout << "Nombre valido" << std::endl;
             return true;
         }
+        //Sino se busca el error
         //Se verifica que el nombre no tenga caracteres no permitidos
         if (countCharMatch(nombre,"[^a-zA-Z0-9._-]") > 0){
             throw "El correo no es valido, el nombre tiene caracteres invalidos";
@@ -229,7 +239,7 @@ bool ValidadorEmail:: valName(std::string email){
         std::cerr << "Error: " << e.what() << std::endl;
         return false;
     }
-    std::cout<< "Nombre:" << match3[0].str() << std::endl;
+    std::cout<< "Nombre:" << match3.str() << std::endl;
     std::cout << "Nombre valido" << std::endl;
     return true;
 

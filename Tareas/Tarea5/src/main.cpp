@@ -31,7 +31,7 @@ SOFTWARE.
 /// @brief Enumeracion de las opciones del menu
 enum Menu{
     INGRESAR_EMAIL = 1,
-    SALIR
+    SALIR = 2
 };
 
 int main(){
@@ -39,7 +39,10 @@ int main(){
     do {
         std::string email;
         std::cout << "1) Ingresar email\n2) Salir" << std::endl;
-        std::cin >> opcion;
+        while (!(std::cin >> opcion) || opcion < 1 || opcion > 2){
+            std::cin.clear();
+            std::cin.ignore(1000,'\n');
+            std::cout << "Opcion invalida, intente de nuevo" << std::endl;}
         ValidadorEmail validador; 
         bool valido = false;
         switch (opcion)
@@ -47,13 +50,14 @@ int main(){
             case INGRESAR_EMAIL:
                 std::cout << "Ingrese su email: ";
                 std::cin >> email;
+                std::cout << "Validando correo..." << std::endl;
                 validador.validarCorreo(email,valido); 
                 break;
             case SALIR:
                 std::cout << "Saliendo..." << std::endl;
                 break;
             default:
-                std::cout << "Opcion invalida" << std::endl;
+                std::cout << "\nOpcion invalida" << std::endl;
                 break;
         }
     } while (opcion != SALIR);
