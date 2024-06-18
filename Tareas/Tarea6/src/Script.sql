@@ -1,12 +1,5 @@
-# README TAREA #6
-
-## Documentación de la tarea
-
-### **Creación de la base de datos y tablas**
-En la siguiente imagen se detallan los comandos utilizados para crear las tablas de la base de datos. Se específican las claves primarias de cada tabla, las candidatas (unicas en una tabla) y las relaciones entre ellas por medio de claves foráneas.
-
-Para la tabla de cursos:
-```sql
+-- Usar base de datos 
+USE tarea_6_sql;
 -- Tabla con info de cada curso
 CREATE TABLE IF NOT EXISTS Cursos(
 CursoID INT PRIMARY KEY,
@@ -14,10 +7,7 @@ Sigla VARCHAR(50) NOT NULL UNIQUE ,
 Nombre VARCHAR(100)  NOT NULL UNIQUE,
 Semestre VARCHAR(10) NOT NULL,
 Creditos INT NOT NULL);
-```
 
-Para la tabla de descripciones:
-```sql
 -- Tabla con descripcion y dificultad 
 CREATE TABLE IF NOT EXISTS Descripciones(
 DescripcionID INT PRIMARY KEY,
@@ -26,10 +16,7 @@ Descripcion TEXT,
 Dificultad VARCHAR(100),
 FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID)
 );
-```
 
-Para la tabla de requisitos:
-```sql
 -- Tabla que resume las relaciones entre los cursos
 CREATE TABLE IF NOT EXISTS Requisitos(
 RequisitoID INT PRIMARY KEY,
@@ -38,23 +25,6 @@ RequisitoCursoID INT NOT NULL,
 FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID),
 FOREIGN KEY (RequisitoCursoID) REFERENCES Cursos(CursoID)
 );
-```
-![Crear](https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/CrearTablas.png)
-
-
-![Im](https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaVaciaCursos.png)
-
-![TablaVaciaRequi](https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaVaciaRequi.png)
-
-![https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaVaciaDescrip.png](https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaVaciaDescrip.png)
-
-### Inserción de datos
-
-
-
-Luego, se muestran los comandos para llenar las tablas con la información de los cursos.Notar que se deben agregar los cursos propios a la licenciatura y los que son requesitos de estos para que la clave ya que requisitoID como es una clave foranea debe corresponder con lo contenido en la columna de CursoID.
-
-```sql
 
 -- Informacion del plan de estudios 
 
@@ -108,13 +78,8 @@ VALUES
 (5,0541,
 '¿Porqué es importante la Salud y la Seguridad ocupacional en el ambiente laboral?',
 'Fácil');
-```
 
-Descripciones de cursos requesito en bachillerato:
-
-```sql
-
--- Descripciones faltantes 
+-- Descripciones faltantes Bachillerato
 INSERT INTO Descripciones(DescripcionID,CursoID,Descripcion,Dificultad)
 VALUES
 (6,'0479','El curso esta diseñado para los estudiantes del plan de bachillerato en Ingeniería eléctrica, a
@@ -135,35 +100,6 @@ ejemplos extraídos de la práctica normal del ingeniero electricista.', 'Fácil
 en que se desenvolverá profesionalmente, de manera que su conducta se ajuste en todo
 momento a los principios de la Ética Profesional y tenga un cabal conocimiento del grado de
 responsabilidad moral y legal de sus actuaciones.','Fácil');
-```
-
-- **Antes**
-
-    ![Im](https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaVaciaCursos.png)
-
-    ![TablaVaciaRequi](https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaVaciaRequi.png)
-
-    ![https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaVaciaDescrip.png](https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaVaciaDescrip.png)
-
-- **Despues**
-
-1. Tabla de cursos
-
-
-    ![https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaLLenaICursosMuestra.png](https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaLLenaICursosMuestra.png)
-
-2. Tabla requisitos
-
-    ![TablaRequisitos](https://github.com/Msolis314/Clases/blob/main/Imagenes/TablaLLenaIRequisitosMuestra.png)
-
-3. Tabla descripciones
-
-    ![Tablla decripciones](https://github.com/Msolis314/Clases/blob/main/Imagenes/Despues_Agregar_Descrips.png)
-
-
-Para insertar cursos inventados se ejecuto:
-```sql
-
 -- Cursos Nuevos 
 
 INSERT INTO cursos(CursoID,Sigla,Nombre,Semestre,Creditos)
@@ -173,33 +109,11 @@ VALUES
 
 INSERT INTO descripciones(DescripcionID,CursoID,Descripcion,Dificultad)
 VALUES
-(7,0789,'Curso centrado en la creación de robots','Dificil'),
-(8,0890,'se centra en el estudio y desarrollo de sistemas informáticos especializados que están integrados 
+(12,0789,'Curso centrado en la creación de robots','Dificil'),
+(13,0890,'se centra en el estudio y desarrollo de sistemas informáticos especializados que están integrados 
 dentro de otros dispositivos, no son visibles para el usuario y realizan funciones específicas','Media');
-```
 
-- **Antes**:
- 1. Tabla cursos
 
- 
-    ![https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaLLenaICursosMuestra.png](https://github.com/Msolis314/ie0217/blob/main/Tareas/Tarea6/Imagenes/TablaLLenaICursosMuestra.png)
-
-2. Tabla descripciones
-
-    ![Tablla decripciones](https://github.com/Msolis314/Clases/blob/main/Imagenes/Despues_Agregar_Descrips.png)
-
-- **Despúes**
-
-1. Cursos 
-
-    ![https://github.com/Msolis314/Clases/blob/main/Imagenes/InsertarCursosCustomMuestra.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/InsertarCursosCustomMuestra.png)
-
-2. Descripciones
-    ![https://github.com/Msolis314/Clases/blob/main/Imagenes/Despues_Agregar_Descrips_After.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Despues_Agregar_Descrips_After.png)
-
-Insertar cursos y relación de requesitos
-
-```sql
 -- Insertar Requisitos 
 INSERT INTO cursos(CursoID,Sigla,Nombre,Semestre,Creditos)
 VALUES
@@ -211,28 +125,8 @@ INSERT INTO Requisitos(RequisitoID,CursoID,RequisitoCursoID)
 VALUES
 (07890523,0789,0523),
 (08900425,0890,0425);
-```
 
-- **Antes**
- 1. Cursos
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/InsertarCursosCustomMuestra.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/InsertarCursosCustomMuestra.png)
-
- 2. Requisitos
-
-    ![TablaRequisitos](https://github.com/Msolis314/Clases/blob/main/Imagenes/TablaLLenaIRequisitosMuestra.png)
-
- - **Despues**
-
-1. Cursos
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/Cursos_Despues_Requisitos.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Cursos_Despues_Requisitos.png)
-
-2. Requesitos
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/Nuevos_Requisitos.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Nuevos_Requisitos.png)
-
-### Consultas
-
-Para consultar todos los cursos con su sigla,nombre,semestre, créditos,descripción y dificultad se utilizó lo siguiente:
-```sql
+-- Consultas
 
 -- Consultar todos los cursos
 
@@ -241,57 +135,23 @@ FROM cursos
 JOIN descripciones
 WHERE cursos.CursoID = descripciones.CursoID;
 
-```
-
-Se obtuvo :
-
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/ConsultaI.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/ConsultaI.png)
-
-
-Para consultar todos los requisitos de un curso en particular (en este caso Electrónica Industrial) se utilizó:
-```sql
 
 -- Listar requisitos de Electrónica Industrial
 SELECT cursos.Nombre AS RequisitoDeElectrónicaIndustrial , cursos.Sigla 
 From cursos
 Join requisitos
 WHERE requisitos.CursoID = 0613 AND cursos.CursoID = requisitos.RequisitoCursoID;
-```
 
-Se obtuvo:
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/Resultado_Consulta_Requisito.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Resultado_Consulta_Requisito.png)
-
-Luego, la consulta de los cursos no optativos fue hecha de la siguiente manera:
-
-```sql
 -- Cursos que no son Optativas
 SELECT *
 FROM cursos
 WHERE Nombre NOT LIKE 'Optativa%';
-```
 
-Se obtuvo:
-
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/Resultado_Not_Optativas.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Resultado_Not_Optativas.png)
-
-Los cursos del semestre X se obtuvierón:
-
-```sql
 -- Cursos del semestre X
 SELECT *
 FROM cursos
 WHERE Semestre = 'X';
-```
 
-Con el siguiente resultado:
-
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/SemestreX_Muestra.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/SemestreX_Muestra.png)
-
-### Actualizaciones
-
-Para actualizar el nombre y créditos de 3 cursos optativos:
-
-```sql
 -- Actualizar cursos optativos
 UPDATE cursos
 SET Nombre = 'Visión por Computador' , Sigla = 'IE-0437', Creditos = 4
@@ -304,24 +164,7 @@ WHERE Nombre = 'Optativa III';
 UPDATE cursos
 SET Nombre = 'Estructuras de computadores digitales II' , Sigla = 'IE-0521' , Creditos =4
 WHERE Nombre = 'Optativa IV';
-```
 
-- **Antes**
-
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/Cursos_Despues_Requisitos.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Cursos_Despues_Requisitos.png)
-
-- **Despues**
-
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/After_Update.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/After_Update.png)
-
-
-Actualizar la descripción y dificultad de los cursos:
-1. Electrónica Industrial (Código 0613)
-2. Electrónica II (Código 0413)
-3. Responsabilidad en le ejercicio profesional de la ingeniería eléctrica (Código 0501)
-
-Se consigue:
-```sql
 -- Actualizar descripciones y dificultad 
 UPDATE descripciones
 SET Descripcion = 'Curso de electrónica de potencia' , dificultad = 'Fácil'
@@ -334,24 +177,9 @@ WHERE CursoID = 0413;
 UPDATE descripciones
 SET Descripcion = 'Como no ser demandado' , dificultad = 'Media'
 WHERE CursoID = 0501;
-```
 
-- **Antes** 
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/Despues_Agregar_Descrips_After.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Despues_Agregar_Descrips_After.png)
+-- Eliminaciones
 
-- **Despues**
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/After_DEscr.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/After_DEscr.png)
-
-
-### Eliminaciones
-Eliminar los siguientes 3 cursos:
-1. Robótica (Inventado)
-2. Electrónica Industrial (0613)
-3. Anteproyecto de TFG (0599)
-
-Primero, se modificarón las tablas para que las llaves foráneas tuvieran el _Constraint_ de borrado en cascada y se eliminaran cuando se borra la fila a la que referencian.
-
-```sql
 -- Primero agregar la opcion de borrado en cascada
 ALTER TABLE descripciones
 DROP FOREIGN KEY descripciones_ibfk_1;
@@ -380,43 +208,11 @@ ADD CONSTRAINT requisitos_ibfk_2
     REFERENCES cursos(CursoID)
     ON DELETE CASCADE;
 
-```
-
-Luego para eliminar los cursos:
-```sql
+-- Eliminar
 DELETE FROM cursos
 WHERE CursoID IN(0789,0613,0599);
-```
 
-- **Antes**
-
-1. Descripciones
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/After_DEscr.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/After_DEscr.png)
-
-2. Cursos
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/After_Update.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/After_Update.png)
-
-- **Despues**
-
-1. Descripciones
-
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/Descrip_After_delete.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Descrip_After_delete.png)
-
-2. Cursos
-
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/After_Update.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/After_Update.png)
-
-Para eliminar los requesitos:
-
-```sql
 -- Eliminar requsitos 
 DELETE FROM requisitos
 WHERE CursoID IN(579,890);
-```
 
-- **Antes**
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/Nuevos_Requisitos.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Nuevos_Requisitos.png)
-
-- **Despues**
-
-    ![https://github.com/Msolis314/Clases/blob/main/Imagenes/requisitos_after_delete.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/requisitos_after_delete.png)
