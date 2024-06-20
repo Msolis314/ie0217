@@ -1,5 +1,9 @@
 # README TAREA #6
-
+## Ejecución
+Si se desean ejecutar los comandos del script. Primero crear una base de datos mediante la GUI de MySql con el nombre tarea_6_sql. Luego mediante la terminal de MySql después de entrar la contraseña, ejecutar:
+```bash
+source path/to/your/file.sql;
+```
 ## Parte teórica
 
 
