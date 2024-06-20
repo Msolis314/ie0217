@@ -107,6 +107,7 @@ VALUES
 (0789,'IE-0789','Robotica','X',3),
 (0890,'IE-0890','Sistemas Embebidos','IX',3);
 
+-- Se insertan descripciones de los cursos nuevos
 INSERT INTO descripciones(DescripcionID,CursoID,Descripcion,Dificultad)
 VALUES
 (12,0789,'Curso centrado en la creación de robots','Dificil'),
@@ -181,6 +182,7 @@ WHERE CursoID = 0501;
 -- Eliminaciones
 
 -- Primero agregar la opcion de borrado en cascada
+-- Eliminar las relaciones de los cursos que se van a eliminar
 ALTER TABLE descripciones
 DROP FOREIGN KEY descripciones_ibfk_1;
 
