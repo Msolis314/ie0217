@@ -297,6 +297,7 @@ dentro de otros dispositivos, no son visibles para el usuario y realizan funcion
 
     ![https://github.com/Msolis314/Clases/blob/main/Imagenes/InsertarCursosCustomMuestra.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/InsertarCursosCustomMuestra.png)
 
+
 2. Descripciones
     ![https://github.com/Msolis314/Clases/blob/main/Imagenes/Despues_Agregar_Descrips_After.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Despues_Agregar_Descrips_After.png)
 
@@ -318,7 +319,8 @@ VALUES
 
 - **Antes**
  1. Cursos
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/InsertarCursosCustomMuestra.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/InsertarCursosCustomMuestra.png)
+
+    ![https://github.com/Msolis314/Clases/blob/main/Imagenes/InsertarCursosCustomMuestra.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/InsertarCursosCustomMuestra.png)
 
  2. Requisitos
 
@@ -327,10 +329,12 @@ VALUES
  - **Despues**
 
 1. Cursos
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/Cursos_Despues_Requisitos.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Cursos_Despues_Requisitos.png)
+
+    ![https://github.com/Msolis314/Clases/blob/main/Imagenes/Cursos_Despues_Requisitos.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Cursos_Despues_Requisitos.png)
 
 2. Requesitos
-![https://github.com/Msolis314/Clases/blob/main/Imagenes/Nuevos_Requisitos.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Nuevos_Requisitos.png)
+
+    ![https://github.com/Msolis314/Clases/blob/main/Imagenes/Nuevos_Requisitos.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Nuevos_Requisitos.png)
 
 ### Consultas
 
@@ -362,6 +366,7 @@ WHERE requisitos.CursoID = 0613 AND cursos.CursoID = requisitos.RequisitoCursoID
 ```
 
 Se obtuvo:
+
 ![https://github.com/Msolis314/Clases/blob/main/Imagenes/Resultado_Consulta_Requisito.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Resultado_Consulta_Requisito.png)
 
 Luego, la consulta de los cursos no optativos fue hecha de la siguiente manera:
@@ -440,9 +445,11 @@ WHERE CursoID = 0501;
 ```
 
 - **Antes** 
+
 ![https://github.com/Msolis314/Clases/blob/main/Imagenes/Despues_Agregar_Descrips_After.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Despues_Agregar_Descrips_After.png)
 
 - **Despues**
+
 ![https://github.com/Msolis314/Clases/blob/main/Imagenes/After_DEscr.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/After_DEscr.png)
 
 
@@ -494,9 +501,11 @@ WHERE CursoID IN(0789,0613,0599);
 - **Antes**
 
 1. Descripciones
+
 ![https://github.com/Msolis314/Clases/blob/main/Imagenes/After_DEscr.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/After_DEscr.png)
 
 2. Cursos
+
 ![https://github.com/Msolis314/Clases/blob/main/Imagenes/After_Update.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/After_Update.png)
 
 - **Despues**
@@ -518,6 +527,7 @@ WHERE CursoID IN(579,890);
 ```
 
 - **Antes**
+
 ![https://github.com/Msolis314/Clases/blob/main/Imagenes/Nuevos_Requisitos.png](https://github.com/Msolis314/Clases/blob/main/Imagenes/Nuevos_Requisitos.png)
 
 - **Despues**
