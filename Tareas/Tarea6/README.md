@@ -1,5 +1,108 @@
 # README TAREA #6
 
+## Parte teórica
+
+
+### 1. ¿Qué es una base de datos relacional y cuáles son sus características fundamentales?
+
+Una base de datos relacional emplea filas y columnas para organizar los datos, los cuales están relacionados entre sí. Una fila se considera un registro y una columna un atributo. Para organizar los datos se emplean múltiples tablas unidas por claves foráneas que identifican las relaciones entre ellas. Algunas de sus características principales son:
+
+- **Tabla**: Es la estructura de almacenamiento.
+- **Columna**: Atributo o característica de los datos.
+- **Fila**: Un registro o muestra en la tabla.
+- **Clave Primaria**: Un campo cuyo propósito es identificar cada fila de la tabla.
+- **Clave Foránea**: Establece la relación entre dos tablas.
+- **Vista**: Es una tabla virtual que es el producto de la consulta de una o más tablas.
+- **Índice**: Forma de organizar los datos que mejora la eficiencia de las operaciones.
+
+Fuente: [IBM](https://www.ibm.com/topics/relational-databases)
+
+### 2. ¿Cuál es la diferencia entre una clave primaria y una clave candidata en una base de datos relacional?
+
+Una clave candidata hace referencia a los atributos que podrían identificar de manera única una tabla. Puede haber más de una clave candidata y pueden contener valores NULL. En contraste, una clave primaria es única en una tabla y no puede contener valores NULL. Básicamente, una llave primaria es una llave candidata, pero una llave candidata puede o no ser una llave primaria.
+
+Fuente: [GeeksforGeeks](https://www.geeksforgeeks.org/difference-between-primary-and-candidate-key/)
+
+### 3. ¿Qué son las claves foráneas y cómo se utilizan para mantener la integridad referencial en una base de datos?
+
+La integridad referencial alude a las relaciones entre tablas. Cada tabla en la base de datos tiene una llave primaria que puede aparecer en otras tablas como clave foránea. El uso de llaves foráneas permite unir tablas y formar una jerarquía de dependencias entre ellas. Por ejemplo, si se elimina una fila en una tabla que contiene una llave primaria, se destruye la unión con cualquier fila de otra tabla que la contenía como llave foránea. La integridad referencial significa que existe una dependencia lógica entre una llave foránea y una llave primaria. El uso de llaves foráneas protege la integridad de los datos, por ejemplo, con el comando `ON DELETE CASCADE` que permite eliminar en cadena desde la tabla padre hasta las hijas.
+
+Fuente: [IBM](https://www.ibm.com/docs/en/informix-servers/14.10?topic=integrity-referential)
+
+### 4. ¿Qué es una transacción en el contexto de bases de datos y cuáles son las propiedades ACID que debe cumplir?
+
+Una transacción en una base de datos es una secuencia de operaciones que se realizan como una única secuencia lógica. Un ejemplo clásico es la transferencia de dinero. Las propiedades ACID que debe cumplir una transacción son:
+
+- **Atomicidad**: Todo o nada. Si una transacción falla, la base de datos retorna a su estado original.
+- **Consistencia**: Los datos se mantienen en un estado consistente de inicio a fin.
+- **Aislamiento (Isolation)**: Las transacciones concurrentes deben ser independientes una de la otra.
+- **Durabilidad**: Los cambios realizados por una transacción exitosa perduran y no pueden ser revertidos, incluso en caso de fallos del sistema.
+
+Fuentes: [IBM](https://www.ibm.com/topics/relational-databases), [Fauna](https://fauna.com/blog/database-transaction)
+
+### 5. ¿Qué son las vistas (views) en SQL y cuáles son los beneficios y limitaciones de su uso?
+
+Una vista se asemeja a una tabla ya que está conformada por filas y columnas, pero sus datos no son almacenados en el disco. Se crean a partir de consultas a otras tablas. Algunos de sus beneficios son:
+
+- **Esconde complejidad**: Las consultas complejas pueden ser divididas entre múltiples vistas, facilitando el manejo y mantenimiento.
+- **Protege datos**: Delimita la información a la que tienen acceso ciertos usuarios.
+- **Manejo de cambios en esquemas**: Facilita la gestión de cambios en las tablas originales.
+
+Limitaciones:
+
+- No se pueden pasar parámetros a una vista.
+- No se puede usar la cláusula ORDER BY en vistas sin especificar FOR XML o TOP.
+- No se pueden crear en tablas temporales.
+- No se pueden usar reglas y valores predeterminados en las vistas.
+
+Fuentes: [Medium](https://medium.com/@the_infinity/views-in-relational-databases-2958ae4f734f), [MSSQLTips](https://www.mssqltips.com/sqlservertip/5147/limitations-when-working-with-sql-server-views/)
+
+### 6. ¿Qué es la normalización en bases de datos y cuáles son las diferentes formas normales (normal forms)?
+
+La normalización es un proceso para remover las redundancias en las relaciones de una base de datos. Las diferentes formas normales son:
+
+1. **Primera forma normal (1NF)**: Cada celda de la tabla debe contener un único valor y cada columna un nombre único.
+2. **Segunda forma normal (2NF)**: Cada atributo que no sea llave debe ser dependiente de la llave primaria.
+3. **Tercera forma normal (3NF)**: Todos los atributos que no sean llaves deben ser independientes entre ellos.
+4. **Forma normal de Boyce-Codd (BCNF)**: Cada determinante en la tabla debe ser una llave candidata.
+5. **Cuarta forma normal (4NF)**: La tabla no debe contener dependencias multivalor.
+6. **Quinta forma normal (5NF)**: Implica descomponer una tabla en tablas más pequeñas para remover las redundancias.
+
+Fuente: [GeeksforGeeks](https://www.geeksforgeeks.org/normal-forms-in-dbms/)
+
+### 7. ¿Cómo funcionan los índices en SQL y cuál es su impacto en el rendimiento de las consultas?
+
+Los índices son tablas de búsqueda especializadas que aumentan la rapidez de la ejecución de las consultas al crear punteros a los datos. Aunque mejoran el rendimiento de las consultas, los índices ocupan más espacio y pueden ralentizar operaciones como `DELETE`, `INSERT` y `UPDATE`, que implican modificar los índices.
+
+Fuente: [Simplilearn](https://www.simplilearn.com/tutorials/sql-tutorial/index-in-sql)
+
+### 8. ¿Qué es SQL Injection y cuáles son las mejores prácticas para prevenir este tipo de ataque?
+
+SQL Injection es una técnica que permite a un atacante interferir con las consultas que una aplicación o sitio web hace a su base de datos. Para prevenir este tipo de ataque:
+
+- Utilizar consultas parametrizadas en vez de concatenación de strings.
+- Mantener los privilegios de acceso restringidos.
+- Validar los inputs del usuario.
+
+Fuente: [Berkeley Security](https://security.berkeley.edu/education-awareness/how-protect-against-sql-injection-attacks#:~:text=Developers%20can%20prevent%20SQL%20Injection,NET%2C%20PHP%2C%20and%20more)
+
+### 9. ¿Qué son los procedimientos almacenados (stored procedures) en SQL y cómo pueden mejorar la eficiencia y seguridad de las operaciones de base de datos?
+
+Un procedimiento almacenado es un fragmento de código SQL guardado para ser reutilizado en varias ocasiones. Mejora la eficiencia y seguridad de las operaciones de base de datos:
+
+- **Rendimiento**: Procesa datos en el servidor, reduciendo el tráfico de datos.
+- **Reusabilidad**: Un procedimiento almacenado solo debe ser compilado una vez.
+- **Seguridad**: Restringe el acceso de los usuarios a los datos, protegiendo aspectos del esquema de la base de datos.
+
+Fuente: [Site24x7](https://www.site24x7.com/learn/sql-stored-procedure.html#:~:text=A%20stored%20procedure%20is%20a,and%20return%20multiple%20output%20values)
+
+### 10. ¿Cómo se implementan las relaciones uno a uno, uno a muchos y muchos a muchos en una base de datos relacional y qué consideraciones se deben tener en cuenta en cada caso?
+
+- **Uno a Uno**: Cada fila en la tabla A se asocia con una única fila en la tabla B y viceversa. Se realiza incluyendo una llave foránea en una tabla que referencia la llave primaria en otra.
+- **Uno a Muchos**: Cada fila de la tabla A puede relacionarse con múltiples filas de B, pero cada fila de B solo puede asociarse con una fila de A. Se incluye una clave foránea en el lado de muchos en la tabla B que referencia una llave primaria en la tabla A.
+- **Muchos a Muchos**: Cada fila de la tabla A se asocia con muchas filas de B y viceversa. Se crea una tabla intermedia con llaves foráneas que referencian a ambas tablas.
+
+Fuente: [GeeksforGeeks](https://www.geeksforgeeks.org/relationships-in-sql-one-to-one-one-to-many-many-to-many/)
 ## Documentación de la tarea
 
 ### **Creación de la base de datos y tablas**
